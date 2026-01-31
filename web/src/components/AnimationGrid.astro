@@ -33,7 +33,7 @@ const delays = [
         <label class="text-sm font-medium text-(--color-text)">Duration</label>
         <select
           id="duration-select"
-          class="rounded-md border border-(--color-border) bg-(--color-bg-alt) px-3 py-2 text-sm text-(--color-text)"
+          class="rounded-md border border-(--color-border) bg-(--color-bg-alt) px-3 py-1.5 text-sm text-(--color-text)"
         >
           {durations.map((d) => <option value={d.value}>{d.label}</option>)}
         </select>
@@ -44,20 +44,39 @@ const delays = [
         <label class="text-sm font-medium text-(--color-text)">Delay</label>
         <select
           id="delay-select"
-          class="rounded-md border border-(--color-border) bg-(--color-bg-alt) px-3 py-2 text-sm text-(--color-text)"
+          class="rounded-md border border-(--color-border) bg-(--color-bg-alt) px-3 py-1.5 text-sm text-(--color-text)"
         >
           {delays.map((d) => <option value={d.value}>{d.label}</option>)}
         </select>
       </div>
+
+      <!-- Infinite Loop Toggle -->
+      <button
+        id="infinite-toggle"
+        class="flex items-center gap-2 rounded-md border border-(--color-border) bg-(--color-bg-alt) px-4 py-2 text-sm font-medium text-(--color-text) hover:border-(--color-primary) transition-colors"
+        data-active="false"
+      >
+        <svg
+          id="infinite-icon"
+          class="h-4 w-4 transition-transform"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+          ></path>
+        </svg>
+        <span>Infinite</span>
+      </button>
     </div>
   </div>
 
   <!-- Animation Grid -->
   <div id="animation-grid" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"></div>
-
-  <div id="no-animations" class="hidden py-12 text-center text-(--color-text-muted)">
-    No animations found in this category
-  </div>
 
   <!-- View All Animations Button (Below Grid) -->
   <div class="mt-8 flex justify-center">
@@ -76,6 +95,7 @@ const delays = [
   let duration = "";
   let delay = "";
   let showAll = false;
+  let isInfinite = false;
 
   const renderAnimations = () => {
     const displayedAnimations = showAll ? animations : animations.slice(0, 12);
@@ -188,8 +208,16 @@ const delays = [
       card.addEventListener("mouseenter", () => {
         box.classList.add(animationKey);
         // Apply current duration/delay settings
-        if (duration) box.style.animationDuration = duration;
-        if (delay) box.style.animationDelay = delay;
+        if (duration) {
+          box.style.animationDuration = `${duration}ms`;
+        }
+        if (delay) {
+          box.style.animationDelay = `${delay}ms`;
+        }
+        // Apply infinite iteration if enabled
+        if (isInfinite) {
+          box.style.animationIterationCount = "infinite";
+        }
       });
 
       // Mouse leave: remove animation class
@@ -197,6 +225,7 @@ const delays = [
         box.classList.remove(animationKey);
         box.style.animationDuration = "";
         box.style.animationDelay = "";
+        box.style.animationIterationCount = "";
       });
     });
   };
@@ -213,6 +242,35 @@ const delays = [
   delaySelect?.addEventListener("change", (e) => {
     delay = e.target.value;
     renderAnimations();
+  });
+
+  // Infinite toggle
+  const infiniteToggle = document.getElementById("infinite-toggle");
+  const infiniteIcon = document.getElementById("infinite-icon");
+  infiniteToggle?.addEventListener("click", () => {
+    isInfinite = !isInfinite;
+    infiniteToggle.setAttribute("data-active", isInfinite.toString());
+
+    // Update button style and icon animation
+    if (isInfinite) {
+      infiniteToggle.classList.add(
+        "bg-(--color-primary)",
+        "text-white",
+        "border-(--color-primary)"
+      );
+      infiniteToggle.classList.remove("bg-(--color-bg-alt)", "text-(--color-text)");
+      // Add spin animation to icon
+      infiniteIcon?.classList.add("animate-spin");
+    } else {
+      infiniteToggle.classList.remove(
+        "bg-(--color-primary)",
+        "text-white",
+        "border-(--color-primary)"
+      );
+      infiniteToggle.classList.add("bg-(--color-bg-alt)", "text-(--color-text)");
+      // Remove spin animation from icon
+      infiniteIcon?.classList.remove("animate-spin");
+    }
   });
 
   // View all / Show less toggle
