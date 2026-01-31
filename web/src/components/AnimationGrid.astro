@@ -84,42 +84,46 @@ const delays = [
   <!-- Animation Grid -->
   <div id="animation-grid" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
     {
-      animations.map((anim, index) => (
-        <div
-          class:list={[
-            "group relative overflow-hidden rounded-xl border border-(--color-border) bg-(--color-bg) p-6 transition-all hover:border-(--color-primary) hover:shadow-xl animate-fade-in-up",
-            { hidden: index >= 12 },
-          ]}
-          data-animation-card
-          data-animation-key={anim.class}
-          data-index={index}
-          style={`animation-delay: ${1000 + index * 50}ms; animation-fill-mode: both;`}
-        >
-          {anim.description && (
-            <span class="absolute right-2 top-2 rounded-md bg-linear-to-r from-blue-500 to-purple-500 px-2 py-1 text-xs font-bold text-white">
-              {anim.description}
-            </span>
-          )}
+      animations.map((anim, index) => {
+        const animationDelay = index < 12 ? 1000 + index * 50 : (index - 12) * 50;
 
-          <div class="mb-4 flex h-32 items-center justify-center">
-            <div class="animate-box h-20 w-20 rounded-xl bg-linear-to-br from-blue-500 via-purple-500 to-pink-500" />
-          </div>
-
-          <div class="space-y-2">
-            <h3 class="font-mono text-sm font-semibold text-(--color-text)">{anim.name}</h3>
-            <code class="block rounded-md bg-(--color-bg-alt) py-1.5 text-xs text-(--color-text-muted) font-mono">
-              {anim.class}
-            </code>
-          </div>
-
-          <button
-            class="copy-btn mt-4 w-full rounded-md bg-(--color-primary) px-3 py-2 text-sm font-medium text-white opacity-0 transition-all group-hover:opacity-100 hover:bg-(--color-primary-hover) hover:cursor-pointer"
-            data-copy={anim.class}
+        return (
+          <div
+            class:list={[
+              "group relative overflow-hidden rounded-xl border border-(--color-border) bg-(--color-bg) p-6 transition-all hover:border-(--color-primary) hover:shadow-xl animate-fade-in-up",
+              { hidden: index >= 12 },
+            ]}
+            data-animation-card
+            data-animation-key={anim.class}
+            data-index={index}
+            style={`animation-delay: ${animationDelay}ms; animation-fill-mode: both;`}
           >
-            Copy
-          </button>
-        </div>
-      ))
+            {anim.description && (
+              <span class="absolute right-2 top-2 rounded-md bg-linear-to-r from-blue-500 to-purple-500 px-2 py-1 text-xs font-bold text-white">
+                {anim.description}
+              </span>
+            )}
+
+            <div class="mb-4 flex h-32 items-center justify-center">
+              <div class="animate-box h-20 w-20 rounded-xl bg-linear-to-br from-blue-500 via-purple-500 to-pink-500" />
+            </div>
+
+            <div class="space-y-2">
+              <h3 class="font-mono text-sm font-semibold text-(--color-text)">{anim.name}</h3>
+              <code class="block rounded-md bg-(--color-bg-alt) py-1.5 text-xs text-(--color-text-muted) font-mono">
+                {anim.class}
+              </code>
+            </div>
+
+            <button
+              class="copy-btn mt-4 w-full rounded-md bg-(--color-primary) px-3 py-2 text-sm font-medium text-white opacity-0 transition-all group-hover:opacity-100 hover:bg-(--color-primary-hover) hover:cursor-pointer"
+              data-copy={anim.class}
+            >
+              Copy
+            </button>
+          </div>
+        );
+      })
     }
   </div>
 
@@ -217,6 +221,13 @@ const delays = [
 
     allCards.forEach((card, index) => {
       if (showAll) {
+        // Show all cards and re-trigger animation for hidden ones
+        if (index >= 12) {
+          // Force animation restart
+          card.classList.remove("animate-fade-in-up");
+          void card.offsetWidth; // Force reflow
+          card.classList.add("animate-fade-in-up");
+        }
         card.classList.remove("hidden");
       } else {
         if (index >= 12) {
@@ -279,11 +290,6 @@ const delays = [
   const viewAllBtn = document.getElementById("view-all-btn");
   viewAllBtn?.addEventListener("click", () => {
     toggleViewAll();
-    // Scroll to top of grid
-    document.getElementById("animation-grid")?.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
   });
 
   // Initial setup
