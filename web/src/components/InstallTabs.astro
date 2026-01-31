@@ -63,7 +63,7 @@ const packageManagers = [
       packageManagers.map((pm, i) => (
         <button
           class={cn(
-            "pm-btn flex items-center gap-2 rounded-md px-4 py-2 text-sm font-medium transition-all",
+            "pm-btn flex items-center gap-2 rounded-md px-4 py-2 text-sm font-medium transition-all hover:cursor-pointer",
             i === 0
               ? "bg-(--color-bg-alt) text-(--color-text) ring-2 ring-(--color-primary)"
               : "bg-transparent text-(--color-text-muted) hover:text-(--color-text)"
@@ -78,34 +78,32 @@ const packageManagers = [
   </div>
 
   <!-- Install Command -->
-  <div class="mb-6 overflow-hidden rounded-lg border border-(--color-border)">
-    <div class="bg-[#0d1117] p-4">
-      <div class="flex items-center justify-between gap-4">
-        <div class="flex-1 overflow-hidden">
-          {
-            packageManagers.map((pm, pmIdx) =>
-              ["v4", "v3"].map((version) => (
-                <div
-                  data-command-block={`${pm.id}-${version}`}
-                  class={pmIdx === 0 && version === "v4" ? "" : "hidden"}
-                >
-                  <Code
-                    code={version === "v4" ? pm.v4Command : pm.v3Command}
-                    lang="bash"
-                    class="text-sm! border-0! text-start"
-                  />
-                </div>
-              ))
-            )
-          }
-        </div>
-        <button
-          id="copy-install-btn"
-          class="ml-4 shrink-0 rounded-md bg-(--color-primary) px-3 py-1 text-xs font-medium text-white hover:bg-(--color-primary-hover)"
-        >
-          Copy
-        </button>
+  <div class="mb-6 overflow-hidden rounded-lg border border-[#1f2937] bg-[#0d1117]">
+    <div class="flex items-center justify-between gap-4 p-4">
+      <div class="flex-1 overflow-hidden">
+        {
+          packageManagers.map((pm, pmIdx) =>
+            ["v4", "v3"].map((version) => (
+              <div
+                data-command-block={`${pm.id}-${version}`}
+                class={pmIdx === 0 && version === "v4" ? "" : "hidden"}
+              >
+                <Code
+                  code={version === "v4" ? pm.v4Command : pm.v3Command}
+                  lang="bash"
+                  class="text-sm! border-0! text-start"
+                />
+              </div>
+            ))
+          )
+        }
       </div>
+      <button
+        id="copy-install-btn"
+        class="ml-4 shrink-0 rounded-md bg-(--color-primary) px-3 py-1 text-xs font-medium text-white hover:bg-(--color-primary-hover) hover:cursor-pointer"
+      >
+        Copy
+      </button>
     </div>
   </div>
 
