@@ -1,5 +1,5 @@
 ---
-import { animations, categories } from "../data/animations";
+import { animations } from "../data/animations";
 
 const durations = [
   { value: "100", label: "default" },
@@ -49,32 +49,6 @@ const delays = [
           {delays.map((d) => <option value={d.value}>{d.label}</option>)}
         </select>
       </div>
-
-      <!-- Category Filter -->
-      <div class="flex items-center gap-3">
-        <label class="text-sm font-medium text-(--color-text)">Category</label>
-        <select
-          id="category-select"
-          class="rounded-md border border-(--color-border) bg-(--color-bg-alt) px-3 py-2 text-sm text-(--color-text)"
-        >
-          <option value="all">All ({animations.length})</option>
-          {
-            categories.map((cat) => (
-              <option value={cat}>
-                {cat} ({animations.filter((a) => a.category === cat).length})
-              </option>
-            ))
-          }
-        </select>
-      </div>
-
-      <!-- Animate All Button -->
-      <button
-        id="animate-all-btn"
-        class="ml-auto rounded-lg bg-(--color-primary) px-6 py-2 font-semibold text-white hover:bg-(--color-primary-hover) transition-colors"
-      >
-        Animate all
-      </button>
     </div>
   </div>
 
@@ -84,34 +58,40 @@ const delays = [
   <div id="no-animations" class="hidden py-12 text-center text-(--color-text-muted)">
     No animations found in this category
   </div>
+
+  <!-- View All Animations Button (Below Grid) -->
+  <div class="mt-8 flex justify-center">
+    <button
+      id="view-all-btn"
+      class="rounded-lg border-2 border-(--color-border) bg-transparent px-8 py-3 font-semibold text-(--color-text) hover:border-(--color-primary) hover:bg-(--color-primary)/10 transition-all"
+    >
+      View all animations ({animations.length})
+    </button>
+  </div>
 </div>
 
-<script is:inline define:vars={{ animations, categories }}>
+<script is:inline define:vars={{ animations }}>
   console.log("Animations loaded:", animations.length);
-  console.log("Categories:", categories);
 
   let duration = "";
   let delay = "";
-  let selectedCategory = "all";
-  let replayKey = 0;
+  let showAll = false;
 
   const renderAnimations = () => {
-    const filteredAnimations =
-      selectedCategory === "all"
-        ? animations
-        : animations.filter((a) => a.category === selectedCategory);
+    const displayedAnimations = showAll ? animations : animations.slice(0, 12);
 
-    console.log("Rendering animations:", filteredAnimations.length);
+    console.log("Rendering animations:", displayedAnimations.length);
 
     const grid = document.getElementById("animation-grid");
     const noAniElement = document.getElementById("no-animations");
+    const viewAllBtn = document.getElementById("view-all-btn");
 
     if (!grid) {
       console.error("Grid element not found!");
       return;
     }
 
-    if (filteredAnimations.length === 0) {
+    if (displayedAnimations.length === 0) {
       grid.classList.add("hidden");
       noAniElement?.classList.remove("hidden");
       return;
@@ -120,7 +100,16 @@ const delays = [
     grid.classList.remove("hidden");
     noAniElement?.classList.add("hidden");
 
-    grid.innerHTML = filteredAnimations
+    // Update button text
+    if (viewAllBtn) {
+      if (showAll) {
+        viewAllBtn.textContent = `Show less`;
+      } else {
+        viewAllBtn.textContent = `View all animations (${animations.length})`;
+      }
+    }
+
+    grid.innerHTML = displayedAnimations
       .map((anim, index) => {
         const classes = [
           anim.class,
@@ -226,18 +215,16 @@ const delays = [
     renderAnimations();
   });
 
-  // Category change
-  const categorySelect = document.getElementById("category-select");
-  categorySelect?.addEventListener("change", (e) => {
-    selectedCategory = e.target.value;
+  // View all / Show less toggle
+  const viewAllBtn = document.getElementById("view-all-btn");
+  viewAllBtn?.addEventListener("click", () => {
+    showAll = !showAll;
     renderAnimations();
-  });
-
-  // Animate all
-  const animateAllBtn = document.getElementById("animate-all-btn");
-  animateAllBtn?.addEventListener("click", () => {
-    replayKey++;
-    renderAnimations();
+    // Scroll to top of grid
+    document.getElementById("animation-grid")?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
   });
 
   // Initial render - wait for DOM to be ready
