@@ -299,6 +299,180 @@ import AnimationGrid from "../components/AnimationGrid.astro";
     </div>
   </section>
 
+  <!-- Scroll & View Timelines (inspired by midudev/tailwind-animations) -->
+  <section id="timelines" class="py-24">
+    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+      <div class="mb-16 text-center">
+        <h2 class="mb-3 text-4xl font-bold tracking-tight text-(--color-text)">
+          Scroll & View Timelines
+        </h2>
+        <p class="mx-auto max-w-2xl text-lg text-(--color-text-muted)">
+          Link animations to scroll progress or element visibility with
+          <code
+            class="rounded border border-(--color-border) bg-(--color-bg-alt) px-1.5 py-0.5 font-mono text-sm text-(--color-primary)"
+            >timeline-scroll</code
+          >
+          and
+          <code
+            class="rounded border border-(--color-border) bg-(--color-bg-alt) px-1.5 py-0.5 font-mono text-sm text-(--color-primary)"
+            >timeline-view</code
+          >.
+        </p>
+      </div>
+
+      <div class="space-y-20">
+        <!-- 1. Vertical Scroll Progress -->
+        <div class="rounded-2xl border border-(--color-border) bg-(--color-bg) p-6 md:p-8">
+          <h3 class="mb-2 text-lg font-semibold text-(--color-text)">Vertical scroll progress</h3>
+          <p class="mb-4 text-sm text-(--color-text-muted)">
+            <code class="text-(--color-primary)">timeline-scroll</code> ties the animation to the scroll container. The bar fills as you scroll.
+          </p>
+          <div class="h-64 overflow-y-auto rounded-xl border border-(--color-border) bg-(--color-bg-alt)">
+            <div
+              class="timeline-scroll animate-expand-horizontally sticky top-0 z-10 h-2 w-full origin-left rounded-t-xl bg-linear-to-r from-emerald-500 to-cyan-500"
+            ></div>
+            <div class="h-[700px] p-6">
+              <p class="text-sm text-(--color-text-muted)">↓ Scroll down to see the progress bar fill</p>
+              <div class="mt-6 flex flex-col gap-4">
+                <div class="h-24 rounded-lg bg-(--color-border)"></div>
+                <div class="h-24 rounded-lg bg-(--color-border)"></div>
+                <div class="h-24 rounded-lg bg-(--color-border)"></div>
+              </div>
+            </div>
+          </div>
+          <div class="mt-4 rounded-lg border border-[#1f2937] bg-[#0d1117] overflow-hidden">
+            <Code code="timeline-scroll animate-expand-horizontally" lang="css" class="text-sm! border-0! text-start p-2" />
+          </div>
+        </div>
+
+        <!-- 2. Horizontal Scroll Progress -->
+        <div class="rounded-2xl border border-(--color-border) bg-(--color-bg) p-6 md:p-8">
+          <h3 class="mb-2 text-lg font-semibold text-(--color-text)">Horizontal scroll progress</h3>
+          <p class="mb-4 text-sm text-(--color-text-muted)">
+            <code class="text-(--color-primary)">timeline-scroll-inline</code> for horizontal containers.
+          </p>
+          <div class="h-44 overflow-x-auto overflow-y-hidden rounded-xl border border-(--color-border) bg-(--color-bg-alt)">
+            <div
+              class="timeline-scroll-inline animate-expand-horizontally sticky left-0 top-0 z-10 h-2 w-full min-w-full origin-left bg-linear-to-r from-violet-500 to-pink-500"
+            ></div>
+            <div class="flex h-full min-w-[1200px] items-center gap-4 p-6">
+              <div class="flex h-24 w-28 shrink-0 items-center justify-center rounded-xl bg-(--color-border) text-2xl">🚀</div>
+              <div class="flex h-24 w-28 shrink-0 items-center justify-center rounded-xl bg-(--color-border) text-2xl">⭐</div>
+              <div class="flex h-24 w-28 shrink-0 items-center justify-center rounded-xl bg-(--color-border) text-2xl">💎</div>
+              <div class="flex h-24 w-28 shrink-0 items-center justify-center rounded-xl bg-(--color-border) text-2xl">🔥</div>
+              <div class="flex h-24 w-28 shrink-0 items-center justify-center rounded-xl bg-(--color-border) text-2xl">✨</div>
+            </div>
+          </div>
+          <div class="mt-4 rounded-lg border border-[#1f2937] bg-[#0d1117] overflow-hidden">
+            <Code code="timeline-scroll-inline animate-expand-horizontally" lang="css" class="text-sm! border-0! text-start p-2" />
+          </div>
+        </div>
+
+        <!-- 3. Entry vs Exit Ranges -->
+        <div class="rounded-2xl border border-(--color-border) bg-(--color-bg) p-6 md:p-8">
+          <h3 class="mb-2 text-lg font-semibold text-(--color-text)">Entry & exit ranges</h3>
+          <p class="mb-4 text-sm text-(--color-text-muted)">
+            <code class="text-(--color-primary)">animate-range-entry</code> (entering) and
+            <code class="text-(--color-primary)">animate-range-exit</code> (leaving).
+          </p>
+          <div class="h-80 overflow-y-auto rounded-xl border border-(--color-border) bg-(--color-bg-alt)">
+            <div class="flex h-[900px] flex-col items-center gap-8 p-8">
+              <p class="text-sm text-(--color-text-muted)">↓ Scroll to see entry/exit</p>
+              <div class="h-48"></div>
+              <div
+                class="timeline-view animate-slide-in-start animate-range-entry flex w-64 items-center justify-center rounded-xl bg-linear-to-r from-cyan-600 to-blue-600 p-6 font-semibold text-white shadow-lg"
+              >
+                <span class="text-center">Entry<br /><span class="text-xs font-normal opacity-90">Plays when entering</span></span>
+              </div>
+              <div class="h-32"></div>
+              <div
+                class="timeline-view animate-slide-out-end animate-range-exit flex w-64 items-center justify-center rounded-xl bg-linear-to-r from-rose-600 to-pink-600 p-6 font-semibold text-white shadow-lg"
+              >
+                <span class="text-center">Exit<br /><span class="text-xs font-normal opacity-90">Plays when leaving</span></span>
+              </div>
+              <div class="h-48"></div>
+            </div>
+          </div>
+          <div class="mt-4 flex flex-wrap gap-2">
+            <code class="rounded-md bg-[#0a0a0a] px-3 py-2 text-sm text-cyan-400">animate-range-entry</code>
+            <code class="rounded-md bg-[#0a0a0a] px-3 py-2 text-sm text-rose-400">animate-range-exit</code>
+          </div>
+        </div>
+
+        <!-- 4. Staggered Reveal -->
+        <div class="rounded-2xl border border-(--color-border) bg-(--color-bg) p-6 md:p-8">
+          <h3 class="mb-2 text-lg font-semibold text-(--color-text)">Staggered reveal</h3>
+          <p class="mb-4 text-sm text-(--color-text-muted)">
+            Different <code class="text-(--color-primary)">animate-range</code> values for a staggered effect.
+          </p>
+          <div class="h-96 overflow-y-auto rounded-xl border border-(--color-border) bg-(--color-bg-alt)">
+            <div class="flex h-[1000px] flex-col items-center gap-6 p-8">
+              <p class="text-sm text-(--color-text-muted)">↓ Scroll to reveal in sequence</p>
+              <div class="h-64"></div>
+              <div class="grid grid-cols-2 gap-4">
+                <div
+                  class="timeline-view animate-fade-in-up animate-range-[entry_0%_cover_35%] flex h-24 w-28 items-center justify-center rounded-xl bg-amber-600 font-semibold text-white shadow-lg"
+                >
+                  First
+                </div>
+                <div
+                  class="timeline-view animate-fade-in-up animate-range-[entry_10%_cover_45%] flex h-24 w-28 items-center justify-center rounded-xl bg-orange-600 font-semibold text-white shadow-lg"
+                >
+                  Second
+                </div>
+                <div
+                  class="timeline-view animate-fade-in-up animate-range-[entry_20%_cover_55%] flex h-24 w-28 items-center justify-center rounded-xl bg-red-600 font-semibold text-white shadow-lg"
+                >
+                  Third
+                </div>
+                <div
+                  class="timeline-view animate-fade-in-up animate-range-[entry_30%_cover_65%] flex h-24 w-28 items-center justify-center rounded-xl bg-pink-600 font-semibold text-white shadow-lg"
+                >
+                  Fourth
+                </div>
+              </div>
+              <div class="h-80"></div>
+            </div>
+          </div>
+          <div class="mt-4 rounded-lg border border-[#1f2937] bg-[#0d1117] overflow-hidden">
+            <Code code="animate-range-[entry_0%_cover_35%] → [entry_10%_cover_45%] → ..." lang="css" class="text-sm! border-0! text-start p-2" />
+          </div>
+        </div>
+
+        <!-- 5. Rotation on scroll -->
+        <div class="rounded-2xl border border-(--color-border) bg-(--color-bg) p-6 md:p-8">
+          <h3 class="mb-2 text-lg font-semibold text-(--color-text)">Rotation on scroll</h3>
+          <p class="mb-4 text-sm text-(--color-text-muted)">
+            <code class="text-(--color-primary)">animate-rotate-360</code> and
+            <code class="text-(--color-primary)">animate-flip-in-x</code> with
+            <code class="text-(--color-primary)">animate-range-cover</code>.
+          </p>
+          <div class="h-72 overflow-y-auto rounded-xl border border-(--color-border) bg-(--color-bg-alt)">
+            <div class="flex h-[750px] flex-col items-center gap-8 p-8">
+              <p class="text-sm text-(--color-text-muted)">↓ Scroll to spin</p>
+              <div class="h-40"></div>
+              <div class="flex gap-6">
+                <div
+                  class="timeline-view animate-rotate-360 animate-range-cover h-20 w-20 rounded-xl bg-linear-to-br from-indigo-600 to-violet-600 shadow-lg"
+                ></div>
+                <div
+                  class="timeline-view animate-flip-in-x animate-range-cover flex h-20 w-20 items-center justify-center rounded-xl bg-linear-to-br from-fuchsia-600 to-pink-600 text-3xl shadow-lg"
+                >
+                  🎲
+                </div>
+              </div>
+              <div class="h-80"></div>
+            </div>
+          </div>
+          <div class="mt-4 flex flex-wrap gap-2">
+            <code class="rounded-md bg-[#0a0a0a] px-3 py-2 text-sm text-indigo-400">animate-rotate-360</code>
+            <code class="rounded-md bg-[#0a0a0a] px-3 py-2 text-sm text-fuchsia-400">animate-flip-in-x</code>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Timeline Utilities Reference -->
   <section class="py-20">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
