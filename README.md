@@ -291,6 +291,17 @@ Customize animations globally:
 - [npm Package (v4)](https://www.npmjs.com/package/tw-animations)
 - [npm Package (v3)](https://www.npmjs.com/package/tw-animations-plugin)
 
+## 🔄 Migration from `@iscodex/tailwindcss-animate`
+
+The package was renamed to **`tw-animations`** (v4) and **`tw-animations-plugin`** (v3). The old scoped package `@iscodex/tailwindcss-animate` remains on npm but is deprecated.
+
+**To migrate:**
+
+- **Tailwind v4:** Replace `@iscodex/tailwindcss-animate` with `tw-animations` in your `package.json`, then update your CSS import to `@import "tw-animations";`.
+- **Tailwind v3:** Replace with `tw-animations-plugin` and use `require("tw-animations-plugin")` in your config.
+
+Class names and behavior are the same; only the package name and import path change.
+
 ## 🤝 Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
@@ -302,8 +313,6 @@ MIT License - see [LICENSE](LICENSE.md) file for details.
 ## 🙏 Credits
 
 Created with ❤️ by [alckordev](https://github.com/alckordev)
-
-Inspired by [Animate.css](https://animate.style/) and [tailwind-animations](https://github.com/midudev/tailwind-animations)
 
 ## 📝 Changelog
 

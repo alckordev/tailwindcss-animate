@@ -1,35 +1,44 @@
-# Tailwind CSS Animate - Website
+# tw-animations – Website
 
-This is the documentation website for Tailwind CSS Animate, built with Astro.
+Documentation and configurator site for **tw-animations**, built with Astro.
 
-## Tech Stack
+## Tech stack
 
-- **Astro** - Static Site Generator
-- **React** - For interactive components
-- **Tailwind CSS v4** - Styling
-- **TypeScript** - Type safety
-- **tw-animations** - The library itself
+- **Astro 5** – Static site generator
+- **Tailwind CSS v4** – Styling (with tw-animations)
+- **TypeScript** – Type safety
+- **tw-animations** – Animation library (workspace dependency)
+- **Shiki** – Syntax highlighting (via Astro Code)
+
+No React; all UI is Astro components with minimal client-side scripts where needed.
 
 ## Development
 
-Install dependencies from the root:
+From the monorepo root:
 
 ```bash
-cd ..
 pnpm install
-```
-
-Start the development server:
-
-```bash
 pnpm dev
 ```
 
-The site will be available at `http://localhost:4321`
+The site runs at `http://localhost:4321`.
+
+From the `web` folder:
+
+```bash
+pnpm install   # from root first, or pnpm install in web after root install
+pnpm dev
+```
 
 ## Build
 
-Build the website for production:
+From the root:
+
+```bash
+pnpm build
+```
+
+Or in `web`:
 
 ```bash
 pnpm build
@@ -41,67 +50,62 @@ Preview the production build:
 pnpm preview
 ```
 
-## Project Structure
+## Project structure
 
 ```
 web/
 ├── src/
 │   ├── pages/
-│   │   ├── index.astro           # Home page
+│   │   ├── index.astro           # Home (animations, scroll demos, install)
 │   │   └── configurator.astro    # Interactive configurator
 │   ├── layouts/
-│   │   └── Layout.astro          # Base layout
+│   │   └── Layout.astro
 │   ├── components/
 │   │   ├── Navbar.astro
 │   │   ├── Footer.astro
-│   │   ├── AnimationCard.astro
-│   │   └── Configurator.tsx      # React component
+│   │   ├── Logo.astro
+│   │   ├── Configurator.astro    # Configurator widget
+│   │   ├── AnimationGrid.astro   # Animation grid on home
+│   │   ├── InstallTabs.astro     # Install instructions
+│   │   ├── BackgroundPattern.astro
+│   │   └── FeatureCard.astro
 │   ├── data/
-│   │   └── animations.ts         # Animation data
-│   └── styles/
-│       └── global.css            # Global styles
+│   │   └── animations.ts         # Animation definitions
+│   ├── styles/
+│   │   └── global.css
+│   └── utils/
+│       ├── cn.ts
+│       └── index.ts
 ├── public/
 │   ├── favicon.svg
-│   ├── logo.svg
-│   └── og.jpg
+│   └── og.png
 ├── astro.config.mjs
 └── package.json
 ```
 
 ## Features
 
-- **Interactive Configurator**: Test animations with different settings
-- **Live Previews**: See animations in action
-- **Code Generation**: Copy ready-to-use code
-- **Scroll Demos**: Interactive scroll animation examples
-- **Responsive Design**: Works on all devices
-- **Dark Mode**: Automatic theme switching
-- **Syntax Highlighting**: Using Astro's Code component
+- **Home**: Animation collection, scroll & view timeline demos, install steps
+- **Configurator**: Pick animation, duration, delay, scroll timeline; live preview and copy class output
+- **Responsive**: Navbar with mobile menu, card layout for all screen sizes
+- **Dark theme**: Single dark theme (no toggle)
+- **Code blocks**: Styled with Shiki (github-dark)
 
 ## Deployment
 
-The site can be deployed to:
+Static output; deploy to any host (Vercel, Netlify, Cloudflare Pages, etc.).
 
-- **Vercel** (recommended)
-- Netlify
-- Cloudflare Pages
-- Any static hosting
-
-### Deploy to Vercel
+From root:
 
 ```bash
-vercel
+pnpm build
 ```
 
-Or connect your GitHub repository to Vercel for automatic deployments.
+Output is in `web/dist`. Connect the repo to Vercel (or similar) and set the build command to `pnpm build` and the output directory to `web/dist` (or run from `web` and use `dist`).
 
 ## Environment
 
-No environment variables needed for basic functionality.
-
-## Contributing
-
-See [CONTRIBUTING.md](../CONTRIBUTING.md) in the root directory.
+No environment variables required for normal use.
 
 ## License
 
