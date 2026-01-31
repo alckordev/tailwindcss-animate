@@ -32,7 +32,7 @@ const delayOptions = [
 ];
 ---
 
-<div id="configurator" class="configurator-modern">
+<div id="configurator" class="configurator-modern card-modern">
   <div class="configurator-grid">
     <!-- Controls -->
     <div class="configurator-controls">
@@ -73,7 +73,7 @@ const delayOptions = [
           <input type="checkbox" id="config-scroll" class="configurator-switch-input" />
           <span class="configurator-switch">Scroll timeline</span>
         </label>
-        <div id="config-range-wrap" class="configurator-range-wrap hidden">
+        <div id="config-range-wrap" class="configurator-range-wrap hidden flex-1">
           <select id="config-range" class="select-modern select-modern-sm">
             {rangePresets.map((r) => <option value={r.value}>{r.label}</option>)}
           </select>
@@ -83,13 +83,11 @@ const delayOptions = [
 
     <!-- Preview stage -->
     <div class="configurator-preview-wrap">
-      <div class="configurator-preview-header">
+      <div id="config-preview" class="configurator-stage">
         <span class="configurator-preview-title">Preview</span>
         <button type="button" id="config-replay" class="configurator-replay hidden">
           Replay
         </button>
-      </div>
-      <div id="config-preview" class="configurator-stage">
         <div id="config-preview-box" class="configurator-stage-box animate-fade-in">Box</div>
       </div>
     </div>
@@ -138,17 +136,6 @@ const delayOptions = [
       rgba(37, 99, 235, 0.08),
       transparent 60%
     );
-    border: 1px solid var(--cfg-border);
-    border-radius: 1.25rem;
-    background: var(--cfg-bg);
-    backdrop-filter: blur(12px);
-    padding: 1.75rem;
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
-  }
-  @media (min-width: 1024px) {
-    .configurator-modern {
-      padding: 2rem;
-    }
   }
 
   .configurator-grid {
@@ -210,13 +197,16 @@ const delayOptions = [
   .configurator-switch {
     display: inline-flex;
     align-items: center;
-    padding: 0.25rem 0.75rem;
+    min-height: 2.25rem;
+    padding: 0.375rem 0.75rem;
     font-size: 0.8125rem;
     font-weight: 500;
+    line-height: 1.25;
     color: var(--cfg-muted);
     background: var(--cfg-surface);
     border: 1px solid var(--cfg-border);
-    border-radius: 9999px;
+    border-radius: 0.375rem;
+    box-sizing: border-box;
     transition:
       color 0.2s,
       background 0.2s,
@@ -232,28 +222,49 @@ const delayOptions = [
   .configurator-preview-wrap {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
   }
-  .configurator-preview-header {
+  .configurator-stage {
+    position: relative;
+    min-height: 200px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+    border-radius: 0.75rem;
+    background: var(--cfg-stage);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    padding: 1.5rem;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
   }
   .configurator-preview-title {
+    position: absolute;
+    top: 0.75rem;
+    left: 0.75rem;
+    display: inline-flex;
+    align-items: center;
+    height: 1.5rem;
     font-size: 0.6875rem;
     font-weight: 500;
     letter-spacing: 0.06em;
     text-transform: uppercase;
     color: var(--cfg-muted);
+    pointer-events: none;
   }
   .configurator-replay {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 1.5rem;
     font-size: 0.75rem;
     font-weight: 500;
+    line-height: 1;
     color: var(--cfg-muted);
     background: var(--cfg-surface);
     border: 1px solid var(--cfg-border);
     border-radius: 0.375rem;
-    padding: 0.375rem 0.625rem;
+    padding: 0 0.625rem;
     transition:
       color 0.2s,
       background 0.2s,
@@ -266,16 +277,6 @@ const delayOptions = [
   }
   .configurator-replay.hidden {
     display: none !important;
-  }
-  .configurator-stage {
-    min-height: 200px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 0.75rem;
-    background: var(--cfg-stage);
-    border: 1px solid var(--cfg-border);
-    padding: 1.5rem;
   }
   .configurator-stage-box {
     height: 5rem;

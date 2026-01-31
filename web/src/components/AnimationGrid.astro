@@ -24,7 +24,7 @@ const delays = [
 
 <div data-animation-grid>
   <div
-    class="animation-grid-controls mb-8 rounded-xl border border-(--color-border) bg-(--color-bg) p-6 animate-fade-in-up animate-delay-600"
+    class="animation-grid-controls card-modern mb-8 p-6 animate-fade-in-up animate-delay-600"
   >
     <div class="flex flex-wrap items-center gap-6">
       <!-- Duration -->
@@ -83,7 +83,7 @@ const delays = [
         return (
           <div
             class:list={[
-              "group relative overflow-hidden rounded-xl border border-(--color-border) bg-(--color-bg) p-6 transition-all hover:border-(--color-primary) hover:shadow-xl animate-fade-in-up",
+              "group relative overflow-hidden card-modern p-6 transition-all hover:border-(--color-primary) hover:shadow-xl animate-fade-in-up",
               { hidden: index >= 12 },
             ]}
             data-animation-card
