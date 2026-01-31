@@ -192,7 +192,7 @@ Scroll animations require:
 ### Duration
 
 ```html
-<div class="animate-fade-in animate-duration-[500ms]">Fast fade</div>
+<div class="animate-fade-in animate-duration-500">Fast fade</div>
 <div class="animate-bounce animate-duration-[2s]">Slow bounce</div>
 ```
 
@@ -207,7 +207,7 @@ Scroll animations require:
 ```html
 <div class="animate-pulse animate-infinite">Never stops</div>
 <div class="animate-bounce animate-twice">Bounce twice</div>
-<div class="animate-shake-x animate-iteration-[5]">Shake 5 times</div>
+<div class="animate-shake-x animate-iteration-5">Shake 5 times</div>
 ```
 
 ### Direction
@@ -277,7 +277,7 @@ Customize animations globally:
 
 ```html
 <div
-  class="animate-fade-in animate-duration-[2s] animate-delay-[500ms] animate-ease-in-out"
+  class="animate-fade-in animate-duration-[2s] animate-delay-500 animate-ease-in-out"
 >
   Smooth, delayed fade in
 </div>
