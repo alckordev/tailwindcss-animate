@@ -139,12 +139,12 @@ select optgroup {
   max-width: 10rem;
 }
 
-/* Select compacto en fila (ej. Animation Grid Duration/Delay) */
+/* Compact select in row (e.g. Animation Grid Duration/Delay) */
 .select-modern-inline {
   max-width: 10rem;
 }
 
-/* Bloque terminal (Configurator + InstallTabs) */
+/* Terminal block (Configurator + InstallTabs) */
 .terminal-output {
   border-radius: 0.75rem;
   border: 1px solid var(--color-border);
