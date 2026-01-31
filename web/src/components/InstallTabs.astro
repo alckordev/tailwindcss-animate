@@ -108,12 +108,20 @@ const packageManagers = [
   </div>
 
   <!-- Usage -->
-  <div class="rounded-lg border border-(--color-border) bg-(--color-bg) p-6">
-    <h3 class="mb-3 text-lg font-semibold text-(--color-text)">How to use</h3>
-    <div class="overflow-hidden rounded-lg">
-      <pre
-        class="bg-[#0d1117] p-4 text-sm text-gray-100 overflow-x-auto"><code id="usage-code">@import 'tailwindcss';
-@import '@iscodex/tailwindcss-animate';</code></pre>
+  <div class="rounded-lg border border-[#1f2937] bg-[#0d1117]">
+    <div class="border-b border-[#1f2937]">
+      <h3 class="text-lg font-semibold text-(--color-text) px-4 py-3">How to use</h3>
+    </div>
+    <div class="flex items-center justify-between gap-4 p-4">
+      <div class="flex-1 overflow-hidden">
+        <Code
+          id="usage-code"
+          code={`@import 'tailwindcss';
+@import '@iscodex/tailwindcss-animate'`}
+          lang="bash"
+          class="text-sm! border-0! text-start"
+        />
+      </div>
     </div>
   </div>
 </div>
