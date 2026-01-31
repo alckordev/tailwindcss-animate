@@ -129,8 +129,8 @@ module.exports = plugin(
         animation: "slide-up-fade 0.6s ease 0s both",
       },
 
-      // Fading Entrances
-      ".animate-fade-in": { animation: "fade-in 1s ease 0s both" },
+      // Fading Entrances (match TW4: 0.6s ease-in)
+      ".animate-fade-in": { animation: "fade-in 0.6s ease-in 0s both" },
       ".animate-fade-in-down": {
         animation: "fade-in-down 0.6s ease-in-out 0s both",
       },
@@ -144,8 +144,8 @@ module.exports = plugin(
         animation: "fade-in-up 0.6s ease-in-out 0s both",
       },
 
-      // Fading Exits
-      ".animate-fade-out": { animation: "fade-out 1s ease 0s both" },
+      // Fading Exits (match TW4: 0.6s ease-out)
+      ".animate-fade-out": { animation: "fade-out 0.6s ease-out 0s both" },
       ".animate-fade-out-down": {
         animation: "fade-out-down 0.6s ease-out 0s both",
       },
@@ -310,6 +310,10 @@ module.exports = plugin(
       ".animate-range-moderate": { animationRange: "20% 80%" },
       ".animate-range-brisk": { animationRange: "30% 70%" },
       ".animate-range-rapid": { animationRange: "40% 60%" },
+      ".animate-range-entry-start": { animationRange: "entry 0%" },
+      ".animate-range-entry-end": { animationRange: "entry 100%" },
+      ".animate-range-exit-start": { animationRange: "exit 0%" },
+      ".animate-range-exit-end": { animationRange: "exit 100%" },
     });
 
     // Animation Control Utilities

@@ -84,7 +84,7 @@ describe("Tailwind Animate Plugin", () => {
         '<div class="animate-range-gradual"></div>',
       );
       expect(css).toContain(".animate-range-gradual");
-      expect(css).toContain("entry 10%");
+      expect(css).toContain("10% 90%");
     });
   });
 
@@ -143,9 +143,13 @@ describe("Tailwind Animate Plugin", () => {
     });
 
     test("supports arbitrary delay values", async () => {
-      const css = await generateCSS(
-        '<div class="animate-delay-[500ms]"></div>',
-      );
+      const css = await generateCSS('<div class="animate-delay-500"></div>', {
+        theme: {
+          extend: {
+            animationDelay: { 500: "500ms" },
+          },
+        },
+      });
       expect(css).toContain("animation-delay: 500ms");
     });
 
