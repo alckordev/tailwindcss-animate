@@ -29,19 +29,19 @@
 
 /* Preset Animation Ranges */
 @utility animate-range-gradual {
-  animation-range: entry 10% entry 90%;
+  animation-range: 10% 90%;
 }
 
 @utility animate-range-moderate {
-  animation-range: entry 20% entry 80%;
+  animation-range: 20% 80%;
 }
 
 @utility animate-range-brisk {
-  animation-range: entry 30% entry 70%;
+  animation-range: 30% 70%;
 }
 
 @utility animate-range-rapid {
-  animation-range: entry 40% entry 60%;
+  animation-range: 40% 60%;
 }
 
 /* Specific Entry Ranges */

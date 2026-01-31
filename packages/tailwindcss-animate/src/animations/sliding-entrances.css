@@ -18,41 +18,49 @@
 
   @keyframes slide-in-down {
     from {
-      transform: translate3d(0, -20px, 0);
-      visibility: visible;
+      transform: translateY(-20px);
+      visibility: hidden;
+      opacity: 0;
     }
     to {
-      transform: translate3d(0, 0, 0);
+      transform: translateY(0);
+      opacity: 1;
     }
   }
 
   @keyframes slide-in-up {
     from {
-      transform: translate3d(0, 20px, 0);
-      visibility: visible;
+      transform: translateY(20px);
+      visibility: hidden;
+      opacity: 0;
     }
     to {
-      transform: translate3d(0, 0, 0);
+      transform: translateY(0);
+      opacity: 1;
     }
   }
 
   @keyframes slide-in-start {
     from {
-      transform: translate3d(-20px, 0, 0);
-      visibility: visible;
+      transform: translateX(-20px);
+      visibility: hidden;
+      opacity: 0;
     }
     to {
-      transform: translate3d(0, 0, 0);
+      transform: translateX(0);
+      opacity: 1;
     }
   }
 
   @keyframes slide-in-end {
     from {
-      transform: translate3d(20px, 0, 0);
-      visibility: visible;
+      transform: translateX(20px);
+      visibility: hidden;
+      opacity: 0;
     }
     to {
-      transform: translate3d(0, 0, 0);
+      transform: translateX(0);
+      opacity: 1;
     }
   }
 }

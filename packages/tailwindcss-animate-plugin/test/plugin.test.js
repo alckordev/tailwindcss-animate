@@ -143,7 +143,9 @@ describe("Tailwind Animate Plugin", () => {
     });
 
     test("supports arbitrary delay values", async () => {
-      const css = await generateCSS('<div class="animate-delay-500"></div>');
+      const css = await generateCSS(
+        '<div class="animate-delay-[500ms]"></div>',
+      );
       expect(css).toContain("animation-delay: 500ms");
     });
 

@@ -306,10 +306,10 @@ module.exports = plugin(
       ".animate-range-exit": { animationRange: "exit" },
       ".animate-range-entry-crossing": { animationRange: "entry-crossing" },
       ".animate-range-exit-crossing": { animationRange: "exit-crossing" },
-      ".animate-range-gradual": { animationRange: "entry 10% entry 90%" },
-      ".animate-range-moderate": { animationRange: "entry 20% entry 80%" },
-      ".animate-range-brisk": { animationRange: "entry 30% entry 70%" },
-      ".animate-range-rapid": { animationRange: "entry 40% entry 60%" },
+      ".animate-range-gradual": { animationRange: "10% 90%" },
+      ".animate-range-moderate": { animationRange: "20% 80%" },
+      ".animate-range-brisk": { animationRange: "30% 70%" },
+      ".animate-range-rapid": { animationRange: "40% 60%" },
     });
 
     // Animation Control Utilities
