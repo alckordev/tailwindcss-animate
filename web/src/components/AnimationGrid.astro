@@ -2,33 +2,33 @@
 import { animations, categories } from "../data/animations";
 
 const durations = [
-  { value: "", label: "default" },
-  { value: "200ms", label: "200ms" },
-  { value: "300ms", label: "300ms" },
-  { value: "500ms", label: "500ms" },
-  { value: "700ms", label: "700ms" },
-  { value: "1s", label: "1s" },
-  { value: "2s", label: "2s" },
-  { value: "3s", label: "3s" },
+  { value: "100", label: "default" },
+  { value: "200", label: "200ms" },
+  { value: "300", label: "300ms" },
+  { value: "500", label: "500ms" },
+  { value: "700", label: "700ms" },
+  { value: "1000", label: "1s" },
+  { value: "2000", label: "2s" },
+  { value: "3000", label: "3s" },
 ];
 
 const delays = [
   { value: "", label: "none" },
-  { value: "100ms", label: "100ms" },
-  { value: "200ms", label: "200ms" },
-  { value: "300ms", label: "300ms" },
-  { value: "500ms", label: "500ms" },
-  { value: "1s", label: "1s" },
+  { value: "100", label: "100ms" },
+  { value: "200", label: "200ms" },
+  { value: "300", label: "300ms" },
+  { value: "500", label: "500ms" },
+  { value: "1000", label: "1s" },
 ];
 ---
 
 <div data-animation-grid>
   <!-- Controls -->
-  <div class="mb-8 rounded-lg border border-(--color-border) bg-(--color-bg) p-6">
+  <div class="mb-8 rounded-xl border border-(--color-border) bg-(--color-bg) p-6">
     <div class="flex flex-wrap items-center gap-6">
       <!-- Duration -->
       <div class="flex items-center gap-3">
-        <label class="text-sm font-medium text-(--color-text)"> Duration </label>
+        <label class="text-sm font-medium text-(--color-text)">Duration</label>
         <select
           id="duration-select"
           class="rounded-md border border-(--color-border) bg-(--color-bg-alt) px-3 py-2 text-sm text-(--color-text)"
@@ -39,7 +39,7 @@ const delays = [
 
       <!-- Delay -->
       <div class="flex items-center gap-3">
-        <label class="text-sm font-medium text-(--color-text)"> Delay </label>
+        <label class="text-sm font-medium text-(--color-text)">Delay</label>
         <select
           id="delay-select"
           class="rounded-md border border-(--color-border) bg-(--color-bg-alt) px-3 py-2 text-sm text-(--color-text)"
@@ -50,7 +50,7 @@ const delays = [
 
       <!-- Category Filter -->
       <div class="flex items-center gap-3">
-        <label class="text-sm font-medium text-(--color-text)"> Category </label>
+        <label class="text-sm font-medium text-(--color-text)">Category</label>
         <select
           id="category-select"
           class="rounded-md border border-(--color-border) bg-(--color-bg-alt) px-3 py-2 text-sm text-(--color-text)"
@@ -84,7 +84,10 @@ const delays = [
   </div>
 </div>
 
-<script define:vars={{ animations, categories }}>
+<script is:inline define:vars={{ animations, categories }}>
+  console.log("Animations loaded:", animations.length);
+  console.log("Categories:", categories);
+
   let duration = "";
   let delay = "";
   let selectedCategory = "all";
@@ -96,26 +99,31 @@ const delays = [
         ? animations
         : animations.filter((a) => a.category === selectedCategory);
 
-    const grid = document.getElementById("animation-grid");
-    const noAnimsEl = document.getElementById("no-animations");
+    console.log("Rendering animations:", filteredAnimations.length);
 
-    if (!grid) return;
+    const grid = document.getElementById("animation-grid");
+    const noAniElement = document.getElementById("no-animations");
+
+    if (!grid) {
+      console.error("Grid element not found!");
+      return;
+    }
 
     if (filteredAnimations.length === 0) {
       grid.classList.add("hidden");
-      noAnimsEl?.classList.remove("hidden");
+      noAniElement?.classList.remove("hidden");
       return;
     }
 
     grid.classList.remove("hidden");
-    noAnimsEl?.classList.add("hidden");
+    noAniElement?.classList.add("hidden");
 
     grid.innerHTML = filteredAnimations
       .map((anim) => {
         const classes = [
           anim.class,
-          duration && `animate-duration-[${duration}]`,
-          delay && `animate-delay-[${delay}]`,
+          duration && `animate-duration-${duration}`,
+          delay && `animate-delay-${delay}`,
         ]
           .filter(Boolean)
           .join(" ");
@@ -164,7 +172,7 @@ const delays = [
     // Add copy button listeners
     document.querySelectorAll(".copy-btn").forEach((btn) => {
       btn.addEventListener("click", (e) => {
-        const target = e.currentTarget as HTMLButtonElement;
+        const target = e.currentTarget;
         const text = target.dataset.copy || "";
         navigator.clipboard.writeText(text);
         const original = target.textContent;
@@ -179,21 +187,21 @@ const delays = [
   // Duration change
   const durationSelect = document.getElementById("duration-select");
   durationSelect?.addEventListener("change", (e) => {
-    duration = (e.target as HTMLSelectElement).value;
+    duration = e.target.value;
     renderAnimations();
   });
 
   // Delay change
   const delaySelect = document.getElementById("delay-select");
   delaySelect?.addEventListener("change", (e) => {
-    delay = (e.target as HTMLSelectElement).value;
+    delay = e.target.value;
     renderAnimations();
   });
 
   // Category change
   const categorySelect = document.getElementById("category-select");
   categorySelect?.addEventListener("change", (e) => {
-    selectedCategory = (e.target as HTMLSelectElement).value;
+    selectedCategory = e.target.value;
     renderAnimations();
   });
 
@@ -204,6 +212,10 @@ const delays = [
     renderAnimations();
   });
 
-  // Initial render
-  renderAnimations();
+  // Initial render - wait for DOM to be ready
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", renderAnimations);
+  } else {
+    renderAnimations();
+  }
 </script>
