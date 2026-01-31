@@ -226,22 +226,32 @@ module.exports = plugin(
       },
 
       // Sliding Entrances
-      ".animate-slide-in-down": { animation: "slide-in-down 1s ease 0s both" },
-      ".animate-slide-in-start": {
-        animation: "slide-in-start 1s ease 0s both",
+      ".animate-slide-in-down": {
+        animation: "slide-in-down 0.6s ease-in-out 0s both",
       },
-      ".animate-slide-in-end": { animation: "slide-in-end 1s ease 0s both" },
-      ".animate-slide-in-up": { animation: "slide-in-up 1s ease 0s both" },
+      ".animate-slide-in-start": {
+        animation: "slide-in-start 0.6s ease-in-out 0s both",
+      },
+      ".animate-slide-in-end": {
+        animation: "slide-in-end 0.6s ease-in-out 0s both",
+      },
+      ".animate-slide-in-up": {
+        animation: "slide-in-up 0.6s ease-in-out 0s both",
+      },
 
       // Sliding Exits
       ".animate-slide-out-down": {
-        animation: "slide-out-down 1s ease 0s both",
+        animation: "slide-out-down 0.6s ease-out 0s both",
       },
       ".animate-slide-out-start": {
-        animation: "slide-out-start 1s ease 0s both",
+        animation: "slide-out-start 0.6s ease-out 0s both",
       },
-      ".animate-slide-out-end": { animation: "slide-out-end 1s ease 0s both" },
-      ".animate-slide-out-up": { animation: "slide-out-up 1s ease 0s both" },
+      ".animate-slide-out-end": {
+        animation: "slide-out-end 0.6s ease-out 0s both",
+      },
+      ".animate-slide-out-up": {
+        animation: "slide-out-up 0.6s ease-out 0s both",
+      },
 
       // Specials
       ".animate-hinge": {

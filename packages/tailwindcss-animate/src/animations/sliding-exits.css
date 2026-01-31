@@ -1,18 +1,19 @@
 @theme default {
-  --animate-slide-out-down: slide-out-down var(--default-animation-duration, 1s)
+  --animate-slide-out-down: slide-out-down
+    var(--default-animation-duration, 0.6s)
     var(--default-animation-timing-function, ease-out)
     var(--default-animation-delay, 0s) both;
 
-  --animate-slide-out-up: slide-out-up var(--default-animation-duration, 1s)
+  --animate-slide-out-up: slide-out-up var(--default-animation-duration, 0.6s)
     var(--default-animation-timing-function, ease-out)
     var(--default-animation-delay, 0s) both;
 
   --animate-slide-out-start: slide-out-start
-    var(--default-animation-duration, 1s)
+    var(--default-animation-duration, 0.6s)
     var(--default-animation-timing-function, ease-out)
     var(--default-animation-delay, 0s) both;
 
-  --animate-slide-out-end: slide-out-end var(--default-animation-duration, 1s)
+  --animate-slide-out-end: slide-out-end var(--default-animation-duration, 0.6s)
     var(--default-animation-timing-function, ease-out)
     var(--default-animation-delay, 0s) both;
 
@@ -22,7 +23,7 @@
     }
     to {
       visibility: hidden;
-      transform: translate3d(0, 100%, 0);
+      transform: translate3d(0, 20px, 0);
     }
   }
 
@@ -32,7 +33,7 @@
     }
     to {
       visibility: hidden;
-      transform: translate3d(0, -100%, 0);
+      transform: translate3d(0, -20px, 0);
     }
   }
 
@@ -42,7 +43,7 @@
     }
     to {
       visibility: hidden;
-      transform: translate3d(-100%, 0, 0);
+      transform: translate3d(-20px, 0, 0);
     }
   }
 
@@ -52,7 +53,7 @@
     }
     to {
       visibility: hidden;
-      transform: translate3d(100%, 0, 0);
+      transform: translate3d(20px, 0, 0);
     }
   }
 }
