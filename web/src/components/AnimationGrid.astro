@@ -204,8 +204,18 @@ const delays = [
 
       if (!box || !animationKey) return;
 
-      // Mouse enter: add animation class
+      // If infinite mode is active, apply animation immediately
+      if (isInfinite) {
+        box.classList.add(animationKey);
+        if (duration) box.style.animationDuration = `${duration}ms`;
+        if (delay) box.style.animationDelay = `${delay}ms`;
+        box.style.animationIterationCount = "infinite";
+      }
+
+      // Mouse enter: add animation class (only if not in infinite mode)
       card.addEventListener("mouseenter", () => {
+        if (isInfinite) return; // Skip hover animation if infinite is active
+
         box.classList.add(animationKey);
         // Apply current duration/delay settings
         if (duration) {
@@ -214,14 +224,12 @@ const delays = [
         if (delay) {
           box.style.animationDelay = `${delay}ms`;
         }
-        // Apply infinite iteration if enabled
-        if (isInfinite) {
-          box.style.animationIterationCount = "infinite";
-        }
       });
 
-      // Mouse leave: remove animation class
+      // Mouse leave: remove animation class (only if not in infinite mode)
       card.addEventListener("mouseleave", () => {
+        if (isInfinite) return; // Skip hover removal if infinite is active
+
         box.classList.remove(animationKey);
         box.style.animationDuration = "";
         box.style.animationDelay = "";
@@ -271,6 +279,9 @@ const delays = [
       // Remove spin animation from icon
       infiniteIcon?.classList.remove("animate-spin");
     }
+
+    // Re-render to apply/remove infinite animations
+    renderAnimations();
   });
 
   // View all / Show less toggle
