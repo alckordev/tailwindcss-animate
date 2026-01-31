@@ -4,6 +4,7 @@
 
 <nav
   class="sticky top-0 z-50 border-b border-(--color-border) bg-(--color-bg)/95 backdrop-blur-xl shadow-lg shadow-black/50"
+  aria-label="Main navigation"
 >
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="flex h-16 items-center justify-between">
@@ -15,43 +16,40 @@
           <span class="text-2xl animate-pulse-fade-in animate-infinite animate-duration-3000"
             >✨</span
           >
-          <span
-            class="bg-linear-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent"
-          >
-            Tailwind Animations
+          <span class="">
+            <span class="">Tailwind</span>
+            <span
+              class="bg-linear-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent"
+              >Animations</span
+            >
           </span>
         </a>
-
-        <div class="hidden md:flex gap-6">
-          <a
-            href="/#animations"
-            class="text-sm font-medium text-(--color-text-muted) hover:text-(--color-text) transition-colors"
-          >
-            Animation Collection
-          </a>
-          <a
-            href="/#scroll"
-            class="text-sm font-medium text-(--color-text-muted) hover:text-(--color-text) transition-colors"
-          >
-            Scroll Animations
-          </a>
-          <a
-            href="/#timelines"
-            class="text-sm font-medium text-(--color-text-muted) hover:text-(--color-text) transition-colors"
-          >
-            Scroll & View Timelines
-          </a>
-        </div>
       </div>
 
-      <div class="flex items-center gap-4">
+      <!-- Desktop links -->
+      <div class="hidden lg:flex gap-6">
         <a
-          href="/configurator"
-          class="hidden sm:inline-flex items-center gap-2 rounded-lg border border-(--color-border) px-4 py-2 text-sm font-medium text-(--color-text) transition-all hover:border-(--color-primary) hover:bg-(--color-bg-alt)"
+          href="/#animations"
+          class="text-sm font-medium text-(--color-text-muted) hover:text-(--color-text) transition-colors"
         >
-          Configurator
+          Animation Collection
         </a>
+        <a
+          href="/#scroll"
+          class="text-sm font-medium text-(--color-text-muted) hover:text-(--color-text) transition-colors"
+        >
+          Scroll Animations
+        </a>
+        <a
+          href="/#timelines"
+          class="text-sm font-medium text-(--color-text-muted) hover:text-(--color-text) transition-colors"
+        >
+          Scroll & View Timelines
+        </a>
+      </div>
 
+      <!-- Desktop actions -->
+      <div class="hidden lg:flex items-center gap-4">
         <a
           href="https://github.com/iscodex/tailwindcss-animate"
           target="_blank"
@@ -66,12 +64,106 @@
               clip-rule="evenodd"></path>
           </svg>
         </a>
+        <a
+          href="/configurator"
+          class="inline-flex items-center gap-2 rounded-lg bg-(--color-primary) px-4 py-2 text-sm font-semibold text-white transition-all hover:bg-(--color-primary-hover) hover:scale-105"
+        >
+          Configurator
+        </a>
+      </div>
 
+      <!-- Mobile: right side (icons + hamburger) -->
+      <div class="flex lg:hidden items-center gap-3">
+        <a
+          href="https://github.com/iscodex/tailwindcss-animate"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex items-center p-2 text-(--color-text-muted) hover:text-(--color-text) transition-colors"
+          aria-label="GitHub"
+        >
+          <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+            <path
+              fill-rule="evenodd"
+              d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+              clip-rule="evenodd"></path>
+          </svg>
+        </a>
+        <button
+          type="button"
+          id="navbar-menu-btn"
+          class="navbar-menu-btn flex items-center justify-center rounded-lg p-2 text-(--color-text-muted) hover:bg-(--color-bg-alt) hover:text-(--color-text) transition-colors"
+          aria-expanded="false"
+          aria-controls="navbar-mobile-menu"
+          aria-label="Open menu"
+        >
+          <svg
+            class="navbar-menu-icon-open h-6 w-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+          <svg
+            class="navbar-menu-icon-close h-6 w-6 hidden"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile menu panel -->
+  <div
+    id="navbar-mobile-menu"
+    class="navbar-mobile-menu hidden md:hidden border-t border-(--color-border) bg-(--color-bg)/98 backdrop-blur-xl"
+    aria-hidden="true"
+  >
+    <div class="mx-auto max-w-7xl px-4 py-4 sm:px-6">
+      <div class="flex flex-col gap-1">
+        <a
+          href="/#animations"
+          class="navbar-mobile-link rounded-lg px-4 py-3 text-base font-medium text-(--color-text-muted) hover:bg-(--color-bg-alt) hover:text-(--color-text) transition-colors"
+        >
+          Animation Collection
+        </a>
+        <a
+          href="/#scroll"
+          class="navbar-mobile-link rounded-lg px-4 py-3 text-base font-medium text-(--color-text-muted) hover:bg-(--color-bg-alt) hover:text-(--color-text) transition-colors"
+        >
+          Scroll Animations
+        </a>
+        <a
+          href="/#timelines"
+          class="navbar-mobile-link rounded-lg px-4 py-3 text-base font-medium text-(--color-text-muted) hover:bg-(--color-bg-alt) hover:text-(--color-text) transition-colors"
+        >
+          Scroll & View Timelines
+        </a>
+        <a
+          href="/configurator"
+          class="navbar-mobile-link mt-2 rounded-lg border border-(--color-border) px-4 py-3 text-base font-medium text-(--color-text) hover:border-(--color-primary) hover:bg-(--color-bg-alt) transition-colors"
+        >
+          Configurator
+        </a>
         <a
           href="https://www.npmjs.com/package/tw-animations"
           target="_blank"
           rel="noopener noreferrer"
-          class="hidden lg:inline-flex items-center gap-2 rounded-lg bg-(--color-primary) px-4 py-2 text-sm font-semibold text-white transition-all hover:bg-(--color-primary-hover) hover:scale-105"
+          class="navbar-mobile-link mt-2 rounded-lg bg-(--color-primary) px-4 py-3 text-center text-base font-semibold text-white hover:bg-(--color-primary-hover) transition-colors"
         >
           Install
         </a>
@@ -79,3 +171,69 @@
     </div>
   </div>
 </nav>
+
+<style>
+  .navbar-mobile-menu[aria-hidden="false"] {
+    display: block;
+  }
+  .navbar-menu-btn[aria-expanded="true"] .navbar-menu-icon-open {
+    display: none;
+  }
+  .navbar-menu-btn[aria-expanded="true"] .navbar-menu-icon-close {
+    display: block;
+  }
+</style>
+
+<script>
+  (function () {
+    const btn = document.getElementById("navbar-menu-btn");
+    const menu = document.getElementById("navbar-mobile-menu");
+    const links = document.querySelectorAll(".navbar-mobile-link");
+
+    if (!btn || !menu) return;
+
+    function openMenu() {
+      btn?.setAttribute("aria-expanded", "true");
+      btn?.setAttribute("aria-label", "Close menu");
+      menu?.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeMenu() {
+      btn?.setAttribute("aria-expanded", "false");
+      btn?.setAttribute("aria-label", "Open menu");
+      menu?.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+    }
+
+    function toggleMenu() {
+      const isOpen = btn?.getAttribute("aria-expanded") === "true";
+      if (isOpen) closeMenu();
+      else openMenu();
+    }
+
+    btn.addEventListener("click", toggleMenu);
+
+    links.forEach((link) => {
+      link.addEventListener("click", () => {
+        closeMenu();
+      });
+    });
+
+    menu.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeMenu();
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && btn?.getAttribute("aria-expanded") === "true") {
+        closeMenu();
+      }
+    });
+
+    window.addEventListener("resize", () => {
+      if (window.matchMedia("(min-width: 768px)").matches) {
+        closeMenu();
+      }
+    });
+  })();
+</script>
