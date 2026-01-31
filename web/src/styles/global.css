@@ -10,6 +10,13 @@
   --color-border: #1a1a1a;
   --color-primary: #2563eb;
   --color-primary-hover: #1d4ed8;
+  /* Selection: soft primary tint, readable on dark */
+  --color-selection-bg: color-mix(
+    in srgb,
+    var(--color-primary) 32%,
+    transparent
+  );
+  --color-selection-text: #ffffff;
 }
 
 html {
@@ -61,6 +68,6 @@ pre {
 
 /* Selection */
 ::selection {
-  background-color: var(--color-primary);
-  color: white;
+  background-color: var(--color-selection-bg);
+  color: var(--color-selection-text);
 }
