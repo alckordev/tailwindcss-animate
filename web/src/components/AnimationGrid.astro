@@ -76,7 +76,46 @@ const delays = [
   </div>
 
   <!-- Animation Grid -->
-  <div id="animation-grid" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"></div>
+  <div id="animation-grid" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+    {
+      animations.map((anim, index) => (
+        <div
+          class:list={[
+            "group relative overflow-hidden rounded-xl border border-(--color-border) bg-(--color-bg) p-6 transition-all hover:border-(--color-primary) hover:shadow-xl animate-fade-in-up",
+            { hidden: index >= 12 },
+          ]}
+          data-animation-card
+          data-animation-key={anim.class}
+          data-index={index}
+          style={`animation-delay: ${1000 + index * 50}ms; animation-fill-mode: both;`}
+        >
+          {anim.description && (
+            <span class="absolute right-2 top-2 rounded-md bg-linear-to-r from-blue-500 to-purple-500 px-2 py-1 text-xs font-bold text-white">
+              {anim.description}
+            </span>
+          )}
+
+          <div class="mb-4 flex h-32 items-center justify-center">
+            <div class="animate-box h-20 w-20 rounded-xl bg-linear-to-br from-blue-500 via-purple-500 to-pink-500" />
+          </div>
+
+          <div class="space-y-2">
+            <h3 class="font-mono text-sm font-semibold text-(--color-text)">{anim.name}</h3>
+            <code class="block rounded-md bg-(--color-bg-alt) py-1.5 text-xs text-(--color-text-muted) font-mono">
+              {anim.class}
+            </code>
+          </div>
+
+          <button
+            class="copy-btn mt-4 w-full rounded-md bg-(--color-primary) px-3 py-2 text-sm font-medium text-white opacity-0 transition-all group-hover:opacity-100 hover:bg-(--color-primary-hover) hover:cursor-pointer"
+            data-copy={anim.class}
+          >
+            Copy
+          </button>
+        </div>
+      ))
+    }
+  </div>
 
   <!-- View All Animations Button (Below Grid) -->
   <div class="mt-8 flex justify-center">
@@ -89,116 +128,16 @@ const delays = [
   </div>
 </div>
 
-<script is:inline define:vars={{ animations }}>
-  console.log("Animations loaded:", animations.length);
-
+<script is:inline>
   let duration = "";
   let delay = "";
   let showAll = false;
   let isInfinite = false;
 
-  const renderAnimations = () => {
-    const displayedAnimations = showAll ? animations : animations.slice(0, 12);
+  const applyAnimationSettings = () => {
+    const allCards = document.querySelectorAll("[data-animation-card]");
 
-    console.log("Rendering animations:", displayedAnimations.length);
-
-    const grid = document.getElementById("animation-grid");
-    const noAniElement = document.getElementById("no-animations");
-    const viewAllBtn = document.getElementById("view-all-btn");
-
-    if (!grid) {
-      console.error("Grid element not found!");
-      return;
-    }
-
-    if (displayedAnimations.length === 0) {
-      grid.classList.add("hidden");
-      noAniElement?.classList.remove("hidden");
-      return;
-    }
-
-    grid.classList.remove("hidden");
-    noAniElement?.classList.add("hidden");
-
-    // Update button text
-    if (viewAllBtn) {
-      if (showAll) {
-        viewAllBtn.textContent = `Show less`;
-      } else {
-        viewAllBtn.textContent = `View all animations (${animations.length})`;
-      }
-    }
-
-    grid.innerHTML = displayedAnimations
-      .map((anim, index) => {
-        const classes = [
-          anim.class,
-          duration && `animate-duration-${duration}`,
-          delay && `animate-delay-${delay}`,
-        ]
-          .filter(Boolean)
-          .join(" ");
-
-        return `
-        <div
-          class="group relative overflow-hidden rounded-xl border border-(--color-border) bg-(--color-bg) p-6 transition-all hover:border-(--color-primary) hover:shadow-xl animate-fade-in-up"
-          data-animation-card
-          data-animation-key="${anim.class}"
-          style="animation-delay: ${1000 + index * 50}ms; animation-fill-mode: both;"
-        >
-          ${
-            anim.description
-              ? `
-            <span class="absolute right-2 top-2 rounded-md bg-linear-to-r from-blue-500 to-purple-500 px-2 py-1 text-xs font-bold text-white">
-              ${anim.description}
-            </span>
-          `
-              : ""
-          }
-
-          <div class="mb-4 flex h-32 items-center justify-center">
-            <div
-              class="animate-box h-20 w-20 rounded-xl bg-linear-to-br from-blue-500 via-purple-500 to-pink-500"
-            ></div>
-          </div>
-
-          <div class="space-y-2">
-            <h3 class="font-mono text-sm font-semibold text-(--color-text)">
-              ${anim.name}
-            </h3>
-            <code class="block rounded-md bg-(--color-bg-alt) py-1.5 text-xs text-(--color-text-muted) font-mono">
-              ${anim.class}
-            </code>
-          </div>
-
-          <button
-            class="copy-btn mt-4 w-full rounded-md bg-(--color-primary) px-3 py-2 text-sm font-medium text-white opacity-0 transition-all group-hover:opacity-100 hover:bg-(--color-primary-hover) hover:cursor-pointer"
-            data-copy="${classes}"
-          >
-            Copy
-          </button>
-        </div>
-      `;
-      })
-      .join("");
-
-    // Add copy button listeners
-    document.querySelectorAll(".copy-btn").forEach((btn) => {
-      btn.addEventListener("click", (e) => {
-        const target = e.currentTarget;
-        const text = target.dataset.copy || "";
-        navigator.clipboard.writeText(text);
-        const original = target.textContent;
-        target.textContent = "Copied!";
-        setTimeout(() => {
-          target.textContent = original;
-        }, 2000);
-      });
-    });
-
-    // Add hover animation listeners (midu strategy)
-    const animationCards = grid.querySelectorAll("[data-animation-card]");
-    animationCards.forEach((card) => {
+    allCards.forEach((card) => {
       const animationKey = card.getAttribute("data-animation-key");
       const box = card.querySelector(".animate-box");
 
@@ -210,46 +149,94 @@ const delays = [
         if (duration) box.style.animationDuration = `${duration}ms`;
         if (delay) box.style.animationDelay = `${delay}ms`;
         box.style.animationIterationCount = "infinite";
+      } else {
+        // Remove infinite animation if mode is off
+        box.classList.remove(animationKey);
+        box.style.animationDuration = "";
+        box.style.animationDelay = "";
+        box.style.animationIterationCount = "";
       }
+    });
+  };
 
-      // Mouse enter: add animation class (only if not in infinite mode)
+  const setupHoverListeners = () => {
+    const allCards = document.querySelectorAll("[data-animation-card]");
+
+    allCards.forEach((card) => {
+      const animationKey = card.getAttribute("data-animation-key");
+      const box = card.querySelector(".animate-box");
+
+      if (!box || !animationKey) return;
+
+      // Mouse enter
       card.addEventListener("mouseenter", () => {
-        if (isInfinite) return; // Skip hover animation if infinite is active
+        if (isInfinite) return; // Skip hover if infinite is active
 
         box.classList.add(animationKey);
-        // Apply current duration/delay settings
-        if (duration) {
-          box.style.animationDuration = `${duration}ms`;
-        }
-        if (delay) {
-          box.style.animationDelay = `${delay}ms`;
-        }
+        if (duration) box.style.animationDuration = `${duration}ms`;
+        if (delay) box.style.animationDelay = `${delay}ms`;
       });
 
-      // Mouse leave: remove animation class (only if not in infinite mode)
+      // Mouse leave
       card.addEventListener("mouseleave", () => {
         if (isInfinite) return; // Skip hover removal if infinite is active
 
         box.classList.remove(animationKey);
         box.style.animationDuration = "";
         box.style.animationDelay = "";
-        box.style.animationIterationCount = "";
       });
     });
+  };
+
+  const setupCopyButtons = () => {
+    const copyButtons = document.querySelectorAll(".copy-btn");
+    copyButtons.forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        const target = e.currentTarget;
+        const text = target.dataset.copy || "";
+        navigator.clipboard.writeText(text);
+        const original = target.textContent;
+        target.textContent = "Copied!";
+        setTimeout(() => {
+          target.textContent = original;
+        }, 2000);
+      });
+    });
+  };
+
+  const toggleViewAll = () => {
+    showAll = !showAll;
+    const allCards = document.querySelectorAll("[data-animation-card]");
+    const viewAllBtn = document.getElementById("view-all-btn");
+
+    allCards.forEach((card, index) => {
+      if (showAll) {
+        card.classList.remove("hidden");
+      } else {
+        if (index >= 12) {
+          card.classList.add("hidden");
+        }
+      }
+    });
+
+    // Update button text
+    if (viewAllBtn) {
+      viewAllBtn.textContent = showAll ? "Show less" : `View all animations (${allCards.length})`;
+    }
   };
 
   // Duration change
   const durationSelect = document.getElementById("duration-select");
   durationSelect?.addEventListener("change", (e) => {
     duration = e.target.value;
-    renderAnimations();
+    applyAnimationSettings();
   });
 
   // Delay change
   const delaySelect = document.getElementById("delay-select");
   delaySelect?.addEventListener("change", (e) => {
     delay = e.target.value;
-    renderAnimations();
+    applyAnimationSettings();
   });
 
   // Infinite toggle
@@ -267,7 +254,6 @@ const delays = [
         "border-(--color-primary)"
       );
       infiniteToggle.classList.remove("bg-(--color-bg-alt)", "text-(--color-text)");
-      // Add spin animation to icon
       infiniteIcon?.classList.add("animate-spin");
     } else {
       infiniteToggle.classList.remove(
@@ -276,19 +262,17 @@ const delays = [
         "border-(--color-primary)"
       );
       infiniteToggle.classList.add("bg-(--color-bg-alt)", "text-(--color-text)");
-      // Remove spin animation from icon
       infiniteIcon?.classList.remove("animate-spin");
     }
 
-    // Re-render to apply/remove infinite animations
-    renderAnimations();
+    // Apply/remove infinite animations
+    applyAnimationSettings();
   });
 
   // View all / Show less toggle
   const viewAllBtn = document.getElementById("view-all-btn");
   viewAllBtn?.addEventListener("click", () => {
-    showAll = !showAll;
-    renderAnimations();
+    toggleViewAll();
     // Scroll to top of grid
     document.getElementById("animation-grid")?.scrollIntoView({
       behavior: "smooth",
@@ -296,10 +280,14 @@ const delays = [
     });
   });
 
-  // Initial render - wait for DOM to be ready
+  // Initial setup
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", renderAnimations);
+    document.addEventListener("DOMContentLoaded", () => {
+      setupHoverListeners();
+      setupCopyButtons();
+    });
   } else {
-    renderAnimations();
+    setupHoverListeners();
+    setupCopyButtons();
   }
 </script>
