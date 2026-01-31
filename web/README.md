@@ -1,87 +1,108 @@
-# Welcome to React Router!
+# Tailwind CSS Animate - Website
 
-A modern, production-ready template for building full-stack React applications using React Router.
+This is the documentation website for Tailwind CSS Animate, built with Astro.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
+## Tech Stack
+
+- **Astro** - Static Site Generator
+- **React** - For interactive components
+- **Tailwind CSS v4** - Styling
+- **TypeScript** - Type safety
+- **@iscodex/tailwindcss-animate** - The library itself
+
+## Development
+
+Install dependencies from the root:
+
+```bash
+cd ..
+pnpm install
+```
+
+Start the development server:
+
+```bash
+pnpm dev
+```
+
+The site will be available at `http://localhost:4321`
+
+## Build
+
+Build the website for production:
+
+```bash
+pnpm build
+```
+
+Preview the production build:
+
+```bash
+pnpm preview
+```
+
+## Project Structure
+
+```
+web/
+├── src/
+│   ├── pages/
+│   │   ├── index.astro           # Home page
+│   │   └── configurator.astro    # Interactive configurator
+│   ├── layouts/
+│   │   └── Layout.astro          # Base layout
+│   ├── components/
+│   │   ├── Navbar.astro
+│   │   ├── Footer.astro
+│   │   ├── AnimationCard.astro
+│   │   └── Configurator.tsx      # React component
+│   ├── data/
+│   │   └── animations.ts         # Animation data
+│   └── styles/
+│       └── global.css            # Global styles
+├── public/
+│   ├── favicon.svg
+│   ├── logo.svg
+│   └── og.jpg
+├── astro.config.mjs
+└── package.json
+```
 
 ## Features
 
-- 🚀 Server-side rendering
-- ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
-- 🔒 TypeScript by default
-- 🎉 TailwindCSS for styling
-- 📖 [React Router docs](https://reactrouter.com/)
-
-## Getting Started
-
-### Installation
-
-Install the dependencies:
-
-```bash
-npm install
-```
-
-### Development
-
-Start the development server with HMR:
-
-```bash
-npm run dev
-```
-
-Your application will be available at `http://localhost:5173`.
-
-## Building for Production
-
-Create a production build:
-
-```bash
-npm run build
-```
+- **Interactive Configurator**: Test animations with different settings
+- **Live Previews**: See animations in action
+- **Code Generation**: Copy ready-to-use code
+- **Scroll Demos**: Interactive scroll animation examples
+- **Responsive Design**: Works on all devices
+- **Dark Mode**: Automatic theme switching
+- **Syntax Highlighting**: Using Astro's Code component
 
 ## Deployment
 
-### Docker Deployment
+The site can be deployed to:
 
-To build and run using Docker:
+- **Vercel** (recommended)
+- Netlify
+- Cloudflare Pages
+- Any static hosting
+
+### Deploy to Vercel
 
 ```bash
-docker build -t my-app .
-
-# Run the container
-docker run -p 3000:3000 my-app
+vercel
 ```
 
-The containerized application can be deployed to any platform that supports Docker, including:
+Or connect your GitHub repository to Vercel for automatic deployments.
 
-- AWS ECS
-- Google Cloud Run
-- Azure Container Apps
-- Digital Ocean App Platform
-- Fly.io
-- Railway
+## Environment
 
-### DIY Deployment
+No environment variables needed for basic functionality.
 
-If you're familiar with deploying Node applications, the built-in app server is production-ready.
+## Contributing
 
-Make sure to deploy the output of `npm run build`
+See [CONTRIBUTING.md](../CONTRIBUTING.md) in the root directory.
 
-```
-├── package.json
-├── package-lock.json (or pnpm-lock.yaml, or bun.lockb)
-├── build/
-│   ├── client/    # Static assets
-│   └── server/    # Server-side code
-```
+## License
 
-## Styling
-
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
-
----
-
-Built with ❤️ using React Router.
+MIT

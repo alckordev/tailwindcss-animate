@@ -1,0 +1,71 @@
+@theme default {
+  --animate-dash-in-start: dash-in-start var(--default-animation-duration, 1s)
+    var(--default-animation-timing-function, ease-out)
+    var(--default-animation-delay, 0s) both;
+
+  --animate-dash-in-end: dash-in-end var(--default-animation-duration, 1s)
+    var(--default-animation-timing-function, ease-out)
+    var(--default-animation-delay, 0s) both;
+
+  --animate-dash-out-start: dash-out-start var(--default-animation-duration, 1s)
+    var(--default-animation-timing-function, ease-in)
+    var(--default-animation-delay, 0s) both;
+
+  --animate-dash-out-end: dash-out-end var(--default-animation-duration, 1s)
+    var(--default-animation-timing-function, ease-in)
+    var(--default-animation-delay, 0s) both;
+
+  @keyframes dash-in-start {
+    from {
+      transform: translate3d(-100%, 0, 0) skewX(30deg);
+      opacity: 0;
+    }
+    60% {
+      transform: skewX(-20deg);
+      opacity: 1;
+    }
+    80% {
+      transform: skewX(5deg);
+    }
+    to {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  @keyframes dash-in-end {
+    from {
+      transform: translate3d(100%, 0, 0) skewX(-30deg);
+      opacity: 0;
+    }
+    60% {
+      transform: skewX(20deg);
+      opacity: 1;
+    }
+    80% {
+      transform: skewX(-5deg);
+    }
+    to {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  @keyframes dash-out-start {
+    from {
+      opacity: 1;
+    }
+    to {
+      transform: translate3d(-100%, 0, 0) skewX(-30deg);
+      opacity: 0;
+    }
+  }
+
+  @keyframes dash-out-end {
+    from {
+      opacity: 1;
+    }
+    to {
+      transform: translate3d(100%, 0, 0) skewX(30deg);
+      opacity: 0;
+    }
+  }
+}

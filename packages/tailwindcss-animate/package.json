@@ -1,0 +1,44 @@
+{
+  "name": "@iscodex/tailwindcss-animate",
+  "version": "2.0.0",
+  "description": "Extended animation utilities for Tailwind CSS v4",
+  "main": "src/index.css",
+  "style": "src/index.css",
+  "exports": {
+    ".": "./src/index.css",
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iscodex/tailwindcss-animate.git",
+    "directory": "packages/tailwindcss-animate"
+  },
+  "keywords": [
+    "tailwindcss",
+    "tailwindcss-v4",
+    "css-animations",
+    "keyframes",
+    "animate",
+    "transitions",
+    "utilities",
+    "scroll-animations",
+    "view-timeline"
+  ],
+  "files": [
+    "/src",
+    "/README.md",
+    "/LICENSE.md"
+  ],
+  "author": "Francisco Luis Rios Vega <alckordev@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/iscodex/tailwindcss-animate/issues"
+  },
+  "homepage": "https://tailwindcss-animate.vercel.app",
+  "peerDependencies": {
+    "tailwindcss": ">=4.0.0"
+  }
+}

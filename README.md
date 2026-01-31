@@ -1,28 +1,43 @@
 # @iscodex/tailwindcss-animate
 
-[![NPM version](https://img.shields.io/npm/v/@iscodex/tailwindcss-animate?color=32A9C3&labelColor=1B3C4A&label=npm)](https://www.npmjs.com/package/@iscodex/tailwindcss-animate)
+[![NPM version](https://img.shields.io/npm/v/@iscodex/tailwindcss-animate?color=32A9C3&labelColor=1B3C4A&label=npm%20v4)](https://www.npmjs.com/package/@iscodex/tailwindcss-animate)
+[![NPM version](https://img.shields.io/npm/v/@iscodex/tailwindcss-animate-plugin?color=32A9C3&labelColor=1B3C4A&label=npm%20v3)](https://www.npmjs.com/package/@iscodex/tailwindcss-animate-plugin)
 [![NPM downloads](https://img.shields.io/npm/dm/@iscodex/tailwindcss-animate?color=32A9C3&labelColor=1B3C4A&label=downloads)](https://www.npmjs.com/package/@iscodex/tailwindcss-animate)
-[![NPM License](https://img.shields.io/npm/l/@iscodex/tailwindcss-animate?color=32A9C3&labelColor=1B3C4A&label=license)](https://www.npmjs.com/package/@iscodex/tailwindcss-animate)
+[![License](https://img.shields.io/npm/l/@iscodex/tailwindcss-animate?color=32A9C3&labelColor=1B3C4A&label=license)](https://www.npmjs.com/package/@iscodex/tailwindcss-animate)
 
-Extended animation utilities for Tailwind CSS v4. Modern, lightweight, and fully customizable animations built with CSS custom properties.
+Extended animation utilities for **Tailwind CSS v4 and v3**. 85+ animations, scroll timelines, and view animations with zero configuration.
 
-<img width="1200" height="630" alt="tw-animate-og" src="https://github.com/user-attachments/assets/7f06d2ff-0167-4261-a1fd-6c10913b8dcd" />
+[**Website**](https://tailwindcss-animate.vercel.app) • [**Configurator**](https://tailwindcss-animate.vercel.app/configurator) • [**GitHub**](https://github.com/iscodex/tailwindcss-animate)
 
-## Features
+![Tailwind CSS Animate](https://github.com/user-attachments/assets/7f06d2ff-0167-4261-a1fd-6c10913b8dcd)
 
-- **Tailwind CSS v4** - Built with `@utility` and `@theme` syntax
+## ✨ Features
+
+- **85+ Animations** - Attention seekers, fades, slides, zooms, rotations, and more
+- **Scroll Animations** - View timelines and animation ranges based on scroll position (NEW in v2.0)
 - **Zero Configuration** - Just import and start animating
-- **Fully Customizable** - Control duration, delay, timing, and more
+- **Dual Support** - Works with both Tailwind CSS v4 and v3
+- **Fully Customizable** - Control duration, delay, timing, direction, and more
 - **CSS Custom Properties** - Easy theming and dynamic control
-- **Modular Architecture** - Import only what you need
+- **Arbitrary Values** - Use any value with bracket notation
+- **Modern & Lightweight** - Built with CSS custom properties and @utility syntax
 
-## Installation
+## 📦 Packages
+
+This monorepo contains two packages:
+
+| Package                                                                        | Version                                                                  | Description                        |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ---------------------------------- |
+| [`@iscodex/tailwindcss-animate`](./packages/tailwindcss-animate)               | ![npm](https://img.shields.io/npm/v/@iscodex/tailwindcss-animate)        | For **Tailwind CSS v4** (CSS-only) |
+| [`@iscodex/tailwindcss-animate-plugin`](./packages/tailwindcss-animate-plugin) | ![npm](https://img.shields.io/npm/v/@iscodex/tailwindcss-animate-plugin) | For **Tailwind CSS v3** (Plugin)   |
+
+## 🚀 Installation
+
+### For Tailwind CSS v4
 
 ```bash
 npm install @iscodex/tailwindcss-animate
 ```
-
-## Quick Start
 
 Add the import to your CSS file:
 
@@ -31,164 +46,153 @@ Add the import to your CSS file:
 @import "@iscodex/tailwindcss-animate";
 ```
 
-Start using animations:
+### For Tailwind CSS v3
+
+```bash
+npm install @iscodex/tailwindcss-animate-plugin
+```
+
+Add the plugin to your Tailwind configuration:
+
+```javascript
+// tailwind.config.js
+module.exports = {
+  plugins: [require("@iscodex/tailwindcss-animate-plugin")],
+};
+```
+
+## 🎯 Quick Start
+
+### Basic Animation
 
 ```html
-<div class="animate-wiggle">Hello World!</div>
+<div class="animate-fade-in">Hello World!</div>
+```
 
+### With Controls
+
+```html
 <button class="animate-bounce animate-infinite animate-duration-[2s]">
   Click me
 </button>
 ```
 
-## Requirements
+### Scroll Animation (NEW in v2.0)
 
-- **Tailwind CSS v4.0.0** or higher
-- Modern browser with CSS custom properties support
+```html
+<div class="timeline-view animate-fade-in-up animate-range-entry">
+  Appears when entering viewport
+</div>
+```
 
-## Available Animations
+## 🎨 Available Animations
 
-### Attention Seekers
+### Attention Seekers (16)
 
-- `animate-flash` - Flashing effect
-- `animate-head-shake` - Head shake movement
-- `animate-heart-beat` - Heart beating effect
-- `animate-jelly` - Jello wobble effect
-- `animate-rubber-band` - Rubber band stretch
-- `animate-shake-x` - Horizontal shake
-- `animate-shake-y` - Vertical shake
-- `animate-swing` - Pendulum swing
-- `animate-tada` - Celebration effect
-- `animate-wiggle` - Gentle rotation wiggle
-- `animate-wobble` - Side-to-side wobble
-- `animate-float` - Floating effect
-- `animate-spin` - Continuous rotation
-- `animate-ping` - Ping radar effect
-- `animate-pulse` - Pulse opacity
-- `animate-bounce` - Bouncing effect
+`animate-flash` • `animate-head-shake` • `animate-heart-beat` • `animate-jelly` • `animate-rubber-band` • `animate-shake-x` • `animate-shake-y` • `animate-swing` • `animate-tada` • `animate-wiggle` • `animate-wobble` • `animate-float` • `animate-spin` • `animate-ping` • `animate-pulse` • `animate-bounce`
 
-### Back Entrances
+### New Animations (v2.0)
 
-- `animate-back-in-down` - Back entrance from top
-- `animate-back-in-start` - Back entrance from left
-- `animate-back-in-end` - Back entrance from right
-- `animate-back-in-up` - Back entrance from bottom
+`animate-blurred-fade-in` • `animate-blink` • `animate-dancing` • `animate-jiggle` • `animate-pop` • `animate-rotate-360` • `animate-rotate-180` • `animate-rotate-90` • `animate-expand-horizontally` • `animate-expand-vertically` • `animate-bounce-fade-in` • `animate-pulse-fade-in`
 
-### Back Exits
+### Fading Entrances (5)
 
-- `animate-back-out-down` - Back exit to bottom
-- `animate-back-out-start` - Back exit to left
-- `animate-back-out-end` - Back exit to right
-- `animate-back-out-up` - Back exit to top
+`animate-fade-in` • `animate-fade-in-down` • `animate-fade-in-start` • `animate-fade-in-end` • `animate-fade-in-up`
 
-### Bouncing Entrances
+### Fading Exits (5)
 
-- `animate-bounce-in` - Bounce entrance
-- `animate-bounce-in-down` - Bounce in from top
-- `animate-bounce-in-start` - Bounce in from left
-- `animate-bounce-in-end` - Bounce in from right
-- `animate-bounce-in-up` - Bounce in from bottom
+`animate-fade-out` • `animate-fade-out-down` • `animate-fade-out-start` • `animate-fade-out-end` • `animate-fade-out-up`
 
-### Bouncing Exits
+### Sliding Entrances/Exits (8)
 
-- `animate-bounce-out` - Bounce exit
-- `animate-bounce-out-down` - Bounce out to bottom
-- `animate-bounce-out-start` - Bounce out to left
-- `animate-bounce-out-end` - Bounce out to right
-- `animate-bounce-out-up` - Bounce out to top
+`animate-slide-in-down` • `animate-slide-in-start` • `animate-slide-in-end` • `animate-slide-in-up` • `animate-slide-out-down` • `animate-slide-out-start` • `animate-slide-out-end` • `animate-slide-out-up`
 
-### Dashing
+### Zooming Entrances/Exits (10)
 
-- `animate-dash-in-start` - Fast slide in from left
-- `animate-dash-in-end` - Fast slide in from right
-- `animate-dash-out-start` - Fast slide out to left
-- `animate-dash-out-end` - Fast slide out to right
+`animate-zoom-in` • `animate-zoom-in-down` • `animate-zoom-in-start` • `animate-zoom-in-end` • `animate-zoom-in-up` • `animate-zoom-out` • `animate-zoom-out-down` • `animate-zoom-out-start` • `animate-zoom-out-end` • `animate-zoom-out-up`
 
-### Fading Entrances
+### Bouncing Entrances/Exits (10)
 
-- `animate-fade-in` - Fade entrance
-- `animate-fade-in-down` - Fade in from top
-- `animate-fade-in-start` - Fade in from left
-- `animate-fade-in-end` - Fade in from right
-- `animate-fade-in-up` - Fade in from bottom
+`animate-bounce-in` • `animate-bounce-in-down` • `animate-bounce-in-start` • `animate-bounce-in-end` • `animate-bounce-in-up` • `animate-bounce-out` • `animate-bounce-out-down` • `animate-bounce-out-start` • `animate-bounce-out-end` • `animate-bounce-out-up`
 
-### Fading Exits
+### Rotating Entrances/Exits (10)
 
-- `animate-fade-out` - Fade exit
-- `animate-fade-out-down` - Fade out to bottom
-- `animate-fade-out-start` - Fade out to left
-- `animate-fade-out-end` - Fade out to right
-- `animate-fade-out-up` - Fade out to top
+`animate-rotate-in` • `animate-rotate-in-down-start` • `animate-rotate-in-down-end` • `animate-rotate-in-up-start` • `animate-rotate-in-up-end` • `animate-rotate-out` • `animate-rotate-out-down-start` • `animate-rotate-out-down-end` • `animate-rotate-out-up-start` • `animate-rotate-out-up-end`
 
-### Flippers
+### Back Entrances/Exits (8)
 
-- `animate-flip` - 3D flip effect
-- `animate-flip-in-x` - Flip in on X-axis
-- `animate-flip-in-y` - Flip in on Y-axis
-- `animate-flip-out-x` - Flip out on X-axis
-- `animate-flip-out-y` - Flip out on Y-axis
+`animate-back-in-down` • `animate-back-in-start` • `animate-back-in-end` • `animate-back-in-up` • `animate-back-out-down` • `animate-back-out-start` • `animate-back-out-end` • `animate-back-out-up`
 
-### Rotating Entrances
+### Flippers (5)
 
-- `animate-rotate-in` - Rotating entrance
-- `animate-rotate-in-down-start` - Rotate in from top-left
-- `animate-rotate-in-down-end` - Rotate in from top-right
-- `animate-rotate-in-up-start` - Rotate in from bottom-left
-- `animate-rotate-in-up-end` - Rotate in from bottom-right
+`animate-flip` • `animate-flip-in-x` • `animate-flip-in-y` • `animate-flip-out-x` • `animate-flip-out-y`
 
-### Rotating Exits
+### Specials (6)
 
-- `animate-rotate-out` - Rotating exit
-- `animate-rotate-out-down-start` - Rotate out to bottom-left
-- `animate-rotate-out-down-end` - Rotate out to bottom-right
-- `animate-rotate-out-up-start` - Rotate out to top-left
-- `animate-rotate-out-up-end` - Rotate out to top-right
+`animate-hinge` • `animate-jack-in` • `animate-jack-out` • `animate-roll-in` • `animate-roll-out` • `animate-particle`
 
-### Sliding Entrances
+### Dashing (4)
 
-- `animate-slide-in-down` - Slide in from top
-- `animate-slide-in-up` - Slide in from bottom
-- `animate-slide-in-start` - Slide in from left
-- `animate-slide-in-end` - Slide in from right
+`animate-dash-in-start` • `animate-dash-in-end` • `animate-dash-out-start` • `animate-dash-out-end`
 
-### Sliding Exits
+## 📜 Scroll Animations (NEW in v2.0)
 
-- `animate-slide-out-down` - Slide out to bottom
-- `animate-slide-out-up` - Slide out to top
-- `animate-slide-out-start` - Slide out to left
-- `animate-slide-out-end` - Slide out to right
+Animate elements based on their scroll position in the viewport.
 
-### Specials
+### View Timelines
 
-- `animate-hinge` - Door hinge effect
-- `animate-jack-in` - Pop-up like jack-in-the-box
-- `animate-jack-out` - Reverse jack-in effect
-- `animate-roll-in` - Rolling entrance
-- `animate-roll-out` - Rolling exit
-- `animate-particle` - Particle effect
+```html
+<!-- Animate when element enters viewport -->
+<div class="timeline-view animate-fade-in">...</div>
 
-### Zooming Entrances
+<!-- Animate on horizontal scroll -->
+<div class="timeline-view-x animate-slide-in-start">...</div>
 
-- `animate-zoom-in` - Zoom entrance
-- `animate-zoom-in-down` - Zoom in from top
-- `animate-zoom-in-up` - Zoom in from bottom
-- `animate-zoom-in-start` - Zoom in from left
-- `animate-zoom-in-end` - Zoom in from right
+<!-- Animate on vertical scroll -->
+<div class="timeline-view-y animate-fade-in-up">...</div>
+```
 
-### Zooming Exits
+### Animation Ranges
 
-- `animate-zoom-out` - Zoom exit
-- `animate-zoom-out-down` - Zoom out to bottom
-- `animate-zoom-out-up` - Zoom out to top
-- `animate-zoom-out-start` - Zoom out to left
-- `animate-zoom-out-end` - Zoom out to right
+Control when animations play during scroll:
 
-## Control Utilities
+```html
+<!-- Play when entering viewport -->
+<div class="timeline-view animate-zoom-in animate-range-entry">...</div>
+
+<!-- Play when leaving viewport -->
+<div class="timeline-view animate-fade-out animate-range-exit">...</div>
+
+<!-- Play while in viewport -->
+<div class="timeline-view animate-rotate-360 animate-range-cover">...</div>
+
+<!-- Preset ranges -->
+<div class="timeline-view animate-fade-in animate-range-gradual">...</div>
+<!-- gradual (10%-90%) | moderate (20%-80%) | brisk (30%-70%) | rapid (40%-60%) -->
+```
+
+### Arbitrary Range Values
+
+```html
+<div class="timeline-view animate-fade-in animate-range-[entry_10%_cover_50%]">
+  Custom range
+</div>
+```
+
+### Browser Support for Scroll Animations
+
+Scroll animations require:
+
+- **Chrome/Edge**: 115+
+- **Safari**: 17.4+
+- **Firefox**: Coming soon (currently in development)
+
+## 🎛️ Control Utilities
 
 ### Duration
 
 ```html
-<div class="animate-wiggle animate-duration-[500ms]">Fast wiggle</div>
+<div class="animate-fade-in animate-duration-[500ms]">Fast fade</div>
 <div class="animate-bounce animate-duration-[2s]">Slow bounce</div>
 ```
 
@@ -203,6 +207,7 @@ Start using animations:
 ```html
 <div class="animate-pulse animate-infinite">Never stops</div>
 <div class="animate-bounce animate-twice">Bounce twice</div>
+<div class="animate-shake-x animate-iteration-[5]">Shake 5 times</div>
 ```
 
 ### Direction
@@ -224,11 +229,18 @@ Start using animations:
 
 ```html
 <div class="animate-bounce animate-ease-in-out">Smooth bounce</div>
+<div class="animate-fade-in animate-ease-linear">Linear fade</div>
 ```
 
-## CSS Custom Properties
+### Play State
 
-Customize animations globally using CSS custom properties:
+```html
+<div class="animate-spin animate-pause hover:animate-play">Spin on hover</div>
+```
+
+## 🎨 CSS Custom Properties
+
+Customize animations globally:
 
 ```css
 :root {
@@ -243,7 +255,7 @@ Customize animations globally using CSS custom properties:
 }
 ```
 
-## Advanced Usage
+## 💡 Advanced Usage
 
 ### Hover Animations
 
@@ -261,26 +273,42 @@ Customize animations globally using CSS custom properties:
 </div>
 ```
 
-### Custom Duration with Arbitrary Values
+### Combining Utilities
 
 ```html
-<div class="animate-spin animate-duration-[3.5s]">Custom timing</div>
+<div
+  class="animate-fade-in animate-duration-[2s] animate-delay-[500ms] animate-ease-in-out"
+>
+  Smooth, delayed fade in
+</div>
 ```
 
-## License
+## 📚 Documentation
+
+- [Website & Interactive Demos](https://tailwindcss-animate.vercel.app)
+- [Animation Configurator](https://tailwindcss-animate.vercel.app/configurator)
+- [GitHub Repository](https://github.com/iscodex/tailwindcss-animate)
+- [npm Package (v4)](https://www.npmjs.com/package/@iscodex/tailwindcss-animate)
+- [npm Package (v3)](https://www.npmjs.com/package/@iscodex/tailwindcss-animate-plugin)
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## 📄 License
 
 MIT License - see [LICENSE](LICENSE.md) file for details.
 
-## Changelog
+## 🙏 Credits
 
-See [CHANGELOG](CHANGELOG.md) for version history.
+Created with ❤️ by [alckordev](https://github.com/alckordev)
 
-## Links
+Inspired by [Animate.css](https://animate.style/) and [tailwind-animations](https://github.com/midudev/tailwind-animations)
 
-- [Documentation](https://tailwindcss-animate.vercel.app)
-- [Animation Configurator](https://tailwindcss-animate.vercel.app/configurator)
-- [GitHub Repository](https://github.com/iscodex/tailwindcss-animate)
+## 📝 Changelog
+
+See [CHANGELOG](CHANGELOG.md) for version history and changes.
 
 ---
 
-Made with ❤️ by [@alckordev](https://github.com/alckordev)
+**⭐ If you find this useful, please consider giving it a star on GitHub!**

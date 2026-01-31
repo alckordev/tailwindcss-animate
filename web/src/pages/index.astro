@@ -1,0 +1,338 @@
+---
+import { Code } from "astro:components";
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import BackgroundPattern from "../components/BackgroundPattern.astro";
+import { InstallTabs } from "../components/InstallTabs";
+import { AnimationGrid } from "../components/AnimationGrid";
+---
+
+<Layout>
+  <BackgroundPattern />
+  <Navbar />
+
+  <!-- Hero Section -->
+  <section class="relative overflow-hidden py-20 sm:py-32">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="text-center">
+        <div
+          class="mb-6 inline-flex items-center gap-2 rounded-full border border-[var(--color-primary)]/20 bg-[var(--color-primary)]/10 px-4 py-2 text-sm font-medium text-[var(--color-primary)] animate-fade-in"
+        >
+          ✨ Now with Scroll Animations
+        </div>
+
+        <h1
+          class="mb-6 text-5xl font-bold tracking-tight text-[var(--color-text)] sm:text-6xl lg:text-7xl animate-fade-in-up animate-delay-[100ms]"
+        >
+          Tailwind CSS
+          <br />
+          <span
+            class="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent"
+          >
+            Animations
+          </span>
+        </h1>
+
+        <p
+          class="mx-auto mb-12 max-w-2xl text-lg text-[var(--color-text-muted)] animate-fade-in-up animate-delay-[200ms]"
+        >
+          The easiest way to add stunning animations to your Tailwind CSS projects.<br />
+          Zero configuration, pure performance.
+        </p>
+
+        <!-- Installation Tabs -->
+        <div class="animate-fade-in-up animate-delay-[300ms]">
+          <InstallTabs version="v4" client:load />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Example -->
+  <section class="py-12">
+    <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+      <div
+        class="rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg)] p-8 shadow-xl"
+      >
+        <h2 class="mb-6 text-center text-2xl font-bold text-[var(--color-text)]">
+          Quick Start Example
+        </h2>
+
+        <div class="grid gap-8 md:grid-cols-2">
+          <div>
+            <h3
+              class="mb-3 text-sm font-semibold uppercase tracking-wide text-[var(--color-text-muted)]"
+            >
+              HTML
+            </h3>
+            <div class="overflow-hidden rounded-lg">
+              <Code
+                code={`<div class="animate-fade-in">
+  Fade in box
+</div>
+
+<div class="animate-slide-in-bottom animate-delay-300 animate-duration-slow">
+  Slow animation after 300ms
+</div>`}
+                lang="html"
+                theme="github-dark"
+              />
+            </div>
+          </div>
+
+          <div>
+            <h3
+              class="mb-3 text-sm font-semibold uppercase tracking-wide text-[var(--color-text-muted)]"
+            >
+              Preview
+            </h3>
+            <div class="flex flex-col gap-4">
+              <div
+                class="rounded-lg bg-gradient-to-r from-blue-500 to-purple-500 p-6 text-center text-white font-semibold animate-fade-in"
+              >
+                Fade in box
+              </div>
+              <div
+                class="rounded-lg bg-gradient-to-r from-purple-500 to-pink-500 p-6 text-center text-white font-semibold animate-slide-in-up animate-delay-[300ms] animate-duration-[1s]"
+              >
+                Slow animation
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Animation Collection -->
+  <section id="animations" class="py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="mb-12 text-center">
+        <h2 class="mb-4 text-4xl font-bold text-[var(--color-text)]">Animation Collection</h2>
+        <p class="text-lg text-[var(--color-text-muted)]">
+          Explore our comprehensive library of ready-to-use animations
+        </p>
+      </div>
+
+      <AnimationGrid client:load />
+    </div>
+  </section>
+
+  <!-- Scroll Animations Section -->
+  <section id="scroll" class="py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="mb-12 text-center">
+        <h2 class="mb-4 text-4xl font-bold text-[var(--color-text)]">Scroll Animations</h2>
+        <p class="mb-4 text-lg text-[var(--color-text-muted)]">
+          Animate elements based on their position in the viewport
+        </p>
+        <p class="text-sm text-[var(--color-text-muted)]">Scroll down to see the magic ↓</p>
+      </div>
+
+      <div class="mx-auto max-w-4xl space-y-32">
+        <!-- Example 1: Entry Animation -->
+        <div class="timeline-view animate-fade-in-up animate-range-entry">
+          <div
+            class="rounded-2xl border border-[var(--color-border)] bg-gradient-to-br from-blue-500/10 to-purple-500/10 p-8 backdrop-blur"
+          >
+            <div class="mb-4 text-5xl">👋</div>
+            <h3 class="mb-3 text-2xl font-bold text-[var(--color-text)]">I reveal on scroll</h3>
+            <p class="mb-4 text-[var(--color-text-muted)]">
+              This element appears gradually when entering the viewport
+            </p>
+            <div class="overflow-hidden rounded-lg">
+              <Code
+                code="timeline-view animate-fade-in-up animate-range-entry"
+                lang="html"
+                theme="github-dark"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- Example 2: Cover Animation -->
+        <div class="timeline-view animate-zoom-in animate-range-cover">
+          <div
+            class="rounded-2xl border border-[var(--color-border)] bg-gradient-to-br from-purple-500/10 to-pink-500/10 p-8 backdrop-blur"
+          >
+            <div class="mb-4 text-5xl">🎯</div>
+            <h3 class="mb-3 text-2xl font-bold text-[var(--color-text)]">I zoom while scrolling</h3>
+            <p class="mb-4 text-[var(--color-text-muted)]">
+              This element zooms in while it's in the viewport
+            </p>
+            <div class="overflow-hidden rounded-lg">
+              <Code
+                code="timeline-view animate-zoom-in animate-range-cover"
+                lang="html"
+                theme="github-dark"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- Example 3: Rotation -->
+        <div class="timeline-view animate-rotate-360 animate-range-moderate">
+          <div
+            class="rounded-2xl border border-[var(--color-border)] bg-gradient-to-br from-pink-500/10 to-orange-500/10 p-8 backdrop-blur"
+          >
+            <div class="mb-4 text-5xl">🎲</div>
+            <h3 class="mb-3 text-2xl font-bold text-[var(--color-text)]">I rotate progressively</h3>
+            <p class="mb-4 text-[var(--color-text-muted)]">
+              This element rotates 360° as you scroll
+            </p>
+            <div class="overflow-hidden rounded-lg">
+              <Code
+                code="timeline-view animate-rotate-360 animate-range-moderate"
+                lang="html"
+                theme="github-dark"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- Example 4: Blur Fade -->
+        <div class="timeline-view animate-blurred-fade-in animate-range-[entry_10%_contain_30%]">
+          <div
+            class="rounded-2xl border border-[var(--color-border)] bg-gradient-to-br from-green-500/10 to-blue-500/10 p-8 backdrop-blur"
+          >
+            <div class="mb-4 text-5xl">✨</div>
+            <h3 class="mb-3 text-2xl font-bold text-[var(--color-text)]">I fade in with blur</h3>
+            <p class="mb-4 text-[var(--color-text-muted)]">
+              Blurred transition adds depth and polish to the reveal
+            </p>
+            <div class="overflow-hidden rounded-lg">
+              <Code
+                code="timeline-view animate-blurred-fade-in animate-range-[entry_10%_contain_30%]"
+                lang="html"
+                theme="github-dark"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-16 text-center">
+        <p
+          class="inline-flex items-center gap-2 rounded-lg bg-amber-500/10 border border-amber-500/20 px-4 py-2 text-sm text-amber-600 dark:text-amber-400"
+        >
+          ⚠️ Scroll animations require Chrome 115+, Edge 115+, or Safari 17.4+
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline Utilities Reference -->
+  <section class="py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="mb-12 text-center">
+        <h2 class="mb-4 text-4xl font-bold text-[var(--color-text)]">
+          Timeline Utilities Reference
+        </h2>
+        <p class="text-lg text-[var(--color-text-muted)]">
+          Available timeline utilities and how to use them
+        </p>
+      </div>
+
+      <div class="grid gap-6 md:grid-cols-2">
+        <!-- Scroll Timelines -->
+        <div class="rounded-xl border border-[var(--color-border)] p-6">
+          <h3 class="mb-4 text-xl font-bold text-[var(--color-text)]">Scroll Timelines</h3>
+          <div class="space-y-2 text-sm">
+            <code class="block rounded-md bg-[#0a0a0a] px-3 py-2 text-[var(--color-text)]"
+              >timeline-scroll</code
+            >
+            <code class="block rounded-md bg-[#0a0a0a] px-3 py-2 text-[var(--color-text)]"
+              >timeline-[scroll(x)]</code
+            >
+            <code class="block rounded-md bg-[#0a0a0a] px-3 py-2 text-[var(--color-text)]"
+              >timeline-[scroll(y)]</code
+            >
+            <code class="block rounded-md bg-[#0a0a0a] px-3 py-2 text-[var(--color-text)]"
+              >timeline-[scroll(block)]</code
+            >
+          </div>
+        </div>
+
+        <!-- View Timelines -->
+        <div class="rounded-xl border border-[var(--color-border)] p-6">
+          <h3 class="mb-4 text-xl font-bold text-[var(--color-text)]">View Timelines</h3>
+          <div class="space-y-2 text-sm">
+            <code class="block rounded-md bg-[#0a0a0a] px-3 py-2 text-[var(--color-text)]"
+              >timeline-view</code
+            >
+            <code class="block rounded-md bg-[#0a0a0a] px-3 py-2 text-[var(--color-text)]"
+              >timeline-[view(x)]</code
+            >
+            <code class="block rounded-md bg-[#0a0a0a] px-3 py-2 text-[var(--color-text)]"
+              >timeline-[view(y)]</code
+            >
+            <code class="block rounded-md bg-[#0a0a0a] px-3 py-2 text-[var(--color-text)]"
+              >timeline-[view(block)]</code
+            >
+          </div>
+        </div>
+
+        <!-- Animation Ranges -->
+        <div class="rounded-xl border border-[var(--color-border)] p-6">
+          <h3 class="mb-4 text-xl font-bold text-[var(--color-text)]">Animation Ranges</h3>
+          <div class="space-y-2 text-sm">
+            <code class="block rounded-md bg-[#0a0a0a] px-3 py-2 text-[var(--color-text)]"
+              >animate-range-cover</code
+            >
+            <code class="block rounded-md bg-[#0a0a0a] px-3 py-2 text-[var(--color-text)]"
+              >animate-range-entry</code
+            >
+            <code class="block rounded-md bg-[#0a0a0a] px-3 py-2 text-[var(--color-text)]"
+              >animate-range-exit</code
+            >
+          </div>
+        </div>
+
+        <!-- Preset Ranges -->
+        <div class="rounded-xl border border-[var(--color-border)] p-6">
+          <h3 class="mb-4 text-xl font-bold text-[var(--color-text)]">Preset Ranges</h3>
+          <div class="space-y-2 text-sm">
+            <code class="block rounded-md bg-[#0a0a0a] px-3 py-2 text-[var(--color-text)]"
+              >animate-range-gradual (10%-90%)</code
+            >
+            <code class="block rounded-md bg-[#0a0a0a] px-3 py-2 text-[var(--color-text)]"
+              >animate-range-moderate (20%-80%)</code
+            >
+            <code class="block rounded-md bg-[#0a0a0a] px-3 py-2 text-[var(--color-text)]"
+              >animate-range-brisk (30%-70%)</code
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20">
+    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="mb-6 text-4xl font-bold text-[var(--color-text)]">Ready to get started?</h2>
+      <p class="mb-8 text-lg text-[var(--color-text-muted)]">
+        Join developers who are creating beautiful animations with Tailwind CSS
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a
+          href="/configurator"
+          class="inline-flex items-center justify-center gap-2 rounded-lg bg-[var(--color-primary)] px-8 py-4 text-lg font-semibold text-white transition-all hover:bg-[var(--color-primary-hover)] hover:scale-105"
+        >
+          Try Interactive Configurator
+        </a>
+        <a
+          href="https://github.com/iscodex/tailwindcss-animate"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center justify-center gap-2 rounded-lg border-2 border-[var(--color-border)] px-8 py-4 text-lg font-semibold text-[var(--color-text)] transition-all hover:border-[var(--color-primary)] hover:scale-105"
+        >
+          View on GitHub
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

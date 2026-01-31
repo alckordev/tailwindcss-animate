@@ -1,49 +1,26 @@
 {
-  "name": "@iscodex/tailwindcss-animate",
-  "version": "1.0.0",
-  "description": "Extended animation utilities for Tailwind CSS v4",
-  "main": "src/index.css",
-  "style": "src/index.css",
-  "exports": {
-    ".": "./src/index.css",
-    "./package.json": "./package.json"
-  },
+  "name": "@iscodex/tailwindcss-animate-workspace",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Monorepo for Tailwind CSS Animate packages",
   "scripts": {
-    "test": "jest",
-    "lint": "echo 'CSS-only package - no linting needed'",
-    "validate": "npm run test",
-    "prepublishOnly": "npm run validate"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/iscodex/tailwindcss-animate.git"
-  },
-  "keywords": [
-    "tailwindcss",
-    "tailwindcss-v4",
-    "css-animations",
-    "keyframes",
-    "animate",
-    "transitions",
-    "utilities"
-  ],
-  "files": [
-    "/src",
-    "/README.md",
-    "/LICENSE.md"
-  ],
-  "author": "Francisco Luis Rios Vega <alckordev@gmail.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/iscodex/tailwindcss-animate/issues"
-  },
-  "homepage": "https://github.com/iscodex/tailwindcss-animate#readme",
-  "peerDependencies": {
-    "tailwindcss": ">=4.0.0"
+    "dev": "pnpm --filter web dev",
+    "build:packages": "echo 'CSS packages don't need build'",
+    "build:web": "pnpm --filter web build",
+    "build": "pnpm run build:web",
+    "test": "pnpm --filter './packages/*' test",
+    "test:v4": "pnpm --filter @iscodex/tailwindcss-animate test",
+    "test:v3": "pnpm --filter @iscodex/tailwindcss-animate-plugin test",
+    "publish:packages": "pnpm --filter './packages/*' publish --access public"
   },
   "devDependencies": {
-    "@tailwindcss/cli": "^4.1.12",
     "jest": "^30.1.2",
-    "tailwindcss": "^4.1.12"
-  }
+    "prettier": "^3.6.2",
+    "prettier-plugin-tailwindcss": "^0.6.14"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=8.0.0"
+  },
+  "packageManager": "pnpm@9.0.0"
 }

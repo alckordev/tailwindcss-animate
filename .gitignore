@@ -1,2 +1,43 @@
-/node_modules
-/dist
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Testing
+coverage/
+*.log
+
+# Build outputs
+dist/
+build/
+.astro/
+
+# Environment
+.env
+.env.local
+.env.production.local
+.env.test.local
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temp
+*.tmp
+.temp/
+tmp/
+
+# Package manager
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Old web folder (backup)
+web-old/

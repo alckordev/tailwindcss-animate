@@ -1,0 +1,68 @@
+@import "tailwindcss";
+@import "@iscodex/tailwindcss-animate";
+
+:root {
+  /* Theme variables - Ultra Dark Mode */
+  --color-bg: #000000;
+  --color-bg-alt: #000000;
+  --color-text: #f9fafb;
+  --color-text-muted: #9ca3af;
+  --color-border: #1a1a1a;
+  --color-primary: #818cf8;
+  --color-primary-hover: #6366f1;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #000000;
+  color: var(--color-text);
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    'Roboto',
+    'Oxygen',
+    'Ubuntu',
+    'Cantarell',
+    sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1a1a1a;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}
+
+/* Better code blocks */
+pre {
+  background: #0d1117 !important;
+  border: 1px solid #1f2937 !important;
+}
+
+/* Selection */
+::selection {
+  background-color: var(--color-primary);
+  color: white;
+}

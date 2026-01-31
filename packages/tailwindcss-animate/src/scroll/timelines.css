@@ -1,0 +1,46 @@
+/* View Timelines */
+@utility timeline-view {
+  animation-timeline: view();
+}
+
+@utility timeline-view-x {
+  animation-timeline: view(x);
+}
+
+@utility timeline-view-y {
+  animation-timeline: view(y);
+}
+
+@utility timeline-view-block {
+  animation-timeline: view(block);
+}
+
+@utility timeline-view-inline {
+  animation-timeline: view(inline);
+}
+
+/* Scroll Timelines */
+@utility timeline-scroll {
+  animation-timeline: scroll();
+}
+
+@utility timeline-scroll-x {
+  animation-timeline: scroll(x);
+}
+
+@utility timeline-scroll-y {
+  animation-timeline: scroll(y);
+}
+
+@utility timeline-scroll-block {
+  animation-timeline: scroll(block);
+}
+
+@utility timeline-scroll-inline {
+  animation-timeline: scroll(inline);
+}
+
+/* Arbitrary values for complex timeline definitions */
+@utility timeline-* {
+  animation-timeline: --value([*]);
+}

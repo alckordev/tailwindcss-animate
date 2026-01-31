@@ -1,0 +1,82 @@
+/* Animation Range - Basic Keywords */
+@utility animate-range-normal {
+  animation-range: normal;
+}
+
+@utility animate-range-cover {
+  animation-range: cover;
+}
+
+@utility animate-range-contain {
+  animation-range: contain;
+}
+
+@utility animate-range-entry {
+  animation-range: entry;
+}
+
+@utility animate-range-exit {
+  animation-range: exit;
+}
+
+@utility animate-range-entry-crossing {
+  animation-range: entry-crossing;
+}
+
+@utility animate-range-exit-crossing {
+  animation-range: exit-crossing;
+}
+
+/* Preset Animation Ranges */
+@utility animate-range-gradual {
+  animation-range: entry 10% entry 90%;
+}
+
+@utility animate-range-moderate {
+  animation-range: entry 20% entry 80%;
+}
+
+@utility animate-range-brisk {
+  animation-range: entry 30% entry 70%;
+}
+
+@utility animate-range-rapid {
+  animation-range: entry 40% entry 60%;
+}
+
+/* Specific Entry Ranges */
+@utility animate-range-entry-start {
+  animation-range: entry 0%;
+}
+
+@utility animate-range-entry-end {
+  animation-range: entry 100%;
+}
+
+/* Specific Exit Ranges */
+@utility animate-range-exit-start {
+  animation-range: exit 0%;
+}
+
+@utility animate-range-exit-end {
+  animation-range: exit 100%;
+}
+
+/* Arbitrary values for custom animation ranges */
+/* Examples:
+   animate-range-[entry_0%_cover_50%]
+   animate-range-[entry_10%_contain_25%]
+   animate-range-[cover_25%_cover_75%]
+*/
+@utility animate-range-* {
+  animation-range: --value([*]);
+}
+
+/* Animation Range Start/End - Separate controls */
+@utility animate-range-start-* {
+  animation-range-start: --value([*]);
+}
+
+@utility animate-range-end-* {
+  animation-range-end: --value([*]);
+}

@@ -1,0 +1,131 @@
+---
+import { Code } from "astro:components";
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import BackgroundPattern from "../components/BackgroundPattern.astro";
+import { Configurator } from "../components/Configurator";
+---
+
+<Layout
+  title="Configurator - Tailwind CSS Animate"
+  description="Configure and preview Tailwind CSS animations in real-time. Customize duration, delay, timing and more."
+>
+  <BackgroundPattern />
+  <Navbar />
+  
+  <main class="min-h-screen bg-[var(--color-bg)] py-12">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <!-- Header -->
+      <div class="mb-12 text-center">
+        <div class="mb-4 inline-flex items-center gap-2 rounded-full border border-[var(--color-primary)]/20 bg-[var(--color-primary)]/10 px-4 py-2 text-sm font-medium text-[var(--color-primary)]">
+          🎨 Interactive Tool
+        </div>
+        <h1 class="mb-4 text-4xl font-bold text-[var(--color-text)] sm:text-5xl">
+          Animation Configurator
+        </h1>
+        <p class="text-lg text-[var(--color-text-muted)]">
+          Customize and preview animations in real-time
+        </p>
+      </div>
+      
+      <!-- Configurator -->
+      <Configurator client:load />
+      
+      <!-- Usage Guide -->
+      <div class="mt-16 rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg)] p-8 shadow-xl">
+        <h2 class="mb-8 text-2xl font-bold text-[var(--color-text)]">
+          Usage Guide
+        </h2>
+        
+        <div class="grid gap-8 md:grid-cols-2">
+          <div>
+            <div class="mb-3 flex items-center gap-2">
+              <span class="text-2xl">🎬</span>
+              <h3 class="text-lg font-semibold text-[var(--color-text)]">Basic Animations</h3>
+            </div>
+            <div class="space-y-3 text-sm text-[var(--color-text-muted)]">
+              <p>1. Select an animation from the dropdown menu</p>
+              <p>2. Adjust duration, delay and other properties</p>
+              <p>3. Copy the generated code and use it in your project</p>
+            </div>
+          </div>
+          
+          <div>
+            <div class="mb-3 flex items-center gap-2">
+              <span class="text-2xl">📜</span>
+              <h3 class="text-lg font-semibold text-[var(--color-text)]">Scroll Animations</h3>
+            </div>
+            <div class="space-y-3 text-sm text-[var(--color-text-muted)]">
+              <p>1. Enable "Use Scroll Timeline"</p>
+              <p>2. Select the desired animation range</p>
+              <p>3. The animation will trigger on scroll</p>
+              <p class="rounded-md bg-amber-500/10 px-3 py-2 text-amber-600 dark:text-amber-400">
+                ⚠️ Requires Chrome 115+, Edge 115+, or Safari 17.4+
+              </p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="mt-8 rounded-xl bg-[var(--color-bg-alt)] p-6">
+          <div class="mb-3 flex items-center gap-2">
+            <span class="text-2xl">🔧</span>
+            <h3 class="text-lg font-semibold text-[var(--color-text)]">Arbitrary Values</h3>
+          </div>
+          <p class="mb-4 text-sm text-[var(--color-text-muted)]">
+            You can use custom values with bracket notation:
+          </p>
+          <div class="overflow-hidden rounded-lg">
+            <Code code="animate-duration-[2.5s] animate-delay-[300ms]" lang="html" theme="github-dark" />
+          </div>
+        </div>
+      </div>
+      
+      <!-- Examples -->
+      <div class="mt-16">
+        <h2 class="mb-8 text-center text-3xl font-bold text-[var(--color-text)]">
+          Usage Examples
+        </h2>
+        
+        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div class="rounded-xl border border-[var(--color-border)] bg-[var(--color-bg)] p-6 hover:border-[var(--color-primary)] transition-all hover:shadow-xl">
+            <h3 class="mb-4 font-semibold text-[var(--color-text)]">Button Hover</h3>
+            <button class="w-full rounded-lg bg-blue-500 px-4 py-3 font-semibold text-white hover:animate-pulse transition-all">
+              Hover Me
+            </button>
+            <div class="mt-4 overflow-hidden rounded-lg">
+              <Code code="hover:animate-pulse" lang="html" theme="github-dark" />
+            </div>
+          </div>
+          
+          <div class="rounded-xl border border-[var(--color-border)] bg-[var(--color-bg)] p-6 hover:border-[var(--color-primary)] transition-all hover:shadow-xl">
+            <h3 class="mb-4 font-semibold text-[var(--color-text)]">Loading Spinner</h3>
+            <div class="flex justify-center">
+              <div
+                class="h-12 w-12 rounded-full border-4 border-purple-500 border-t-transparent animate-spin"
+              >
+              </div>
+            </div>
+            <div class="mt-4 overflow-hidden rounded-lg">
+              <Code code="animate-spin" lang="html" theme="github-dark" />
+            </div>
+          </div>
+          
+          <div class="rounded-xl border border-[var(--color-border)] bg-[var(--color-bg)] p-6 hover:border-[var(--color-primary)] transition-all hover:shadow-xl">
+            <h3 class="mb-4 font-semibold text-[var(--color-text)]">Alert Badge</h3>
+            <div class="flex justify-center">
+              <div class="rounded-full bg-red-500 px-6 py-2 font-semibold text-white animate-bounce">
+                New!
+              </div>
+            </div>
+            <div class="mt-4 overflow-hidden rounded-lg">
+              <Code code="animate-bounce" lang="html" theme="github-dark" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  
+  <Footer />
+</Layout>

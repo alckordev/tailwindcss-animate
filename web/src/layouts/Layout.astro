@@ -1,0 +1,67 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Tailwind CSS Animate - Animation utilities for Tailwind CSS v4 & v3",
+  description = "The easiest way to add stunning animations to your Tailwind CSS projects. 85+ animations, scroll timelines, and view animations with zero configuration.",
+} = Astro.props;
+
+const siteUrl = Astro.site || "https://tailwindcss-animate.vercel.app";
+const canonicalURL = new URL(Astro.url.pathname, siteUrl);
+const ogImage = new URL("/og.jpg", siteUrl);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL.toString()} />
+    <meta property="og:image" content={ogImage.toString()} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage.toString()} />
+    <meta name="twitter:creator" content="@alckordev" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <!-- Preconnect to external resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Additional meta tags -->
+    <meta name="theme-color" content="#6366f1" />
+    <meta
+      name="keywords"
+      content="tailwindcss, animations, css animations, tailwind plugin, scroll animations, view timeline, animation utilities"
+    />
+    <meta name="author" content="Francisco Luis Rios Vega" />
+
+    <title>{title}</title>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  @import "../styles/global.css";
+</style>

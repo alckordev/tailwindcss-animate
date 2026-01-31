@@ -1,0 +1,145 @@
+@theme default {
+  --animate-expand-horizontally: expand-horizontally
+    var(--default-animation-duration, 1s)
+    var(--default-animation-timing-function, ease)
+    var(--default-animation-delay, 0s) both;
+
+  @keyframes expand-horizontally {
+    from {
+      transform: scaleX(0);
+    }
+    to {
+      transform: scaleX(1);
+    }
+  }
+
+  --animate-expand-vertically: expand-vertically
+    var(--default-animation-duration, 1s)
+    var(--default-animation-timing-function, ease)
+    var(--default-animation-delay, 0s) both;
+
+  @keyframes expand-vertically {
+    from {
+      transform: scaleY(0);
+    }
+    to {
+      transform: scaleY(1);
+    }
+  }
+
+  --animate-contract-horizontally: contract-horizontally
+    var(--default-animation-duration, 1s)
+    var(--default-animation-timing-function, ease)
+    var(--default-animation-delay, 0s) both;
+
+  @keyframes contract-horizontally {
+    from {
+      transform: scaleX(1);
+    }
+    to {
+      transform: scaleX(0);
+    }
+  }
+
+  --animate-contract-vertically: contract-vertically
+    var(--default-animation-duration, 1s)
+    var(--default-animation-timing-function, ease)
+    var(--default-animation-delay, 0s) both;
+
+  @keyframes contract-vertically {
+    from {
+      transform: scaleY(1);
+    }
+    to {
+      transform: scaleY(0);
+    }
+  }
+
+  --animate-bounce-fade-in: bounce-fade-in var(--default-animation-duration, 1s)
+    var(--default-animation-timing-function, ease)
+    var(--default-animation-delay, 0s) both;
+
+  @keyframes bounce-fade-in {
+    0% {
+      opacity: 0;
+      transform: scale(0.3);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+    70% {
+      transform: scale(0.9);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  --animate-pulse-fade-in: pulse-fade-in var(--default-animation-duration, 1s)
+    var(--default-animation-timing-function, ease)
+    var(--default-animation-delay, 0s) both;
+
+  @keyframes pulse-fade-in {
+    0% {
+      opacity: 0;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.5;
+      transform: scale(1.1);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  --animate-slide-up-fade: slide-up-fade var(--default-animation-duration, 0.6s)
+    var(--default-animation-timing-function, ease)
+    var(--default-animation-delay, 0s) both;
+
+  @keyframes slide-up-fade {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+@utility animate-expand-horizontally {
+  animation: var(--animate-expand-horizontally);
+  transform-origin: left;
+}
+
+@utility animate-expand-vertically {
+  animation: var(--animate-expand-vertically);
+  transform-origin: top;
+}
+
+@utility animate-contract-horizontally {
+  animation: var(--animate-contract-horizontally);
+  transform-origin: left;
+}
+
+@utility animate-contract-vertically {
+  animation: var(--animate-contract-vertically);
+  transform-origin: top;
+}
+
+@utility animate-bounce-fade-in {
+  animation: var(--animate-bounce-fade-in);
+}
+
+@utility animate-pulse-fade-in {
+  animation: var(--animate-pulse-fade-in);
+}
+
+@utility animate-slide-up-fade {
+  animation: var(--animate-slide-up-fade);
+}
