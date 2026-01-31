@@ -192,12 +192,24 @@ import AnimationGrid from "../components/AnimationGrid.astro";
         </div>
       </div>
 
-      <div class="mt-16 text-center">
-        <p
-          class="inline-flex items-center gap-2 rounded-lg bg-amber-500/10 border border-amber-500/20 px-4 py-2 text-sm text-amber-600 dark:text-amber-400"
+      <div class="mt-20 flex justify-center">
+        <div
+          class="inline-flex items-center gap-3 rounded-2xl border border-amber-500/30 bg-amber-500/10 px-6 py-4 backdrop-blur"
         >
-          ⚠️ Scroll animations require Chrome 115+, Edge 115+, or Safari 17.4+
-        </p>
+          <svg class="h-6 w-6 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+          <div class="text-left">
+            <p class="text-sm font-semibold text-amber-600 dark:text-amber-400">Browser Support</p>
+            <p class="text-xs text-amber-600/80 dark:text-amber-400/80">
+              Chrome 115+, Edge 115+, Safari 17.4+
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
