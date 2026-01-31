@@ -1,0 +1,114 @@
+---
+interface Props {
+  /** Link URL. If empty string "", renders as span (no link). */
+  href?: string;
+  /** Size: sm (navbar), md (footer). */
+  size?: "sm" | "md";
+  /** Additional classes for the wrapper. */
+  class?: string;
+}
+
+const { href = "/", size = "sm", class: className = "" } = Astro.props;
+const gradientId = `logo-g-${Math.random().toString(36).slice(2, 11)}`;
+const isLink = href !== "";
+
+const sizeClasses = {
+  sm: { wrapper: "text-xl", iconBox: "h-9 w-9", iconSvg: "size-6" },
+  md: { wrapper: "text-2xl", iconBox: "h-11 w-11", iconSvg: "size-7" },
+};
+const s = sizeClasses[size];
+---
+
+{
+  isLink ? (
+    <a
+      href={href}
+      class:list={[
+        "group flex items-center gap-3 font-bold text-(--color-text)",
+        s.wrapper,
+        className,
+      ]}
+      aria-label="Tailwind Animations – Home"
+    >
+      <span
+        class:list={[
+          "flex shrink-0 items-center justify-center rounded-lg bg-(--color-border) ring-1 ring-white/10 transition-colors duration-200 group-hover:ring-white/20",
+          s.iconBox,
+        ]}
+        aria-hidden="true"
+      >
+        <svg fill="none" viewBox="0 0 36 36" class={s.iconSvg} aria-hidden="true">
+          <defs>
+            <linearGradient id={gradientId} x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#3b82f6" />
+              <stop offset="50%" stop-color="#8b5cf6" />
+              <stop offset="100%" stop-color="#d946ef" />
+            </linearGradient>
+          </defs>
+          <path
+            fill={`url(#${gradientId})`}
+            fill-opacity="0.35"
+            d="M3.5,23.77a6.41,6.41,0,0,0,9.33,8.67A11.65,11.65,0,0,1,3.5,23.77Z"
+          />
+          <path
+            fill={`url(#${gradientId})`}
+            fill-opacity="0.75"
+            d="M7.68,14.53a9.6,9.6,0,0,0,13.4,13.7A14.11,14.11,0,0,1,7.68,14.53Z"
+          />
+          <path
+            fill={`url(#${gradientId})`}
+            d="M21.78,2A12.12,12.12,0,1,1,9.66,14.15,12.12,12.12,0,0,1,21.78,2"
+          />
+        </svg>
+      </span>
+      <span class="flex flex-col leading-tight sm:flex-row sm:items-baseline sm:gap-1.5">
+        <span class="text-(--color-text)">Tailwind</span>
+        <span class="bg-linear-to-r from-blue-500 via-violet-500 to-fuchsia-500 bg-clip-text font-bold text-transparent">
+          Animations
+        </span>
+      </span>
+    </a>
+  ) : (
+    <span
+      class:list={["flex items-center gap-3 font-bold text-(--color-text)", s.wrapper, className]}
+    >
+      <span
+        class:list={[
+          "flex shrink-0 items-center justify-center rounded-lg bg-(--color-border) ring-1 ring-white/10",
+          s.iconBox,
+        ]}
+        aria-hidden="true"
+      >
+        <svg fill="none" viewBox="0 0 36 36" class={s.iconSvg} aria-hidden="true">
+          <defs>
+            <linearGradient id={gradientId} x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#3b82f6" />
+              <stop offset="50%" stop-color="#8b5cf6" />
+              <stop offset="100%" stop-color="#d946ef" />
+            </linearGradient>
+          </defs>
+          <path
+            fill={`url(#${gradientId})`}
+            fill-opacity="0.35"
+            d="M3.5,23.77a6.41,6.41,0,0,0,9.33,8.67A11.65,11.65,0,0,1,3.5,23.77Z"
+          />
+          <path
+            fill={`url(#${gradientId})`}
+            fill-opacity="0.75"
+            d="M7.68,14.53a9.6,9.6,0,0,0,13.4,13.7A14.11,14.11,0,0,1,7.68,14.53Z"
+          />
+          <path
+            fill={`url(#${gradientId})`}
+            d="M21.78,2A12.12,12.12,0,1,1,9.66,14.15,12.12,12.12,0,0,1,21.78,2"
+          />
+        </svg>
+      </span>
+      <span class="flex flex-col leading-tight sm:flex-row sm:items-baseline sm:gap-1.5">
+        <span class="text-(--color-text)">Tailwind</span>
+        <span class="bg-linear-to-r from-blue-500 via-violet-500 to-fuchsia-500 bg-clip-text font-bold text-transparent">
+          Animations
+        </span>
+      </span>
+    </span>
+  )
+}

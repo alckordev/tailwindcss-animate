@@ -1,5 +1,5 @@
 ---
-
+import Logo from "./Logo.astro";
 ---
 
 <nav
@@ -9,35 +9,7 @@
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="flex h-16 items-center justify-between">
       <div class="flex items-center gap-8">
-        <a
-          href="/"
-          class="group flex items-center gap-3 text-xl font-bold text-(--color-text) transition-transform duration-200 hover:scale-[1.02]"
-          aria-label="Tailwind Animations – Home"
-        >
-          <span
-            class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-(--color-border) ring-1 ring-white/10 transition-colors duration-200 group-hover:bg-(--color-primary)/20 group-hover:ring-(--color-primary)/40"
-            aria-hidden="true"
-          >
-            <svg fill="transparent" viewBox="0 0 36 36" class="size-6">
-              <path
-                class="fill-(--color-primary)/35"
-                d="M3.5,23.77a6.41,6.41,0,0,0,9.33,8.67A11.65,11.65,0,0,1,3.5,23.77Z"></path>
-              <path
-                class="fill-(--color-primary)/75"
-                d="M7.68,14.53a9.6,9.6,0,0,0,13.4,13.7A14.11,14.11,0,0,1,7.68,14.53Z"></path>
-              <path
-                class="fill-(--color-primary)"
-                d="M21.78,2A12.12,12.12,0,1,1,9.66,14.15,12.12,12.12,0,0,1,21.78,2"></path>
-            </svg>
-          </span>
-          <span class="flex flex-col leading-tight sm:flex-row sm:items-baseline sm:gap-1.5">
-            <span class="text-(--color-text)">Tailwind</span>
-            <span
-              class="bg-linear-to-r from-blue-500 via-violet-500 to-fuchsia-500 bg-clip-text font-semibold text-transparent"
-              >Animations</span
-            >
-          </span>
-        </a>
+        <Logo href="/" size="sm" />
       </div>
 
       <!-- Desktop links -->
