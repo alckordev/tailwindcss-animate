@@ -33,7 +33,7 @@ const delays = [
         <label class="text-sm font-medium text-(--color-text)">Duration</label>
         <select
           id="duration-select"
-          class="rounded-md border border-(--color-border) bg-(--color-bg-alt) px-3 py-1.5 text-sm text-(--color-text)"
+          class="cursor-pointer rounded-lg border border-(--color-border) bg-(--color-bg-alt) px-4 py-2 text-sm font-medium text-(--color-text) transition-all hover:border-(--color-primary) focus:border-(--color-primary) focus:outline-none focus:ring-2 focus:ring-(--color-primary)/20 appearance-none bg-[url('data:image/svg+xml;charset=utf-8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 fill=%27none%27 viewBox=%270 0 20 20%27%3E%3Cpath stroke=%27%236b7280%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27 stroke-width=%271.5%27 d=%27m6 8 4 4 4-4%27/%3E%3C/svg%3E')] bg-size-[1.25rem] bg-position-[center_right_0.5rem] bg-no-repeat pr-10"
         >
           {
             durations.map((d) => (
@@ -50,7 +50,7 @@ const delays = [
         <label class="text-sm font-medium text-(--color-text)">Delay</label>
         <select
           id="delay-select"
-          class="rounded-md border border-(--color-border) bg-(--color-bg-alt) px-3 py-1.5 text-sm text-(--color-text)"
+          class="cursor-pointer rounded-lg border border-(--color-border) bg-(--color-bg-alt) px-4 py-2 text-sm font-medium text-(--color-text) transition-all hover:border-(--color-primary) focus:border-(--color-primary) focus:outline-none focus:ring-2 focus:ring-(--color-primary)/20 appearance-none bg-[url('data:image/svg+xml;charset=utf-8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 fill=%27none%27 viewBox=%270 0 20 20%27%3E%3Cpath stroke=%27%236b7280%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27 stroke-width=%271.5%27 d=%27m6 8 4 4 4-4%27/%3E%3C/svg%3E')] bg-size-[1.25rem] bg-position-[center_right_0.5rem] bg-no-repeat pr-10"
         >
           {delays.map((d) => <option value={d.value}>{d.label}</option>)}
         </select>
