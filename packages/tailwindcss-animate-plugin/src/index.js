@@ -7,8 +7,8 @@ module.exports = plugin(
       // Attention Seekers
       ".animate-flash": { animation: "flash 1s ease 0s both" },
       ".animate-head-shake": { animation: "head-shake 1s ease-in-out 0s both" },
-      ".animate-heart-beat": {
-        animation: "heart-beat 1.3s ease-in-out 0s both",
+      ".animate-heartbeat": {
+        animation: "heartbeat 0.6s ease-out 0s both",
       },
       ".animate-jelly": {
         animation: "jelly 1s ease 0s both",
@@ -28,15 +28,15 @@ module.exports = plugin(
 
       // New in v2.0
       ".animate-blurred-fade-in": {
-        animation: "blurred-fade-in 1s ease 0s both",
+        animation: "blurred-fade-in 0.9s ease-in-out 0s both",
       },
       ".animate-blink": { animation: "blink 1s step-end 0s both" },
-      ".animate-dancing": { animation: "dancing 1.5s ease-in-out 0s infinite" },
+      ".animate-dancing": { animation: "dancing 1s ease-in-out 0s both" },
       ".animate-impulse-rotation-left": {
-        animation: "impulse-rotation-left 0.8s ease 0s both",
+        animation: "impulse-rotation-left 1s ease-in-out 0s both",
       },
       ".animate-impulse-rotation-right": {
-        animation: "impulse-rotation-right 0.8s ease 0s both",
+        animation: "impulse-rotation-right 1s ease-in-out 0s both",
       },
       ".animate-jiggle": { animation: "jiggle 0.6s ease 0s both" },
       ".animate-pop": {
@@ -131,19 +131,33 @@ module.exports = plugin(
 
       // Fading Entrances
       ".animate-fade-in": { animation: "fade-in 1s ease 0s both" },
-      ".animate-fade-in-down": { animation: "fade-in-down 1s ease 0s both" },
-      ".animate-fade-in-start": { animation: "fade-in-start 1s ease 0s both" },
-      ".animate-fade-in-end": { animation: "fade-in-end 1s ease 0s both" },
-      ".animate-fade-in-up": { animation: "fade-in-up 1s ease 0s both" },
+      ".animate-fade-in-down": {
+        animation: "fade-in-down 0.6s ease-in-out 0s both",
+      },
+      ".animate-fade-in-start": {
+        animation: "fade-in-start 0.6s ease-in-out 0s both",
+      },
+      ".animate-fade-in-end": {
+        animation: "fade-in-end 0.6s ease-in-out 0s both",
+      },
+      ".animate-fade-in-up": {
+        animation: "fade-in-up 0.6s ease-in-out 0s both",
+      },
 
       // Fading Exits
       ".animate-fade-out": { animation: "fade-out 1s ease 0s both" },
-      ".animate-fade-out-down": { animation: "fade-out-down 1s ease 0s both" },
-      ".animate-fade-out-start": {
-        animation: "fade-out-start 1s ease 0s both",
+      ".animate-fade-out-down": {
+        animation: "fade-out-down 0.6s ease-out 0s both",
       },
-      ".animate-fade-out-end": { animation: "fade-out-end 1s ease 0s both" },
-      ".animate-fade-out-up": { animation: "fade-out-up 1s ease 0s both" },
+      ".animate-fade-out-start": {
+        animation: "fade-out-start 0.6s ease-out 0s both",
+      },
+      ".animate-fade-out-end": {
+        animation: "fade-out-end 0.6s ease-out 0s both",
+      },
+      ".animate-fade-out-up": {
+        animation: "fade-out-up 0.6s ease-out 0s both",
+      },
 
       // Flippers
       ".animate-flip": {
