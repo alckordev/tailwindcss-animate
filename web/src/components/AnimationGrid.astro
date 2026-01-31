@@ -2,7 +2,7 @@
 import { animations } from "../data/animations";
 
 const durations = [
-  { value: "100", label: "default" },
+  { value: "100", label: "100ms" },
   { value: "200", label: "200ms" },
   { value: "300", label: "300ms" },
   { value: "500", label: "500ms" },
@@ -35,7 +35,13 @@ const delays = [
           id="duration-select"
           class="rounded-md border border-(--color-border) bg-(--color-bg-alt) px-3 py-1.5 text-sm text-(--color-text)"
         >
-          {durations.map((d) => <option value={d.value}>{d.label}</option>)}
+          {
+            durations.map((d) => (
+              <option value={d.value} selected={d.value === "1000"}>
+                {d.label}
+              </option>
+            ))
+          }
         </select>
       </div>
 
@@ -53,7 +59,7 @@ const delays = [
       <!-- Infinite Loop Toggle -->
       <button
         id="infinite-toggle"
-        class="flex items-center gap-2 rounded-md border border-(--color-border) bg-(--color-bg-alt) px-4 py-2 text-sm font-medium text-(--color-text) hover:border-(--color-primary) transition-colors"
+        class="ml-auto flex items-center gap-2 rounded-md border border-(--color-border) bg-(--color-bg-alt) px-4 py-2 text-sm font-medium text-(--color-text) hover:border-(--color-primary) transition-colors"
         data-active="false"
       >
         <svg
@@ -129,7 +135,7 @@ const delays = [
 </div>
 
 <script is:inline>
-  let duration = "";
+  let duration = "1000";
   let delay = "";
   let showAll = false;
   let isInfinite = false;
