@@ -24,7 +24,9 @@ const delays = [
 
 <div data-animation-grid>
   <!-- Controls -->
-  <div class="mb-8 rounded-xl border border-(--color-border) bg-(--color-bg) p-6">
+  <div
+    class="mb-8 rounded-xl border border-(--color-border) bg-(--color-bg) p-6 animate-fade-in-up animate-delay-600"
+  >
     <div class="flex flex-wrap items-center gap-6">
       <!-- Duration -->
       <div class="flex items-center gap-3">
@@ -119,7 +121,7 @@ const delays = [
     noAniElement?.classList.add("hidden");
 
     grid.innerHTML = filteredAnimations
-      .map((anim) => {
+      .map((anim, index) => {
         const classes = [
           anim.class,
           duration && `animate-duration-${duration}`,
@@ -130,9 +132,10 @@ const delays = [
 
         return `
         <div
-          class="group relative overflow-hidden rounded-xl border border-(--color-border) bg-(--color-bg) p-6 transition-all hover:border-(--color-primary) hover:shadow-xl"
+          class="group relative overflow-hidden rounded-xl border border-(--color-border) bg-(--color-bg) p-6 transition-all hover:border-(--color-primary) hover:shadow-xl animate-fade-in-up"
           data-animation-card
           data-animation-key="${anim.class}"
+          style="animation-delay: ${1000 + index * 50}ms; animation-fill-mode: both;"
         >
           ${
             anim.description
@@ -154,7 +157,7 @@ const delays = [
             <h3 class="font-mono text-sm font-semibold text-(--color-text)">
               ${anim.name}
             </h3>
-            <code class="block rounded-md bg-(--color-bg-alt) px-3 py-1.5 text-xs text-(--color-text-muted) font-mono">
+            <code class="block rounded-md bg-(--color-bg-alt) py-1.5 text-xs text-(--color-text-muted) font-mono">
               ${anim.class}
             </code>
           </div>
