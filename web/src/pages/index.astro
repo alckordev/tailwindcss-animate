@@ -101,10 +101,12 @@ import AnimationGrid from "../components/AnimationGrid.astro";
               <p class="mb-4 text-sm text-(--color-text-muted)">
                 Scales in as the element enters the viewport.
               </p>
-              <div
-                class="overflow-hidden rounded-lg border border-(--color-border) bg-(--color-bg-alt)"
-              >
-                <Code code="timeline-view animate-zoom-in animate-range-cover" lang="html" />
+              <div class="rounded-lg border border-[#1f2937] bg-[#0d1117] overflow-hidden">
+                <Code
+                  code="timeline-view animate-zoom-in animate-range-cover"
+                  lang="css"
+                  class="text-sm! border-0! text-start p-2"
+                />
               </div>
             </div>
             <div class="flex items-center justify-center">
@@ -130,23 +132,35 @@ import AnimationGrid from "../components/AnimationGrid.astro";
               <p class="mb-4 text-sm text-(--color-text-muted)">
                 Control when the animation runs: gradual, moderate, brisk, or rapid.
               </p>
-              <div class="flex flex-wrap gap-2">
-                <code
-                  class="rounded border border-(--color-border) bg-(--color-bg-alt) px-2 py-1 font-mono text-xs text-(--color-text)"
-                  >animate-range-gradual</code
-                >
-                <code
-                  class="rounded border border-(--color-border) bg-(--color-bg-alt) px-2 py-1 font-mono text-xs text-(--color-text)"
-                  >animate-range-moderate</code
-                >
-                <code
-                  class="rounded border border-(--color-border) bg-(--color-bg-alt) px-2 py-1 font-mono text-xs text-(--color-text)"
-                  >animate-range-brisk</code
-                >
-                <code
-                  class="rounded border border-(--color-border) bg-(--color-bg-alt) px-2 py-1 font-mono text-xs text-(--color-text)"
-                  >animate-range-rapid</code
-                >
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                <div class="rounded-lg border border-[#1f2937] bg-[#0d1117] overflow-hidden">
+                  <Code
+                    code="animate-range-gradual"
+                    lang="css"
+                    class="text-sm! border-0! text-start p-2"
+                  />
+                </div>
+                <div class="rounded-lg border border-[#1f2937] bg-[#0d1117] overflow-hidden">
+                  <Code
+                    code="animate-range-moderate"
+                    lang="css"
+                    class="text-sm! border-0! text-start p-2"
+                  />
+                </div>
+                <div class="rounded-lg border border-[#1f2937] bg-[#0d1117] overflow-hidden">
+                  <Code
+                    code="animate-range-brisk"
+                    lang="css"
+                    class="text-sm! border-0! text-start p-2"
+                  />
+                </div>
+                <div class="rounded-lg border border-[#1f2937] bg-[#0d1117] overflow-hidden">
+                  <Code
+                    code="animate-range-rapid"
+                    lang="css"
+                    class="text-sm! border-0! text-start p-2"
+                  />
+                </div>
               </div>
             </div>
             <div class="grid grid-cols-2 gap-3">
@@ -187,12 +201,11 @@ import AnimationGrid from "../components/AnimationGrid.astro";
               <p class="mb-4 text-sm text-(--color-text-muted)">
                 Enters from the right with a custom range.
               </p>
-              <div
-                class="overflow-hidden rounded-lg border border-(--color-border) bg-(--color-bg-alt)"
-              >
+              <div class="rounded-lg border border-[#1f2937] bg-[#0d1117] overflow-hidden">
                 <Code
                   code="timeline-view animate-slide-in-end animate-range-[entry_5%_contain_20%]"
-                  lang="html"
+                  lang="css"
+                  class="text-sm! border-0! text-start p-2"
                 />
               </div>
             </div>
@@ -217,12 +230,11 @@ import AnimationGrid from "../components/AnimationGrid.astro";
                 >04 — Slide from start</span
               >
               <p class="mb-4 text-sm text-(--color-text-muted)">Enters from the left.</p>
-              <div
-                class="overflow-hidden rounded-lg border border-(--color-border) bg-(--color-bg-alt)"
-              >
+              <div class="rounded-lg border border-[#1f2937] bg-[#0d1117] overflow-hidden">
                 <Code
                   code="timeline-view animate-slide-in-start animate-range-[entry_5%_contain_20%]"
-                  lang="html"
+                  lang="css"
+                  class="text-sm! border-0! text-start p-2"
                 />
               </div>
             </div>
@@ -249,12 +261,11 @@ import AnimationGrid from "../components/AnimationGrid.astro";
               <p class="mb-4 text-sm text-(--color-text-muted)">
                 Opacity + blur for a soft reveal.
               </p>
-              <div
-                class="overflow-hidden rounded-lg border border-(--color-border) bg-(--color-bg-alt)"
-              >
+              <div class="rounded-lg border border-[#1f2937] bg-[#0d1117] overflow-hidden">
                 <Code
                   code="timeline-view animate-blurred-fade-in animate-range-[entry_10%_contain_30%]"
-                  lang="html"
+                  lang="css"
+                  class="text-sm! border-0! text-start p-2"
                 />
               </div>
             </div>
