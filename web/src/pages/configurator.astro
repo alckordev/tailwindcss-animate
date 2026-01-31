@@ -35,55 +35,136 @@ import ConfiguratorWidget from "../components/Configurator.astro";
       <ConfiguratorWidget />
 
       <!-- Usage Guide -->
-      <div class="card-modern mt-16">
-        <h2 class="mb-8 text-2xl font-bold text-(--color-text)">Usage Guide</h2>
+      <section class="card-modern mt-16" aria-labelledby="usage-guide-title">
+        <header class="mb-10">
+          <p class="label-modern mb-2">Documentation</p>
+          <h2 id="usage-guide-title" class="text-2xl font-bold text-(--color-text) sm:text-3xl">
+            Usage Guide
+          </h2>
+          <p class="mt-2 max-w-2xl text-sm text-(--color-text-muted)">
+            How to get the most out of the configurator: basic playback, scroll-driven animations,
+            and custom values.
+          </p>
+        </header>
 
         <div class="grid gap-8 md:grid-cols-2">
-          <div>
-            <div class="mb-3 flex items-center gap-2">
-              <span class="text-2xl">🎬</span>
+          <article class="rounded-xl border border-(--color-border) bg-(--color-bg-alt)/50 p-6">
+            <div class="mb-4 flex items-center gap-3">
+              <span
+                class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-(--color-primary)/15 text-(--color-primary)"
+                aria-hidden="true"
+              >
+                <svg
+                  class="h-5 w-5"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  ><path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"
+                  ></path><path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg
+                >
+              </span>
               <h3 class="text-lg font-semibold text-(--color-text)">Basic Animations</h3>
             </div>
-            <div class="space-y-3 text-sm text-(--color-text-muted)">
-              <p>1. Select an animation from the dropdown menu</p>
-              <p>2. Adjust duration, delay and other properties</p>
-              <p>3. Copy the generated code and use it in your project</p>
-            </div>
-          </div>
+            <ol class="usage-guide-steps space-y-3 text-sm text-(--color-text-muted)">
+              <li>Select an animation from the dropdown</li>
+              <li>Adjust duration and delay if needed</li>
+              <li>Copy the generated class and paste it into your markup</li>
+            </ol>
+          </article>
 
-          <div>
-            <div class="mb-3 flex items-center gap-2">
-              <span class="text-2xl">📜</span>
-              <h3 class="text-lg font-semibold text-(--color-text)">Scroll Animations</h3>
+          <article class="rounded-xl border border-(--color-border) bg-(--color-bg-alt)/50 p-6">
+            <div class="mb-4 flex items-center gap-3">
+              <span
+                class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-violet-500/15 text-violet-400"
+                aria-hidden="true"
+              >
+                <svg
+                  class="h-5 w-5"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  ><path stroke-linecap="round" stroke-linejoin="round" d="M7 16V4m0 0L3 8m4-4l4 4"
+                  ></path><path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M17 8v12m0 0l4-4m-4 4l-4-4"></path></svg
+                >
+              </span>
+              <h3 class="text-lg font-semibold text-(--color-text)">Scroll timeline</h3>
             </div>
-            <div class="space-y-3 text-sm text-(--color-text-muted)">
-              <p>1. Enable "Use Scroll Timeline"</p>
-              <p>2. Select the desired animation range</p>
-              <p>3. The animation will trigger on scroll</p>
-              <p class="rounded-md bg-amber-500/10 px-3 py-2 text-amber-600 dark:text-amber-400">
-                ⚠️ Requires Chrome 115+, Edge 115+, or Safari 17.4+
-              </p>
+            <ol class="usage-guide-steps space-y-3 text-sm text-(--color-text-muted)">
+              <li>
+                Enable <strong class="text-(--color-text)">Scroll timeline</strong> and pick a range (e.g.
+                gradual, rapid)
+              </li>
+              <li>Scroll inside the preview to see the animation run with scroll progress</li>
+              <li>
+                Copy the <code
+                  class="rounded border border-(--color-border) bg-(--color-bg) px-1.5 py-0.5 font-mono text-xs text-(--color-primary)"
+                  >timeline-view</code
+                > classes
+              </li>
+            </ol>
+            <div
+              class="mt-4 inline-flex items-center gap-3 rounded-xl border border-amber-500/30 bg-amber-500/10 px-4 py-2"
+            >
+              <svg
+                class="h-5 w-5 text-amber-500"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+              <span class="text-sm font-medium text-amber-600 dark:text-amber-400"
+                >Chrome 115+, Edge 115+, Safari 17.4+</span
+              >
             </div>
-          </div>
+          </article>
         </div>
 
-        <div class="card-modern mt-8 p-6">
-          <div class="mb-3 flex items-center gap-2">
-            <span class="text-2xl">🔧</span>
-            <h3 class="text-lg font-semibold text-(--color-text)">Arbitrary Values</h3>
+        <div class="mt-8 rounded-xl border border-(--color-border) bg-(--color-bg-alt)/30 p-6">
+          <div class="mb-3 flex items-center gap-3">
+            <span
+              class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-(--color-border) text-(--color-text-muted)"
+              aria-hidden="true"
+            >
+              <svg
+                class="h-5 w-5"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                ><path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg
+              >
+            </span>
+            <h3 class="text-lg font-semibold text-(--color-text)">Arbitrary values</h3>
           </div>
           <p class="mb-4 text-sm text-(--color-text-muted)">
-            You can use custom values with bracket notation:
+            Use bracket notation for custom duration or delay in your project:
           </p>
-          <div class="overflow-hidden rounded-lg">
-            <Code
-              code="animate-duration-[2.5s] animate-delay-300"
-              lang="html"
-              theme="github-dark"
-            />
-          </div>
+          <code
+            class="animation-grid-code rounded-lg border border-(--color-border) bg-[#0c0c0f] px-3 py-2 text-left font-mono text-xs text-[#a5b4fc]"
+          >
+            animate-duration-[2.5s] animate-delay-300
+          </code>
         </div>
-      </div>
+      </section>
 
       <!-- Examples -->
       <div class="mt-16">
@@ -141,3 +222,13 @@ import ConfiguratorWidget from "../components/Configurator.astro";
 
   <Footer />
 </Layout>
+
+<style>
+  .usage-guide-steps {
+    list-style: decimal;
+    padding-left: 1.25rem;
+  }
+  .usage-guide-steps li {
+    padding-left: 0.25rem;
+  }
+</style>
