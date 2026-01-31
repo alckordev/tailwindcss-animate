@@ -71,65 +71,94 @@ const packageManagers = [
     }
   </div>
 
-  <!-- Install Command -->
-  <div class="mb-6 overflow-hidden rounded-lg border border-[#1f2937] bg-[#0d1117]">
-    <div class="flex items-center justify-between gap-4 p-4">
-      <div class="flex-1 overflow-hidden">
-        {
-          packageManagers.map((pm, pmIdx) =>
-            ["v4", "v3"].map((version) => (
-              <div
-                data-command-block={`${pm.id}-${version}`}
-                class={pmIdx === 0 && version === "v4" ? "" : "hidden"}
-              >
-                <Code
-                  code={version === "v4" ? pm.v4Command : pm.v3Command}
-                  lang="bash"
-                  class="text-sm! border-0! text-start"
-                />
-              </div>
-            ))
-          )
-        }
-      </div>
-      <button
-        id="copy-install-btn"
-        class="ml-4 shrink-0 rounded-md bg-(--color-primary) px-3 py-1 text-xs font-medium text-white hover:bg-(--color-primary-hover) hover:cursor-pointer"
-      >
-        Copy
+  <!-- Install Command (estilo terminal) -->
+  <div class="terminal-output mb-6">
+    <div class="terminal-header">
+      <span class="terminal-dots">
+        <span></span><span></span><span></span>
+      </span>
+      <span class="terminal-title">install</span>
+      <button type="button" id="copy-install-btn" class="terminal-copy">
+        <svg
+          width="14"
+          height="14"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          ><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path
+            d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg
+        >
+        <span class="terminal-copy-text">Copy</span>
       </button>
+    </div>
+    <div class="terminal-body">
+      {
+        packageManagers.map((pm, pmIdx) =>
+          ["v4", "v3"].map((version) => (
+            <div
+              data-command-block={`${pm.id}-${version}`}
+              class={pmIdx === 0 && version === "v4" ? "" : "hidden"}
+            >
+              <Code
+                code={version === "v4" ? pm.v4Command : pm.v3Command}
+                lang="bash"
+                class="text-sm! border-0! text-start [&_pre]:bg-transparent! [&_pre]:p-0!"
+              />
+            </div>
+          ))
+        )
+      }
     </div>
   </div>
 
-  <!-- Usage -->
-  <div class="rounded-lg border border-[#1f2937] bg-[#0d1117]">
-    <div class="border-b border-[#1f2937]">
-      <h3 class="text-lg font-semibold text-(--color-text) px-4 py-3">How to use</h3>
+  <!-- Usage (estilo terminal) -->
+  <div class="terminal-output">
+    <div class="terminal-header">
+      <span class="terminal-dots">
+        <span></span><span></span><span></span>
+      </span>
+      <span class="terminal-title">usage</span>
+      <button type="button" id="copy-usage-btn" class="terminal-copy">
+        <svg
+          width="14"
+          height="14"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          ><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path
+            d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg
+        >
+        <span class="terminal-copy-text">Copy</span>
+      </button>
     </div>
-    <div class="flex items-center justify-between gap-4 p-4">
-      <div class="flex-1 overflow-hidden">
-        <!-- v4 Usage -->
-        <div data-usage-block="v4">
-          <Code
-            code={`@import 'tailwindcss';
+    <div class="terminal-body">
+      <!-- v4 Usage -->
+      <div data-usage-block="v4">
+        <Code
+          code={`@import 'tailwindcss';
 @import '@iscodex/tailwindcss-animate';`}
-            lang="css"
-            class="text-sm! border-0! text-start"
-          />
-        </div>
-        <!-- v3 Usage -->
-        <div data-usage-block="v3" class="hidden">
-          <Code
-            code={`// tailwind.config.js
+          lang="css"
+          class="text-sm! border-0! text-start [&_pre]:bg-transparent! [&_pre]:p-0!"
+        />
+      </div>
+      <!-- v3 Usage -->
+      <div data-usage-block="v3" class="hidden">
+        <Code
+          code={`// tailwind.config.js
 module.exports = {
   plugins: [
     require('@iscodex/tailwindcss-animate-plugin'),
   ],
 };`}
-            lang="javascript"
-            class="text-sm! border-0! text-start"
-          />
-        </div>
+          lang="javascript"
+          class="text-sm! border-0! text-start [&_pre]:bg-transparent! [&_pre]:p-0!"
+        />
       </div>
     </div>
   </div>
@@ -212,17 +241,35 @@ module.exports = {
     });
   });
 
-  // Copy button
-  const copyBtn = document.getElementById("copy-install-btn");
-  if (copyBtn) {
-    copyBtn.addEventListener("click", () => {
+  // Copy install button
+  const copyInstallBtn = document.getElementById("copy-install-btn");
+  const copyInstallText = copyInstallBtn?.querySelector(".terminal-copy-text");
+  if (copyInstallBtn && copyInstallText) {
+    copyInstallBtn.addEventListener("click", () => {
       const activeBlock = document.querySelector(`[data-command-block="${activePM}-${activeTab}"]`);
       if (activeBlock) {
         const codeText = activeBlock.textContent?.trim() || "";
         navigator.clipboard.writeText(codeText);
-        copyBtn.textContent = "Copied!";
+        copyInstallText.textContent = "Copied!";
         setTimeout(() => {
-          copyBtn.textContent = "Copy";
+          copyInstallText.textContent = "Copy";
+        }, 2000);
+      }
+    });
+  }
+
+  // Copy usage button
+  const copyUsageBtn = document.getElementById("copy-usage-btn");
+  const copyUsageText = copyUsageBtn?.querySelector(".terminal-copy-text");
+  if (copyUsageBtn && copyUsageText) {
+    copyUsageBtn.addEventListener("click", () => {
+      const activeUsage = document.querySelector(`[data-usage-block="${activeTab}"]`);
+      if (activeUsage) {
+        const codeText = activeUsage.textContent?.trim() || "";
+        navigator.clipboard.writeText(codeText);
+        copyUsageText.textContent = "Copied!";
+        setTimeout(() => {
+          copyUsageText.textContent = "Copy";
         }, 2000);
       }
     });
