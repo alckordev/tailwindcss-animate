@@ -4,7 +4,7 @@ import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
 import BackgroundPattern from "../components/BackgroundPattern.astro";
-import { Configurator } from "../components/Configurator";
+import ConfiguratorWidget from "../components/Configurator.astro";
 ---
 
 <Layout
@@ -13,12 +13,14 @@ import { Configurator } from "../components/Configurator";
 >
   <BackgroundPattern />
   <Navbar />
-  
-  <main class="min-h-screen bg-(--color-bg) py-12">
+
+  <main class="min-h-screen py-12">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <!-- Header -->
       <div class="mb-12 text-center">
-        <div class="mb-4 inline-flex items-center gap-2 rounded-full border border-(--color-primary)/20 bg-(--color-primary)/10 px-4 py-2 text-sm font-medium text-(--color-primary)">
+        <div
+          class="mb-4 inline-flex items-center gap-2 rounded-full border border-(--color-primary)/20 bg-(--color-primary)/10 px-4 py-2 text-sm font-medium text-(--color-primary)"
+        >
           🎨 Interactive Tool
         </div>
         <h1 class="mb-4 text-4xl font-bold text-(--color-text) sm:text-5xl">
@@ -28,16 +30,14 @@ import { Configurator } from "../components/Configurator";
           Customize and preview animations in real-time
         </p>
       </div>
-      
+
       <!-- Configurator -->
-      <Configurator client:load />
-      
+      <ConfiguratorWidget />
+
       <!-- Usage Guide -->
       <div class="mt-16 rounded-2xl border border-(--color-border) bg-(--color-bg) p-8 shadow-xl">
-        <h2 class="mb-8 text-2xl font-bold text-(--color-text)">
-          Usage Guide
-        </h2>
-        
+        <h2 class="mb-8 text-2xl font-bold text-(--color-text)">Usage Guide</h2>
+
         <div class="grid gap-8 md:grid-cols-2">
           <div>
             <div class="mb-3 flex items-center gap-2">
@@ -50,7 +50,7 @@ import { Configurator } from "../components/Configurator";
               <p>3. Copy the generated code and use it in your project</p>
             </div>
           </div>
-          
+
           <div>
             <div class="mb-3 flex items-center gap-2">
               <span class="text-2xl">📜</span>
@@ -66,7 +66,7 @@ import { Configurator } from "../components/Configurator";
             </div>
           </div>
         </div>
-        
+
         <div class="mt-8 rounded-xl bg-(--color-bg-alt) p-6">
           <div class="mb-3 flex items-center gap-2">
             <span class="text-2xl">🔧</span>
@@ -76,29 +76,37 @@ import { Configurator } from "../components/Configurator";
             You can use custom values with bracket notation:
           </p>
           <div class="overflow-hidden rounded-lg">
-            <Code code="animate-duration-[2.5s] animate-delay-300" lang="html" theme="github-dark" />
+            <Code
+              code="animate-duration-[2.5s] animate-delay-300"
+              lang="html"
+              theme="github-dark"
+            />
           </div>
         </div>
       </div>
-      
+
       <!-- Examples -->
       <div class="mt-16">
-        <h2 class="mb-8 text-center text-3xl font-bold text-(--color-text)">
-          Usage Examples
-        </h2>
-        
+        <h2 class="mb-8 text-center text-3xl font-bold text-(--color-text)">Usage Examples</h2>
+
         <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          <div class="rounded-xl border border-(--color-border) bg-(--color-bg) p-6 hover:border-(--color-primary) transition-all hover:shadow-xl">
+          <div
+            class="rounded-xl border border-(--color-border) bg-(--color-bg) p-6 hover:border-(--color-primary) transition-all hover:shadow-xl"
+          >
             <h3 class="mb-4 font-semibold text-(--color-text)">Button Hover</h3>
-            <button class="w-full rounded-lg bg-blue-500 px-4 py-3 font-semibold text-white hover:animate-pulse transition-all">
+            <button
+              class="w-full rounded-lg bg-blue-500 px-4 py-3 font-semibold text-white hover:animate-pulse transition-all"
+            >
               Hover Me
             </button>
             <div class="mt-4 overflow-hidden rounded-lg">
               <Code code="hover:animate-pulse" lang="html" theme="github-dark" />
             </div>
           </div>
-          
-          <div class="rounded-xl border border-(--color-border) bg-(--color-bg) p-6 hover:border-(--color-primary) transition-all hover:shadow-xl">
+
+          <div
+            class="rounded-xl border border-(--color-border) bg-(--color-bg) p-6 hover:border-(--color-primary) transition-all hover:shadow-xl"
+          >
             <h3 class="mb-4 font-semibold text-(--color-text)">Loading Spinner</h3>
             <div class="flex justify-center">
               <div
@@ -110,11 +118,15 @@ import { Configurator } from "../components/Configurator";
               <Code code="animate-spin" lang="html" theme="github-dark" />
             </div>
           </div>
-          
-          <div class="rounded-xl border border-(--color-border) bg-(--color-bg) p-6 hover:border-(--color-primary) transition-all hover:shadow-xl">
+
+          <div
+            class="rounded-xl border border-(--color-border) bg-(--color-bg) p-6 hover:border-(--color-primary) transition-all hover:shadow-xl"
+          >
             <h3 class="mb-4 font-semibold text-(--color-text)">Alert Badge</h3>
             <div class="flex justify-center">
-              <div class="rounded-full bg-red-500 px-6 py-2 font-semibold text-white animate-bounce">
+              <div
+                class="rounded-full bg-red-500 px-6 py-2 font-semibold text-white animate-bounce"
+              >
                 New!
               </div>
             </div>
@@ -126,6 +138,6 @@ import { Configurator } from "../components/Configurator";
       </div>
     </div>
   </main>
-  
+
   <Footer />
 </Layout>
