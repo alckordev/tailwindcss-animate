@@ -34,10 +34,9 @@ Thumbs.db
 .temp/
 tmp/
 
-# Package manager
+# Package manager (keep pnpm-lock.yaml for reproducible installs and CI)
 package-lock.json
 yarn.lock
-pnpm-lock.yaml
 
 # Old web folder (backup)
 web-old/
