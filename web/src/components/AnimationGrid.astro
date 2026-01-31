@@ -2,7 +2,7 @@
 import { animations } from "../data/animations";
 
 const durations = [
-  { value: "", label: "100ms" },
+  { value: "", label: "Default" },
   { value: "200", label: "200ms" },
   { value: "300", label: "300ms" },
   { value: "500", label: "500ms" },
@@ -13,7 +13,7 @@ const durations = [
 ];
 
 const delays = [
-  { value: "", label: "none" },
+  { value: "", label: "None" },
   { value: "100", label: "100ms" },
   { value: "200", label: "200ms" },
   { value: "300", label: "300ms" },
@@ -23,65 +23,36 @@ const delays = [
 ---
 
 <div data-animation-grid>
-  <!-- Controls -->
   <div
-    class="mb-8 rounded-xl border border-(--color-border) bg-(--color-bg) p-6 animate-fade-in-up animate-delay-600"
+    class="animation-grid-controls mb-8 rounded-xl border border-(--color-border) bg-(--color-bg) p-6 animate-fade-in-up animate-delay-600"
   >
     <div class="flex flex-wrap items-center gap-6">
       <!-- Duration -->
-      <div class="flex items-center gap-3">
-        <label class="text-sm font-medium text-(--color-text)">Duration</label>
-        <div class="relative">
-          <select
-            id="duration-select"
-            class="cursor-pointer rounded-lg border border-(--color-border) bg-(--color-bg-alt) px-4 py-2 pr-10 text-sm font-medium text-(--color-text) transition-all hover:border-(--color-primary) focus:border-(--color-primary) focus:outline-none focus:ring-2 focus:ring-(--color-primary)/20 appearance-none"
-          >
-            {
-              durations.map((d) => (
-                <option value={d.value} selected={d.value === "1000"}>
-                  {d.label}
-                </option>
-              ))
-            }
-          </select>
-          <svg
-            class="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-(--color-text-muted)"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"
-            ></path>
-          </svg>
-        </div>
+      <div class="animation-grid-field flex flex-col gap-1.5 sm:flex-row sm:items-center sm:gap-3">
+        <label for="duration-select" class="animation-grid-label">Duration</label>
+        <select id="duration-select" class="animation-grid-select">
+          {
+            durations.map((d) => (
+              <option value={d.value} selected={d.value === "1000"}>
+                {d.label}
+              </option>
+            ))
+          }
+        </select>
       </div>
 
       <!-- Delay -->
-      <div class="flex items-center gap-3">
-        <label class="text-sm font-medium text-(--color-text)">Delay</label>
-        <div class="relative">
-          <select
-            id="delay-select"
-            class="cursor-pointer rounded-lg border border-(--color-border) bg-(--color-bg-alt) px-4 py-2 pr-10 text-sm font-medium text-(--color-text) transition-all hover:border-(--color-primary) focus:border-(--color-primary) focus:outline-none focus:ring-2 focus:ring-(--color-primary)/20 appearance-none"
-          >
-            {delays.map((d) => <option value={d.value}>{d.label}</option>)}
-          </select>
-          <svg
-            class="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-(--color-text-muted)"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"
-            ></path>
-          </svg>
-        </div>
+      <div class="animation-grid-field flex flex-col gap-1.5 sm:flex-row sm:items-center sm:gap-3">
+        <label for="delay-select" class="animation-grid-label">Delay</label>
+        <select id="delay-select" class="animation-grid-select">
+          {delays.map((d) => <option value={d.value}>{d.label}</option>)}
+        </select>
       </div>
 
       <!-- Infinite Loop Toggle -->
       <button
         id="infinite-toggle"
-        class="ml-auto flex items-center gap-2 rounded-md border border-(--color-border) bg-(--color-bg-alt) px-4 py-2 text-sm font-medium text-(--color-text) hover:border-(--color-primary) transition-colors"
+        class="animation-grid-infinite ml-auto flex items-center gap-2 rounded-full border border-(--color-border) bg-(--color-bg-alt) px-4 py-2 text-sm font-medium text-(--color-text-muted) hover:text-(--color-text) hover:border-(--color-primary) transition-colors"
         data-active="false"
       >
         <svg
@@ -159,6 +130,46 @@ const delays = [
     </button>
   </div>
 </div>
+
+<style>
+  .animation-grid-label {
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-text-muted, #9ca3af);
+  }
+  .animation-grid-select {
+    cursor: pointer;
+    padding: 0.5rem 2rem 0.5rem 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-text, #f9fafb);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--color-border, #1a1a1a);
+    border-radius: 9999px;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%239ca3af' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 0.875rem;
+    transition:
+      border-color 0.15s,
+      box-shadow 0.15s;
+  }
+  .animation-grid-select:hover {
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+  .animation-grid-select:focus {
+    border-color: var(--color-primary, #2563eb);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+  }
+  .animation-grid-infinite {
+    margin-top: auto;
+  }
+</style>
 
 <script is:inline>
   let duration = "1000";
@@ -281,7 +292,11 @@ const delays = [
         "text-white",
         "border-(--color-primary)"
       );
-      infiniteToggle.classList.remove("bg-(--color-bg-alt)", "text-(--color-text)");
+      infiniteToggle.classList.remove(
+        "bg-(--color-bg-alt)",
+        "text-(--color-text-muted)",
+        "text-(--color-text)"
+      );
       infiniteIcon?.classList.add("animate-spin");
     } else {
       infiniteToggle.classList.remove(
@@ -289,7 +304,7 @@ const delays = [
         "text-white",
         "border-(--color-primary)"
       );
-      infiniteToggle.classList.add("bg-(--color-bg-alt)", "text-(--color-text)");
+      infiniteToggle.classList.add("bg-(--color-bg-alt)", "text-(--color-text-muted)");
       infiniteIcon?.classList.remove("animate-spin");
     }
 

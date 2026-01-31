@@ -71,3 +71,16 @@ pre {
   background-color: var(--color-selection-bg);
   color: var(--color-selection-text);
 }
+
+/* Select dropdowns */
+select {
+  color-scheme: dark;
+}
+select option,
+select optgroup {
+  background: #0c0c0f;
+  color: #f9fafb;
+}
+select optgroup {
+  color: #9ca3af;
+}
