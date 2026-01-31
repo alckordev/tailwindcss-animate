@@ -7,13 +7,14 @@ import Logo from "./Logo.astro";
   aria-label="Main navigation"
 >
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <div class="flex h-16 items-center justify-between">
-      <div class="flex items-center gap-8">
+    <div class="flex h-16 items-center">
+      <!-- Left: logo (same width as right for centering) -->
+      <div class="flex min-w-0 flex-1 items-center">
         <Logo href="/" size="sm" />
       </div>
 
-      <!-- Desktop links -->
-      <div class="hidden lg:flex gap-6">
+      <!-- Desktop links (centered) -->
+      <div class="hidden lg:flex shrink-0 items-center justify-center gap-6">
         <a
           href="/#animations"
           class="text-sm font-medium text-(--color-text-muted) hover:text-(--color-text) transition-colors"
@@ -34,8 +35,8 @@ import Logo from "./Logo.astro";
         </a>
       </div>
 
-      <!-- Desktop actions -->
-      <div class="hidden lg:flex items-center gap-4">
+      <!-- Right: actions (same width as left for centering) -->
+      <div class="hidden lg:flex min-w-0 flex-1 items-center justify-end gap-4">
         <a
           href="https://github.com/iscodex/tailwindcss-animate"
           target="_blank"
