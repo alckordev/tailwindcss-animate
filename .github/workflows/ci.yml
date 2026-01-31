@@ -29,12 +29,10 @@ jobs:
         run: pnpm install
 
       - name: Run tests for v4 package
-        run: pnpm --filter @iscodex/tailwindcss-animate test
-        continue-on-error: true
+        run: pnpm --filter tw-animations test
 
       - name: Run tests for v3 plugin
-        run: pnpm --filter @iscodex/tailwindcss-animate-plugin test
-        continue-on-error: true
+        run: pnpm --filter tw-animations-plugin test
 
   build-web:
     name: Build Website
@@ -59,32 +57,3 @@ jobs:
 
       - name: Build website
         run: pnpm build:web
-
-  publish:
-    name: Publish Packages
-    if: startsWith(github.ref, 'refs/tags/v')
-    needs: [test-packages]
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 9
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "20"
-          cache: "pnpm"
-          registry-url: "https://registry.npmjs.org"
-
-      - name: Install dependencies
-        run: pnpm install
-
-      - name: Publish packages
-        run: pnpm publish:packages
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
