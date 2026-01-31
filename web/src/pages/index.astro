@@ -68,147 +68,209 @@ import AnimationGrid from "../components/AnimationGrid.astro";
   </section>
 
   <!-- Scroll Animations Section -->
-  <section id="scroll" class="py-20">
+  <section id="scroll" class="py-24">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="mb-16 text-center">
-        <div
-          class="mb-4 inline-flex items-center gap-2 rounded-full border border-(--color-primary)/20 bg-(--color-primary)/10 px-4 py-2 text-sm font-medium text-(--color-primary)"
-        >
-          <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-          </svg>
-          View Timelines
-        </div>
-        <h2 class="mb-6 text-5xl font-bold text-(--color-text)">Scroll Animations</h2>
-        <p class="mx-auto max-w-2xl text-xl text-(--color-text-muted)">
-          Animate elements based on their position in the viewport with CSS scroll-driven animations
+      <div class="mb-20">
+        <h2 class="mb-3 text-4xl font-bold tracking-tight text-(--color-text)">
+          Scroll-driven animations
+        </h2>
+        <p class="max-w-2xl text-lg text-(--color-text-muted)">
+          Use <code
+            class="rounded border border-(--color-border) bg-(--color-bg-alt) px-1.5 py-0.5 font-mono text-sm text-(--color-primary)"
+            >timeline-view</code
+          > and <code
+            class="rounded border border-(--color-border) bg-(--color-bg-alt) px-1.5 py-0.5 font-mono text-sm text-(--color-primary)"
+            >animate-range</code
+          > to tie animations to scroll. Each row below shows the code and the live result — scroll to
+          trigger them.
         </p>
       </div>
 
-      <div class="mx-auto max-w-4xl space-y-32">
-        <!-- Example 1: Zoom In -->
-        <div class="timeline-view animate-zoom-in animate-range-cover">
-          <div
-            class="rounded-2xl border border-(--color-border) bg-linear-to-br from-blue-500/10 to-purple-500/10 p-8 backdrop-blur"
-          >
-            <div class="mb-4 text-5xl">👋</div>
-            <h3 class="mb-3 text-2xl font-bold text-(--color-text)">I reveal on scroll</h3>
-            <p class="mb-4 text-(--color-text-muted)">
-              This element appears gradually when entering the viewport
+      <!-- Demo rows: code left, preview right -->
+      <div class="space-y-0 divide-y divide-(--color-border)">
+        <!-- Row 1: Zoom -->
+        <div
+          class="grid min-h-[280px] grid-cols-1 items-stretch gap-0 py-16 md:grid-cols-2 md:gap-12 md:py-20"
+        >
+          <div class="flex flex-col justify-center">
+            <span
+              class="mb-2 font-mono text-xs font-medium uppercase tracking-wider text-(--color-primary)"
+              >01 — Zoom</span
+            >
+            <p class="mb-4 text-sm text-(--color-text-muted)">
+              Scales in as the element enters the viewport.
             </p>
-            <div class="overflow-hidden rounded-lg">
-              <Code code="timeline-view animate-zoom-in animate-range-cover" lang="css" />
+            <div
+              class="overflow-hidden rounded-lg border border-(--color-border) bg-(--color-bg-alt)"
+            >
+              <Code code="timeline-view animate-zoom-in animate-range-cover" lang="html" />
+            </div>
+          </div>
+          <div class="flex items-center justify-center pt-8 md:pt-0">
+            <div
+              class="timeline-view animate-zoom-in animate-range-cover flex h-52 w-full max-w-sm items-center justify-center rounded-xl border-2 border-(--color-primary)/30 bg-(--color-bg-alt) font-semibold text-(--color-text) shadow-lg"
+            >
+              Zoom on scroll
             </div>
           </div>
         </div>
 
-        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
-          <div
-            class="timeline-view animate-fade-in animate-range-gradual flex h-32 w-full flex-col items-center justify-center gap-2 rounded-xl bg-slate-200 p-4 text-center font-bold text-slate-800 shadow-lg dark:bg-slate-800 dark:text-slate-200"
-          >
-            <span class="text-sm">Gradual (10% - 90%)</span>
-            <code class="rounded-lg bg-black/10 px-2 py-1 font-mono text-[10px] dark:bg-white/10">
-              animate-range-gradual
-            </code>
-          </div>
-          <div
-            class="timeline-view animate-fade-in animate-range-moderate flex h-32 w-full flex-col items-center justify-center gap-2 rounded-xl bg-slate-200 p-4 text-center font-bold text-slate-800 shadow-lg dark:bg-slate-800 dark:text-slate-200"
-          >
-            <span class="text-sm">Moderate (20% - 80%)</span>
-            <code class="rounded-lg bg-black/10 px-2 py-1 font-mono text-[10px] dark:bg-white/10">
-              animate-range-moderate
-            </code>
-          </div>
-          <div
-            class="timeline-view animate-fade-in animate-range-brisk flex h-32 w-full flex-col items-center justify-center gap-2 rounded-xl bg-slate-200 p-4 text-center font-bold text-slate-800 shadow-lg dark:bg-slate-800 dark:text-slate-200"
-          >
-            <span class="text-sm">Brisk (30% - 70%)</span>
-            <code class="rounded-lg bg-black/10 px-2 py-1 font-mono text-[10px] dark:bg-white/10">
-              animate-range-brisk
-            </code>
-          </div>
-          <div
-            class="timeline-view animate-fade-in animate-range-rapid flex h-32 w-full flex-col items-center justify-center gap-2 rounded-xl bg-slate-200 p-4 text-center font-bold text-slate-800 shadow-lg dark:bg-slate-800 dark:text-slate-200"
-          >
-            <span class="text-sm">Rapid (40% - 60%)</span>
-            <code class="rounded-lg bg-black/10 px-2 py-1 font-mono text-[10px] dark:bg-white/10">
-              animate-range-rapid
-            </code>
-          </div>
-        </div>
-
-        <!-- Example 2: Cover Animation -->
-        <div class="timeline-view animate-slide-in-end animate-range-[entry_5%_contain_20%]">
-          <div
-            class="rounded-2xl border border-(--color-border) bg-linear-to-br from-purple-500/10 to-pink-500/10 p-8 backdrop-blur"
-          >
-            <div class="mb-4 text-5xl">🎯</div>
-            <h3 class="mb-3 text-2xl font-bold text-(--color-text)">I zoom while scrolling</h3>
-            <p class="mb-4 text-(--color-text-muted)">
-              This element zooms in while it's in the viewport
+        <!-- Row 2: Range presets (single row of chips) -->
+        <div
+          class="grid min-h-[280px] grid-cols-1 items-stretch gap-0 py-16 md:grid-cols-2 md:gap-12 md:py-20"
+        >
+          <div class="flex flex-col justify-center">
+            <span
+              class="mb-2 font-mono text-xs font-medium uppercase tracking-wider text-(--color-primary)"
+              >02 — Range presets</span
+            >
+            <p class="mb-4 text-sm text-(--color-text-muted)">
+              Control when the animation runs: gradual, moderate, brisk, or rapid.
             </p>
-            <div class="overflow-hidden rounded-lg">
-              <Code code="timeline-view animate-zoom-in animate-range-cover" lang="css" />
+            <div class="flex flex-wrap gap-2">
+              <code
+                class="rounded border border-(--color-border) bg-(--color-bg-alt) px-2 py-1 font-mono text-xs text-(--color-text)"
+                >animate-range-gradual</code
+              >
+              <code
+                class="rounded border border-(--color-border) bg-(--color-bg-alt) px-2 py-1 font-mono text-xs text-(--color-text)"
+                >animate-range-moderate</code
+              >
+              <code
+                class="rounded border border-(--color-border) bg-(--color-bg-alt) px-2 py-1 font-mono text-xs text-(--color-text)"
+                >animate-range-brisk</code
+              >
+              <code
+                class="rounded border border-(--color-border) bg-(--color-bg-alt) px-2 py-1 font-mono text-xs text-(--color-text)"
+                >animate-range-rapid</code
+              >
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-3 pt-8 md:pt-0">
+            <div
+              class="timeline-view animate-fade-in animate-range-gradual flex flex-col items-center justify-center gap-1 rounded-lg border border-(--color-border) bg-(--color-bg-alt) p-4 text-center text-sm font-medium text-(--color-text)"
+            >
+              <span>Gradual</span>
+            </div>
+            <div
+              class="timeline-view animate-fade-in animate-range-moderate flex flex-col items-center justify-center gap-1 rounded-lg border border-(--color-border) bg-(--color-bg-alt) p-4 text-center text-sm font-medium text-(--color-text)"
+            >
+              <span>Moderate</span>
+            </div>
+            <div
+              class="timeline-view animate-fade-in animate-range-brisk flex flex-col items-center justify-center gap-1 rounded-lg border border-(--color-border) bg-(--color-bg-alt) p-4 text-center text-sm font-medium text-(--color-text)"
+            >
+              <span>Brisk</span>
+            </div>
+            <div
+              class="timeline-view animate-fade-in animate-range-rapid flex flex-col items-center justify-center gap-1 rounded-lg border border-(--color-border) bg-(--color-bg-alt) p-4 text-center text-sm font-medium text-(--color-text)"
+            >
+              <span>Rapid</span>
             </div>
           </div>
         </div>
 
-        <div class="timeline-view animate-slide-in-start animate-range-[entry_5%_contain_20%]">
-          <div
-            class="rounded-2xl border border-(--color-border) bg-linear-to-br from-purple-500/10 to-pink-500/10 p-8 backdrop-blur"
-          >
-            <div class="mb-4 text-5xl">🎯</div>
-            <h3 class="mb-3 text-2xl font-bold text-(--color-text)">I zoom while scrolling</h3>
-            <p class="mb-4 text-(--color-text-muted)">
-              This element zooms in while it's in the viewport
+        <!-- Row 3: Slide end -->
+        <div
+          class="grid min-h-[280px] grid-cols-1 items-stretch gap-0 py-16 md:grid-cols-2 md:gap-12 md:py-20"
+        >
+          <div class="flex flex-col justify-center">
+            <span
+              class="mb-2 font-mono text-xs font-medium uppercase tracking-wider text-(--color-primary)"
+              >03 — Slide from end</span
+            >
+            <p class="mb-4 text-sm text-(--color-text-muted)">
+              Enters from the right with a custom range.
             </p>
-            <div class="overflow-hidden rounded-lg">
-              <Code code="timeline-view animate-zoom-in animate-range-cover" lang="css" />
+            <div
+              class="overflow-hidden rounded-lg border border-(--color-border) bg-(--color-bg-alt)"
+            >
+              <Code
+                code="timeline-view animate-slide-in-end animate-range-[entry_5%_contain_20%]"
+                lang="html"
+              />
+            </div>
+          </div>
+          <div class="flex items-center justify-center pt-8 md:pt-0">
+            <div
+              class="timeline-view animate-slide-in-end animate-range-[entry_5%_contain_20%] flex h-40 w-full max-w-sm items-center justify-center rounded-xl border-2 border-(--color-primary)/30 bg-(--color-bg-alt) font-semibold text-(--color-text) shadow-lg"
+            >
+              Slide in →
             </div>
           </div>
         </div>
 
-        <!-- Example 3: Blur Fade -->
-        <div class="timeline-view animate-blurred-fade-in animate-range-[entry_10%_contain_30%]">
-          <div
-            class="rounded-2xl border border-(--color-border) bg-linear-to-br from-green-500/10 to-blue-500/10 p-8 backdrop-blur"
-          >
-            <div class="mb-4 text-5xl">✨</div>
-            <h3 class="mb-3 text-2xl font-bold text-(--color-text)">I fade in with blur</h3>
-            <p class="mb-4 text-(--color-text-muted)">
-              Blurred transition adds depth and polish to the reveal
-            </p>
-            <div class="overflow-hidden rounded-lg">
+        <!-- Row 4: Slide start -->
+        <div
+          class="grid min-h-[280px] grid-cols-1 items-stretch gap-0 py-16 md:grid-cols-2 md:gap-12 md:py-20"
+        >
+          <div class="flex flex-col justify-center md:order-2">
+            <span
+              class="mb-2 font-mono text-xs font-medium uppercase tracking-wider text-(--color-primary)"
+              >04 — Slide from start</span
+            >
+            <p class="mb-4 text-sm text-(--color-text-muted)">Enters from the left.</p>
+            <div
+              class="overflow-hidden rounded-lg border border-(--color-border) bg-(--color-bg-alt)"
+            >
+              <Code
+                code="timeline-view animate-slide-in-start animate-range-[entry_5%_contain_20%]"
+                lang="html"
+              />
+            </div>
+          </div>
+          <div class="flex items-center justify-center pt-8 md:order-1 md:pt-0">
+            <div
+              class="timeline-view animate-slide-in-start animate-range-[entry_5%_contain_20%] flex h-40 w-full max-w-sm items-center justify-center rounded-xl border-2 border-(--color-primary)/30 bg-(--color-bg-alt) font-semibold text-(--color-text) shadow-lg"
+            >
+              ← Slide in
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 5: Blur fade -->
+        <div
+          class="grid min-h-[280px] grid-cols-1 items-stretch gap-0 py-16 md:grid-cols-2 md:gap-12 md:py-20"
+        >
+          <div class="flex flex-col justify-center">
+            <span
+              class="mb-2 font-mono text-xs font-medium uppercase tracking-wider text-(--color-primary)"
+              >05 — Blur fade</span
+            >
+            <p class="mb-4 text-sm text-(--color-text-muted)">Opacity + blur for a soft reveal.</p>
+            <div
+              class="overflow-hidden rounded-lg border border-(--color-border) bg-(--color-bg-alt)"
+            >
               <Code
                 code="timeline-view animate-blurred-fade-in animate-range-[entry_10%_contain_30%]"
-                lang="css"
+                lang="html"
               />
+            </div>
+          </div>
+          <div class="flex items-center justify-center pt-8 md:pt-0">
+            <div
+              class="timeline-view animate-blurred-fade-in animate-range-[entry_10%_contain_30%] flex h-40 w-full max-w-sm items-center justify-center rounded-xl border-2 border-(--color-primary)/30 bg-(--color-bg-alt) font-semibold text-(--color-text) shadow-lg"
+            >
+              Blur in
             </div>
           </div>
         </div>
       </div>
 
-      <div class="mt-20 flex justify-center">
+      <div class="mt-16 flex justify-center">
         <div
-          class="inline-flex items-center gap-3 rounded-2xl border border-amber-500/30 bg-amber-500/10 px-6 py-4 backdrop-blur"
+          class="inline-flex items-center gap-3 rounded-xl border border-amber-500/30 bg-amber-500/10 px-5 py-3"
         >
-          <svg class="h-6 w-6 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="h-5 w-5 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path
               stroke-linecap="round"
               stroke-linejoin="round"
               stroke-width="2"
               d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
           </svg>
-          <div class="text-left">
-            <p class="text-sm font-semibold text-amber-600 dark:text-amber-400">Browser Support</p>
-            <p class="text-xs text-amber-600/80 dark:text-amber-400/80">
-              Chrome 115+, Edge 115+, Safari 17.4+
-            </p>
-          </div>
+          <span class="text-sm font-medium text-amber-600 dark:text-amber-400"
+            >Chrome 115+, Edge 115+, Safari 17.4+</span
+          >
         </div>
       </div>
     </div>
