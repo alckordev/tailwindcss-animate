@@ -29,11 +29,15 @@ body {
 
 * {
   box-sizing: border-box;
+  scrollbar-width: thin;
+  scrollbar-color: #1a1a1a #000000;
 }
 
-/* Custom scrollbar */
+/* Custom scrollbar - thin (WebKit) */
+
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -42,7 +46,7 @@ body {
 
 ::-webkit-scrollbar-thumb {
   background: #1a1a1a;
-  border-radius: 5px;
+  border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
