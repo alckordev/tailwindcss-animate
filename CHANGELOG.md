@@ -140,5 +140,5 @@ module.exports = {
 - CSS custom properties for global animation theming
 - Modular architecture with organized animation categories
 
-[2.0.0]: https://github.com/iscodex/tailwindcss-animate/releases/tag/v2.0.0
-[1.0.0]: https://github.com/iscodex/tailwindcss-animate/releases/tag/v1.0.0
+[2.0.0]: https://github.com/alckordev/tw-animations/releases/tag/v2.0.0
+[1.0.0]: https://github.com/alckordev/tw-animations/releases/tag/v1.0.0

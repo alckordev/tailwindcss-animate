@@ -13,8 +13,8 @@ npm install -g pnpm
 Clone the repository and install dependencies:
 
 ```bash
-git clone https://github.com/iscodex/tailwindcss-animate.git
-cd tailwindcss-animate
+git clone https://github.com/alckordev/tw-animations.git
+cd tw-animations
 pnpm install
 ```
 
@@ -36,12 +36,12 @@ tailwindcss-animate/
 
 1. Make changes in `packages/tailwindcss-animate/src/`
 2. Test your changes locally
-3. Run tests: `pnpm --filter @iscodex/tailwindcss-animate test`
+3. Run tests: `pnpm --filter tw-animations test`
 
 ### Working on the Plugin (v3)
 
 1. Make changes in `packages/tailwindcss-animate-plugin/src/`
-2. Run tests: `pnpm --filter @iscodex/tailwindcss-animate-plugin test`
+2. Run tests: `pnpm --filter tw-animations-plugin test`
 3. Add tests for new features
 
 ### Working on the Website
@@ -69,7 +69,7 @@ pnpm test
 Run specific package tests:
 
 ```bash
-pnpm --filter @iscodex/tailwindcss-animate-plugin test
+pnpm --filter tw-animations-plugin test
 ```
 
 ## Commit Guidelines

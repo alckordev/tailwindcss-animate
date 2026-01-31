@@ -7,9 +7,9 @@
 
 Extended animation utilities for **Tailwind CSS v4 and v3**. 85+ animations, scroll timelines, and view animations with zero configuration.
 
-[**Website**](https://tailwindcss-animate.vercel.app) • [**Configurator**](https://tailwindcss-animate.vercel.app/configurator) • [**GitHub**](https://github.com/iscodex/tailwindcss-animate)
+[**Website**](https://tailwindcss-animate.vercel.app) • [**Configurator**](https://tailwindcss-animate.vercel.app/configurator) • [**GitHub**](https://github.com/alckordev/tw-animations)
 
-![Tailwind CSS Animate](https://github.com/user-attachments/assets/7f06d2ff-0167-4261-a1fd-6c10913b8dcd)
+![Tailwind Animate](https://github.com/user-attachments/assets/adcb64e3-b352-4ca9-adf2-dd1f15797e3f)
 
 ## ✨ Features
 
@@ -287,7 +287,7 @@ Customize animations globally:
 
 - [Website & Interactive Demos](https://tailwindcss-animate.vercel.app)
 - [Animation Configurator](https://tailwindcss-animate.vercel.app/configurator)
-- [GitHub Repository](https://github.com/iscodex/tailwindcss-animate)
+- [GitHub Repository](https://github.com/alckordev/tw-animations)
 - [npm Package (v4)](https://www.npmjs.com/package/tw-animations)
 - [npm Package (v3)](https://www.npmjs.com/package/tw-animations-plugin)
 
