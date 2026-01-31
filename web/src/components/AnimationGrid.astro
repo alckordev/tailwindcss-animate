@@ -31,29 +31,51 @@ const delays = [
       <!-- Duration -->
       <div class="flex items-center gap-3">
         <label class="text-sm font-medium text-(--color-text)">Duration</label>
-        <select
-          id="duration-select"
-          class="cursor-pointer rounded-lg border border-(--color-border) bg-(--color-bg-alt) px-4 py-2 text-sm font-medium text-(--color-text) transition-all hover:border-(--color-primary) focus:border-(--color-primary) focus:outline-none focus:ring-2 focus:ring-(--color-primary)/20 appearance-none bg-[url('data:image/svg+xml;charset=utf-8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 fill=%27none%27 viewBox=%270 0 20 20%27%3E%3Cpath stroke=%27%236b7280%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27 stroke-width=%271.5%27 d=%27m6 8 4 4 4-4%27/%3E%3C/svg%3E')] bg-size-[1.25rem] bg-position-[center_right_0.5rem] bg-no-repeat pr-10"
-        >
-          {
-            durations.map((d) => (
-              <option value={d.value} selected={d.value === "1000"}>
-                {d.label}
-              </option>
-            ))
-          }
-        </select>
+        <div class="relative">
+          <select
+            id="duration-select"
+            class="cursor-pointer rounded-lg border border-(--color-border) bg-(--color-bg-alt) px-4 py-2 pr-10 text-sm font-medium text-(--color-text) transition-all hover:border-(--color-primary) focus:border-(--color-primary) focus:outline-none focus:ring-2 focus:ring-(--color-primary)/20 appearance-none"
+          >
+            {
+              durations.map((d) => (
+                <option value={d.value} selected={d.value === "1000"}>
+                  {d.label}
+                </option>
+              ))
+            }
+          </select>
+          <svg
+            class="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-(--color-text-muted)"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"
+            ></path>
+          </svg>
+        </div>
       </div>
 
       <!-- Delay -->
       <div class="flex items-center gap-3">
         <label class="text-sm font-medium text-(--color-text)">Delay</label>
-        <select
-          id="delay-select"
-          class="cursor-pointer rounded-lg border border-(--color-border) bg-(--color-bg-alt) px-4 py-2 text-sm font-medium text-(--color-text) transition-all hover:border-(--color-primary) focus:border-(--color-primary) focus:outline-none focus:ring-2 focus:ring-(--color-primary)/20 appearance-none bg-[url('data:image/svg+xml;charset=utf-8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 fill=%27none%27 viewBox=%270 0 20 20%27%3E%3Cpath stroke=%27%236b7280%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27 stroke-width=%271.5%27 d=%27m6 8 4 4 4-4%27/%3E%3C/svg%3E')] bg-size-[1.25rem] bg-position-[center_right_0.5rem] bg-no-repeat pr-10"
-        >
-          {delays.map((d) => <option value={d.value}>{d.label}</option>)}
-        </select>
+        <div class="relative">
+          <select
+            id="delay-select"
+            class="cursor-pointer rounded-lg border border-(--color-border) bg-(--color-bg-alt) px-4 py-2 pr-10 text-sm font-medium text-(--color-text) transition-all hover:border-(--color-primary) focus:border-(--color-primary) focus:outline-none focus:ring-2 focus:ring-(--color-primary)/20 appearance-none"
+          >
+            {delays.map((d) => <option value={d.value}>{d.label}</option>)}
+          </select>
+          <svg
+            class="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-(--color-text-muted)"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"
+            ></path>
+          </svg>
+        </div>
       </div>
 
       <!-- Infinite Loop Toggle -->
