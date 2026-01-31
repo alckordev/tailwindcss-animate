@@ -70,17 +70,28 @@ import AnimationGrid from "../components/AnimationGrid.astro";
   <!-- Scroll Animations Section -->
   <section id="scroll" class="py-20">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="mb-12 text-center">
-        <h2 class="mb-4 text-4xl font-bold text-(--color-text)">Scroll Animations</h2>
-        <p class="mb-4 text-lg text-(--color-text-muted)">
-          Animate elements based on their position in the viewport
+      <div class="mb-16 text-center">
+        <div
+          class="mb-4 inline-flex items-center gap-2 rounded-full border border-(--color-primary)/20 bg-(--color-primary)/10 px-4 py-2 text-sm font-medium text-(--color-primary)"
+        >
+          <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+          </svg>
+          View Timelines
+        </div>
+        <h2 class="mb-6 text-5xl font-bold text-(--color-text)">Scroll Animations</h2>
+        <p class="mx-auto max-w-2xl text-xl text-(--color-text-muted)">
+          Animate elements based on their position in the viewport with CSS scroll-driven animations
         </p>
-        <p class="text-sm text-(--color-text-muted)">Scroll down to see the magic ↓</p>
       </div>
 
       <div class="mx-auto max-w-4xl space-y-32">
-        <!-- Example 1: Entry Animation -->
-        <div class="timeline-view animate-fade-in-up animate-range-entry">
+        <!-- Example 1: Zoom In -->
+        <div class="timeline-view animate-zoom-in animate-range-cover">
           <div
             class="rounded-2xl border border-(--color-border) bg-linear-to-br from-blue-500/10 to-purple-500/10 p-8 backdrop-blur"
           >
@@ -90,13 +101,48 @@ import AnimationGrid from "../components/AnimationGrid.astro";
               This element appears gradually when entering the viewport
             </p>
             <div class="overflow-hidden rounded-lg">
-              <Code code="timeline-view animate-fade-in-up animate-range-entry" lang="css" />
+              <Code code="timeline-view animate-zoom-in animate-range-cover" lang="css" />
             </div>
           </div>
         </div>
 
+        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+          <div
+            class="timeline-view animate-fade-in animate-range-gradual flex h-32 w-full flex-col items-center justify-center gap-2 rounded-xl bg-slate-200 p-4 text-center font-bold text-slate-800 shadow-lg dark:bg-slate-800 dark:text-slate-200"
+          >
+            <span class="text-sm">Gradual (10% - 90%)</span>
+            <code class="rounded-lg bg-black/10 px-2 py-1 font-mono text-[10px] dark:bg-white/10">
+              animate-range-gradual
+            </code>
+          </div>
+          <div
+            class="timeline-view animate-fade-in animate-range-moderate flex h-32 w-full flex-col items-center justify-center gap-2 rounded-xl bg-slate-200 p-4 text-center font-bold text-slate-800 shadow-lg dark:bg-slate-800 dark:text-slate-200"
+          >
+            <span class="text-sm">Moderate (20% - 80%)</span>
+            <code class="rounded-lg bg-black/10 px-2 py-1 font-mono text-[10px] dark:bg-white/10">
+              animate-range-moderate
+            </code>
+          </div>
+          <div
+            class="timeline-view animate-fade-in animate-range-brisk flex h-32 w-full flex-col items-center justify-center gap-2 rounded-xl bg-slate-200 p-4 text-center font-bold text-slate-800 shadow-lg dark:bg-slate-800 dark:text-slate-200"
+          >
+            <span class="text-sm">Brisk (30% - 70%)</span>
+            <code class="rounded-lg bg-black/10 px-2 py-1 font-mono text-[10px] dark:bg-white/10">
+              animate-range-brisk
+            </code>
+          </div>
+          <div
+            class="timeline-view animate-fade-in animate-range-rapid flex h-32 w-full flex-col items-center justify-center gap-2 rounded-xl bg-slate-200 p-4 text-center font-bold text-slate-800 shadow-lg dark:bg-slate-800 dark:text-slate-200"
+          >
+            <span class="text-sm">Rapid (40% - 60%)</span>
+            <code class="rounded-lg bg-black/10 px-2 py-1 font-mono text-[10px] dark:bg-white/10">
+              animate-range-rapid
+            </code>
+          </div>
+        </div>
+
         <!-- Example 2: Cover Animation -->
-        <div class="timeline-view animate-zoom-in animate-range-cover">
+        <div class="timeline-view animate-slide-in-end animate-range-[entry_5%_contain_20%]">
           <div
             class="rounded-2xl border border-(--color-border) bg-linear-to-br from-purple-500/10 to-pink-500/10 p-8 backdrop-blur"
           >
@@ -111,21 +157,22 @@ import AnimationGrid from "../components/AnimationGrid.astro";
           </div>
         </div>
 
-        <!-- Example 3: Rotation -->
-        <div class="timeline-view animate-rotate-360 animate-range-moderate">
+        <div class="timeline-view animate-slide-in-start animate-range-[entry_5%_contain_20%]">
           <div
-            class="rounded-2xl border border-(--color-border) bg-linear-to-br from-pink-500/10 to-orange-500/10 p-8 backdrop-blur"
+            class="rounded-2xl border border-(--color-border) bg-linear-to-br from-purple-500/10 to-pink-500/10 p-8 backdrop-blur"
           >
-            <div class="mb-4 text-5xl">🎲</div>
-            <h3 class="mb-3 text-2xl font-bold text-(--color-text)">I rotate progressively</h3>
-            <p class="mb-4 text-(--color-text-muted)">This element rotates 360° as you scroll</p>
+            <div class="mb-4 text-5xl">🎯</div>
+            <h3 class="mb-3 text-2xl font-bold text-(--color-text)">I zoom while scrolling</h3>
+            <p class="mb-4 text-(--color-text-muted)">
+              This element zooms in while it's in the viewport
+            </p>
             <div class="overflow-hidden rounded-lg">
-              <Code code="timeline-view animate-rotate-360 animate-range-moderate" lang="css" />
+              <Code code="timeline-view animate-zoom-in animate-range-cover" lang="css" />
             </div>
           </div>
         </div>
 
-        <!-- Example 4: Blur Fade -->
+        <!-- Example 3: Blur Fade -->
         <div class="timeline-view animate-blurred-fade-in animate-range-[entry_10%_contain_30%]">
           <div
             class="rounded-2xl border border-(--color-border) bg-linear-to-br from-green-500/10 to-blue-500/10 p-8 backdrop-blur"
