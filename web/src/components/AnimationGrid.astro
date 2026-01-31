@@ -141,7 +141,6 @@ const delays = [
 <script is:inline>
   let duration = "1000";
   let delay = "";
-  let showAll = false;
   let isInfinite = false;
 
   const applyAnimationSettings = () => {
@@ -215,31 +214,21 @@ const delays = [
   };
 
   const toggleViewAll = () => {
-    showAll = !showAll;
     const allCards = document.querySelectorAll("[data-animation-card]");
     const viewAllBtn = document.getElementById("view-all-btn");
 
     allCards.forEach((card, index) => {
-      if (showAll) {
-        // Show all cards and re-trigger animation for hidden ones
-        if (index >= 12) {
-          // Force animation restart
-          card.classList.remove("animate-fade-in-up");
-          void card.offsetWidth; // Force reflow
-          card.classList.add("animate-fade-in-up");
-        }
+      if (index >= 12) {
+        // Force animation restart for hidden cards
+        card.classList.remove("animate-fade-in-up");
+        void card.offsetWidth; // Force reflow
+        card.classList.add("animate-fade-in-up");
         card.classList.remove("hidden");
-      } else {
-        if (index >= 12) {
-          card.classList.add("hidden");
-        }
       }
     });
 
-    // Update button text
-    if (viewAllBtn) {
-      viewAllBtn.textContent = showAll ? "Show less" : `View all animations (${allCards.length})`;
-    }
+    // Hide the button after showing all
+    viewAllBtn?.parentElement?.classList.add("hidden");
   };
 
   // Duration change
