@@ -17,7 +17,7 @@ import AnimationGrid from "../components/AnimationGrid.astro";
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="text-center">
         <div
-          class="mb-6 inline-flex items-center gap-2 rounded-full border border-(--color-primary)/20 bg-(--color-primary)/10 px-4 py-2 text-sm font-medium text-(--color-primary) animate-fade-in"
+          class="mb-6 inline-flex items-center gap-2 rounded-full border border-(--color-primary)/20 bg-(--color-primary)/10 px-4 py-2 text-sm font-medium text-(--color-primary) animate-fade-in-up"
         >
           ✨ Now with Scroll Animations
         </div>
@@ -43,63 +43,7 @@ import AnimationGrid from "../components/AnimationGrid.astro";
 
         <!-- Installation Tabs -->
         <div class="animate-fade-in-up animate-delay-300">
-          <InstallTabs version="v4" />
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Quick Example -->
-  <section class="py-12">
-    <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-      <div
-        class="rounded-2xl border border-(--color-border) bg-(--color-bg) p-8 shadow-xl"
-      >
-        <h2 class="mb-6 text-center text-2xl font-bold text-(--color-text)">
-          Quick Start Example
-        </h2>
-
-        <div class="grid gap-8 md:grid-cols-2">
-          <div>
-            <h3
-              class="mb-3 text-sm font-semibold uppercase tracking-wide text-(--color-text-muted)"
-            >
-              HTML
-            </h3>
-            <div class="overflow-hidden rounded-lg">
-              <Code
-                code={`<div class="animate-fade-in">
-  Fade in box
-</div>
-
-<div class="animate-slide-in-bottom animate-delay-300 animate-duration-slow">
-  Slow animation after 300ms
-</div>`}
-                lang="html"
-                theme="github-dark"
-              />
-            </div>
-          </div>
-
-          <div>
-            <h3
-              class="mb-3 text-sm font-semibold uppercase tracking-wide text-(--color-text-muted)"
-            >
-              Preview
-            </h3>
-            <div class="flex flex-col gap-4">
-              <div
-                class="rounded-lg bg-linear-to-r from-blue-500 to-purple-500 p-6 text-center text-white font-semibold animate-fade-in"
-              >
-                Fade in box
-              </div>
-              <div
-                class="rounded-lg bg-linear-to-r from-purple-500 to-pink-500 p-6 text-center text-white font-semibold animate-slide-in-up animate-delay-300 animate-duration-1000"
-              >
-                Slow animation
-              </div>
-            </div>
-          </div>
+          <InstallTabs />
         </div>
       </div>
     </div>
@@ -114,7 +58,7 @@ import AnimationGrid from "../components/AnimationGrid.astro";
           Explore our comprehensive library of ready-to-use animations
         </p>
       </div>
-      
+
       <AnimationGrid />
     </div>
   </section>
@@ -178,9 +122,7 @@ import AnimationGrid from "../components/AnimationGrid.astro";
           >
             <div class="mb-4 text-5xl">🎲</div>
             <h3 class="mb-3 text-2xl font-bold text-(--color-text)">I rotate progressively</h3>
-            <p class="mb-4 text-(--color-text-muted)">
-              This element rotates 360° as you scroll
-            </p>
+            <p class="mb-4 text-(--color-text-muted)">This element rotates 360° as you scroll</p>
             <div class="overflow-hidden rounded-lg">
               <Code
                 code="timeline-view animate-rotate-360 animate-range-moderate"
@@ -226,9 +168,7 @@ import AnimationGrid from "../components/AnimationGrid.astro";
   <section class="py-20">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="mb-12 text-center">
-        <h2 class="mb-4 text-4xl font-bold text-(--color-text)">
-          Timeline Utilities Reference
-        </h2>
+        <h2 class="mb-4 text-4xl font-bold text-(--color-text)">Timeline Utilities Reference</h2>
         <p class="text-lg text-(--color-text-muted)">
           Available timeline utilities and how to use them
         </p>

@@ -2,12 +2,6 @@
 import { Code } from "astro/components";
 import { cn } from "../utils";
 
-interface TabProps {
-  version: "v4" | "v3";
-}
-
-const { version } = Astro.props as TabProps;
-
 const packageManagers = [
   {
     id: "npm",
@@ -114,13 +108,28 @@ const packageManagers = [
     </div>
     <div class="flex items-center justify-between gap-4 p-4">
       <div class="flex-1 overflow-hidden">
-        <Code
-          id="usage-code"
-          code={`@import 'tailwindcss';
-@import '@iscodex/tailwindcss-animate'`}
-          lang="bash"
-          class="text-sm! border-0! text-start"
-        />
+        <!-- v4 Usage -->
+        <div data-usage-block="v4">
+          <Code
+            code={`@import 'tailwindcss';
+@import '@iscodex/tailwindcss-animate';`}
+            lang="css"
+            class="text-sm! border-0! text-start"
+          />
+        </div>
+        <!-- v3 Usage -->
+        <div data-usage-block="v3" class="hidden">
+          <Code
+            code={`// tailwind.config.js
+module.exports = {
+  plugins: [
+    require('@iscodex/tailwindcss-animate-plugin'),
+  ],
+};`}
+            lang="javascript"
+            class="text-sm! border-0! text-start"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -143,14 +152,17 @@ const packageManagers = [
     }
   };
 
-  const updateUsageCode = () => {
-    const usageCode =
-      activeTab === "v4"
-        ? `@import 'tailwindcss';\n@import '@iscodex/tailwindcss-animate';`
-        : `// tailwind.config.js\nmodule.exports = {\n  plugins: [\n    require('@iscodex/tailwindcss-animate-plugin'),\n  ],\n}`;
+  const updateUsageDisplay = () => {
+    // Hide all usage blocks
+    document.querySelectorAll("[data-usage-block]").forEach((block) => {
+      block.classList.add("hidden");
+    });
 
-    const codeEl = document.getElementById("usage-code");
-    if (codeEl) codeEl.textContent = usageCode;
+    // Show the active usage block
+    const activeUsage = document.querySelector(`[data-usage-block="${activeTab}"]`);
+    if (activeUsage) {
+      activeUsage.classList.remove("hidden");
+    }
   };
 
   // Tab buttons
@@ -168,7 +180,7 @@ const packageManagers = [
       target.classList.remove("bg-(--color-bg-alt)", "text-(--color-text-muted)");
 
       updateCommandDisplay();
-      updateUsageCode();
+      updateUsageDisplay();
     });
   });
 
