@@ -12,8 +12,8 @@ import AnimationGrid from "../components/AnimationGrid.astro";
   <BackgroundPattern />
   <Navbar />
 
-  <!-- Hero Section -->
-  <section class="relative overflow-hidden py-20 sm:py-32">
+  <!-- Hero Section (Installation) -->
+  <section id="installation" class="relative overflow-hidden py-20 sm:py-32">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="text-center">
         <div
@@ -557,44 +557,97 @@ import AnimationGrid from "../components/AnimationGrid.astro";
           class="rounded-xl border border-(--color-border) bg-(--color-bg) p-6 transition-all hover:border-(--color-primary) hover:shadow-xl md:p-8"
         >
           <div class="mb-6 flex flex-col gap-1">
-            <span class="font-mono text-xs font-medium uppercase tracking-wider text-(--color-primary)">06 — Utilities reference</span>
-            <p class="text-sm text-(--color-text-muted)">All timeline and range classes at a glance.</p>
+            <span
+              class="font-mono text-xs font-medium uppercase tracking-wider text-(--color-primary)"
+              >06 — Utilities reference</span
+            >
+            <p class="text-sm text-(--color-text-muted)">
+              All timeline and range classes at a glance.
+            </p>
           </div>
           <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             <div class="rounded-lg border border-(--color-border) bg-(--color-bg-alt) p-4">
-              <h4 class="mb-3 text-xs font-semibold uppercase tracking-wider text-(--color-primary)">Scroll</h4>
+              <h4
+                class="mb-3 text-xs font-semibold uppercase tracking-wider text-(--color-primary)"
+              >
+                Scroll
+              </h4>
               <div class="space-y-1.5 text-xs">
-                <code class="block rounded bg-[#0a0a0a] px-2 py-1.5 text-(--color-text)">timeline-scroll</code>
-                <code class="block rounded bg-[#0a0a0a] px-2 py-1.5 text-(--color-text)">timeline-scroll-inline</code>
-                <code class="block rounded bg-[#0a0a0a] px-2 py-1.5 text-(--color-text)">timeline-[scroll(x)]</code>
-                <code class="block rounded bg-[#0a0a0a] px-2 py-1.5 text-(--color-text)">timeline-[scroll(block)]</code>
+                <code class="block rounded bg-[#0a0a0a] px-2 py-1.5 text-(--color-text)"
+                  >timeline-scroll</code
+                >
+                <code class="block rounded bg-[#0a0a0a] px-2 py-1.5 text-(--color-text)"
+                  >timeline-scroll-inline</code
+                >
+                <code class="block rounded bg-[#0a0a0a] px-2 py-1.5 text-(--color-text)"
+                  >timeline-[scroll(x)]</code
+                >
+                <code class="block rounded bg-[#0a0a0a] px-2 py-1.5 text-(--color-text)"
+                  >timeline-[scroll(block)]</code
+                >
               </div>
             </div>
             <div class="rounded-lg border border-(--color-border) bg-(--color-bg-alt) p-4">
-              <h4 class="mb-3 text-xs font-semibold uppercase tracking-wider text-(--color-primary)">View</h4>
+              <h4
+                class="mb-3 text-xs font-semibold uppercase tracking-wider text-(--color-primary)"
+              >
+                View
+              </h4>
               <div class="space-y-1.5 text-xs">
-                <code class="block rounded bg-[#0a0a0a] px-2 py-1.5 text-(--color-text)">timeline-view</code>
-                <code class="block rounded bg-[#0a0a0a] px-2 py-1.5 text-(--color-text)">timeline-view-block</code>
-                <code class="block rounded bg-[#0a0a0a] px-2 py-1.5 text-(--color-text)">timeline-[view(x)]</code>
-                <code class="block rounded bg-[#0a0a0a] px-2 py-1.5 text-(--color-text)">timeline-[view(block)]</code>
+                <code class="block rounded bg-[#0a0a0a] px-2 py-1.5 text-(--color-text)"
+                  >timeline-view</code
+                >
+                <code class="block rounded bg-[#0a0a0a] px-2 py-1.5 text-(--color-text)"
+                  >timeline-view-block</code
+                >
+                <code class="block rounded bg-[#0a0a0a] px-2 py-1.5 text-(--color-text)"
+                  >timeline-[view(x)]</code
+                >
+                <code class="block rounded bg-[#0a0a0a] px-2 py-1.5 text-(--color-text)"
+                  >timeline-[view(block)]</code
+                >
               </div>
             </div>
             <div class="rounded-lg border border-(--color-border) bg-(--color-bg-alt) p-4">
-              <h4 class="mb-3 text-xs font-semibold uppercase tracking-wider text-(--color-primary)">Ranges</h4>
+              <h4
+                class="mb-3 text-xs font-semibold uppercase tracking-wider text-(--color-primary)"
+              >
+                Ranges
+              </h4>
               <div class="space-y-1.5 text-xs">
-                <code class="block rounded bg-[#0a0a0a] px-2 py-1.5 text-(--color-text)">animate-range-cover</code>
-                <code class="block rounded bg-[#0a0a0a] px-2 py-1.5 text-(--color-text)">animate-range-entry</code>
-                <code class="block rounded bg-[#0a0a0a] px-2 py-1.5 text-(--color-text)">animate-range-exit</code>
-                <code class="block rounded bg-[#0a0a0a] px-2 py-1.5 text-(--color-text)">animate-range-contain</code>
+                <code class="block rounded bg-[#0a0a0a] px-2 py-1.5 text-(--color-text)"
+                  >animate-range-cover</code
+                >
+                <code class="block rounded bg-[#0a0a0a] px-2 py-1.5 text-(--color-text)"
+                  >animate-range-entry</code
+                >
+                <code class="block rounded bg-[#0a0a0a] px-2 py-1.5 text-(--color-text)"
+                  >animate-range-exit</code
+                >
+                <code class="block rounded bg-[#0a0a0a] px-2 py-1.5 text-(--color-text)"
+                  >animate-range-contain</code
+                >
               </div>
             </div>
             <div class="rounded-lg border border-(--color-border) bg-(--color-bg-alt) p-4">
-              <h4 class="mb-3 text-xs font-semibold uppercase tracking-wider text-(--color-primary)">Presets</h4>
+              <h4
+                class="mb-3 text-xs font-semibold uppercase tracking-wider text-(--color-primary)"
+              >
+                Presets
+              </h4>
               <div class="space-y-1.5 text-xs">
-                <code class="block rounded bg-[#0a0a0a] px-2 py-1.5 text-(--color-text)">animate-range-gradual</code>
-                <code class="block rounded bg-[#0a0a0a] px-2 py-1.5 text-(--color-text)">animate-range-moderate</code>
-                <code class="block rounded bg-[#0a0a0a] px-2 py-1.5 text-(--color-text)">animate-range-brisk</code>
-                <code class="block rounded bg-[#0a0a0a] px-2 py-1.5 text-(--color-text)">animate-range-rapid</code>
+                <code class="block rounded bg-[#0a0a0a] px-2 py-1.5 text-(--color-text)"
+                  >animate-range-gradual</code
+                >
+                <code class="block rounded bg-[#0a0a0a] px-2 py-1.5 text-(--color-text)"
+                  >animate-range-moderate</code
+                >
+                <code class="block rounded bg-[#0a0a0a] px-2 py-1.5 text-(--color-text)"
+                  >animate-range-brisk</code
+                >
+                <code class="block rounded bg-[#0a0a0a] px-2 py-1.5 text-(--color-text)"
+                  >animate-range-rapid</code
+                >
               </div>
             </div>
           </div>
