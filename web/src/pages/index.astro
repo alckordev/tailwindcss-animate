@@ -671,27 +671,64 @@ import AnimationGrid from "../components/AnimationGrid.astro";
   </section>
 
   <!-- CTA Section -->
-  <section class="py-20">
-    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="mb-6 text-4xl font-bold text-(--color-text)">Ready to get started?</h2>
-      <p class="mb-8 text-lg text-(--color-text-muted)">
-        Join developers who are creating beautiful animations with Tailwind CSS
-      </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a
-          href="/configurator"
-          class="inline-flex items-center justify-center gap-2 rounded-lg bg-(--color-primary) px-8 py-4 text-lg font-semibold text-white transition-all hover:bg-(--color-primary-hover) hover:scale-105"
+  <section class="py-24">
+    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+      <div
+        class="relative overflow-hidden rounded-2xl px-8 py-12 text-center shadow-xl backdrop-blur-sm sm:px-12 sm:py-16"
+      >
+        <div
+          class="absolute inset-0 -z-10 bg-linear-to-b from-(--color-primary)/5 via-transparent to-transparent opacity-80"
+          aria-hidden="true"
         >
-          Try Interactive Configurator
-        </a>
-        <a
-          href="https://github.com/iscodex/tailwindcss-animate"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex items-center justify-center gap-2 rounded-lg border-2 border-(--color-border) px-8 py-4 text-lg font-semibold text-(--color-text) transition-all hover:border-(--color-primary) hover:scale-105"
+        </div>
+        <div
+          class="mb-4 inline-flex items-center gap-2 rounded-full border border-(--color-primary)/20 bg-(--color-primary)/10 px-4 py-1.5 text-sm font-medium text-(--color-primary)"
         >
-          View on GitHub
-        </a>
+          Get started
+        </div>
+        <h2 class="mb-4 text-3xl font-bold tracking-tight text-(--color-text) sm:text-4xl">
+          Ready to animate?
+        </h2>
+        <p class="mx-auto mb-10 max-w-xl text-base text-(--color-text-muted) sm:text-lg">
+          Join developers creating beautiful animations with Tailwind CSS. Try the configurator or
+          explore the repo.
+        </p>
+        <div class="flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
+          <a
+            href="/configurator"
+            class="cta-btn-primary inline-flex w-full items-center justify-center gap-2 rounded-xl bg-(--color-primary) px-6 py-3.5 text-base font-semibold text-white shadow-lg shadow-(--color-primary)/25 transition-all hover:bg-(--color-primary-hover) hover:shadow-(--color-primary)/30 hover:scale-[1.02] sm:w-auto"
+          >
+            <svg
+              class="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"
+              ></path>
+            </svg>
+            Try Configurator
+          </a>
+          <a
+            href="https://github.com/iscodex/tailwindcss-animate"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="cta-btn-secondary inline-flex w-full items-center justify-center gap-2 rounded-xl border border-(--color-border) bg-(--color-bg-alt)/50 px-6 py-3.5 text-base font-semibold text-(--color-text) transition-all hover:border-(--color-primary)/50 hover:bg-(--color-primary)/10 hover:text-(--color-text) sm:w-auto"
+          >
+            <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                fill-rule="evenodd"
+                d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+                clip-rule="evenodd"></path>
+            </svg>
+            View on GitHub
+          </a>
+        </div>
       </div>
     </div>
   </section>
