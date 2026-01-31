@@ -21,8 +21,8 @@ export const animations: Animation[] = [
     supportsScrollTimeline: true,
   },
   {
-    name: "heart-beat",
-    class: "animate-heart-beat",
+    name: "heartbeat",
+    class: "animate-heartbeat",
     category: "Attention Seekers",
     supportsScrollTimeline: true,
   },
@@ -123,6 +123,20 @@ export const animations: Animation[] = [
   {
     name: "dancing",
     class: "animate-dancing",
+    category: "Attention Seekers",
+    supportsScrollTimeline: true,
+    description: "NEW",
+  },
+  {
+    name: "impulse-rotation-left",
+    class: "animate-impulse-rotation-left",
+    category: "Attention Seekers",
+    supportsScrollTimeline: true,
+    description: "NEW",
+  },
+  {
+    name: "impulse-rotation-right",
+    class: "animate-impulse-rotation-right",
     category: "Attention Seekers",
     supportsScrollTimeline: true,
     description: "NEW",
