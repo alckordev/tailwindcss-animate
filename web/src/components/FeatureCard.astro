@@ -9,15 +9,15 @@ interface Props {
 const { icon, title, description, gradient = 'from-blue-500 to-purple-500' } = Astro.props;
 ---
 
-<div class="group relative overflow-hidden rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg)] p-8 transition-all hover:border-[var(--color-primary)] hover:shadow-2xl">
-  <div class="absolute -right-8 -top-8 h-32 w-32 rounded-full bg-gradient-to-br {gradient} opacity-10 blur-2xl transition-opacity group-hover:opacity-20"></div>
+<div class="group relative overflow-hidden rounded-2xl border border-(--color-border) bg-(--color-bg) p-8 transition-all hover:border-(--color-primary) hover:shadow-2xl">
+  <div class="absolute -right-8 -top-8 h-32 w-32 rounded-full bg-linear-to-br {gradient} opacity-10 blur-2xl transition-opacity group-hover:opacity-20"></div>
   
   <div class="relative">
     <div class="mb-4 text-5xl animate-bounce-fade-in">{icon}</div>
-    <h3 class="mb-3 text-2xl font-bold text-[var(--color-text)]">
+    <h3 class="mb-3 text-2xl font-bold text-(--color-text)">
       {title}
     </h3>
-    <p class="text-[var(--color-text-muted)] leading-relaxed">
+    <p class="text-(--color-text-muted) leading-relaxed">
       {description}
     </p>
   </div>

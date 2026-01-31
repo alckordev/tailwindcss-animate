@@ -18,13 +18,13 @@ const packageManagers = [
   <div class="mb-6 flex justify-center gap-2">
     <button
       data-tab="v4"
-      class="tab-btn rounded-lg px-6 py-2 font-semibold transition-all bg-[var(--color-primary)] text-white shadow-lg"
+      class="tab-btn rounded-lg px-6 py-2 font-semibold transition-all bg-(--color-primary) text-white shadow-lg"
     >
       Tailwind v4
     </button>
     <button
       data-tab="v3"
-      class="tab-btn rounded-lg px-6 py-2 font-semibold transition-all bg-[var(--color-bg-alt)] text-[var(--color-text-muted)] hover:text-[var(--color-text)]"
+      class="tab-btn rounded-lg px-6 py-2 font-semibold transition-all bg-(--color-bg-alt) text-(--color-text-muted) hover:text-(--color-text)"
     >
       Tailwind v3
     </button>
@@ -37,8 +37,8 @@ const packageManagers = [
         data-pm={pm.id}
         class={`pm-btn rounded-md px-4 py-2 text-sm font-medium transition-all ${
           i === 0
-            ? 'bg-[var(--color-bg-alt)] text-[var(--color-text)] ring-2 ring-[var(--color-primary)]'
-            : 'bg-transparent text-[var(--color-text-muted)] hover:text-[var(--color-text)]'
+            ? 'bg-(--color-bg-alt) text-(--color-text) ring-2 ring-(--color-primary)'
+            : 'bg-transparent text-(--color-text-muted) hover:text-(--color-text)'
         }`}
       >
         {pm.label}
@@ -47,13 +47,13 @@ const packageManagers = [
   </div>
 
   <!-- Install Command -->
-  <div class="mb-6 overflow-hidden rounded-lg border border-[var(--color-border)]">
+  <div class="mb-6 overflow-hidden rounded-lg border border-(--color-border)">
     <div class="bg-[#0d1117] p-4">
       <div class="flex items-center justify-between">
         <code id="install-command" class="text-sm text-gray-100">npm install @iscodex/tailwindcss-animate</code>
         <button
           id="copy-install-btn"
-          class="ml-4 rounded-md bg-[var(--color-primary)] px-3 py-1 text-xs font-medium text-white hover:bg-[var(--color-primary-hover)]"
+          class="ml-4 rounded-md bg-(--color-primary) px-3 py-1 text-xs font-medium text-white hover:bg-(--color-primary-hover)"
         >
           Copy
         </button>
@@ -62,8 +62,8 @@ const packageManagers = [
   </div>
 
   <!-- Usage -->
-  <div class="rounded-lg border border-[var(--color-border)] bg-[var(--color-bg)] p-6">
-    <h3 class="mb-3 text-lg font-semibold text-[var(--color-text)]">
+  <div class="rounded-lg border border-(--color-border) bg-(--color-bg) p-6">
+    <h3 class="mb-3 text-lg font-semibold text-(--color-text)">
       How to use
     </h3>
     <div class="overflow-hidden rounded-lg">
@@ -113,11 +113,11 @@ const packageManagers = [
       
       // Update button styles
       document.querySelectorAll('.tab-btn').forEach(b => {
-        b.classList.remove('bg-[var(--color-primary)]', 'text-white', 'shadow-lg');
-        b.classList.add('bg-[var(--color-bg-alt)]', 'text-[var(--color-text-muted)]');
+        b.classList.remove('bg-(--color-primary)', 'text-white', 'shadow-lg');
+        b.classList.add('bg-(--color-bg-alt)', 'text-(--color-text-muted)');
       });
-      target.classList.add('bg-[var(--color-primary)]', 'text-white', 'shadow-lg');
-      target.classList.remove('bg-[var(--color-bg-alt)]', 'text-[var(--color-text-muted)]');
+      target.classList.add('bg-(--color-primary)', 'text-white', 'shadow-lg');
+      target.classList.remove('bg-(--color-bg-alt)', 'text-(--color-text-muted)');
       
       updateCommand();
       updateUsageCode();
@@ -132,11 +132,11 @@ const packageManagers = [
       
       // Update button styles
       document.querySelectorAll('.pm-btn').forEach(b => {
-        b.classList.remove('bg-[var(--color-bg-alt)]', 'text-[var(--color-text)]', 'ring-2', 'ring-[var(--color-primary)]');
-        b.classList.add('bg-transparent', 'text-[var(--color-text-muted)]');
+        b.classList.remove('bg-(--color-bg-alt)', 'text-(--color-text)', 'ring-2', 'ring-(--color-primary)');
+        b.classList.add('bg-transparent', 'text-(--color-text-muted)');
       });
-      target.classList.add('bg-[var(--color-bg-alt)]', 'text-[var(--color-text)]', 'ring-2', 'ring-[var(--color-primary)]');
-      target.classList.remove('bg-transparent', 'text-[var(--color-text-muted)]');
+      target.classList.add('bg-(--color-bg-alt)', 'text-(--color-text)', 'ring-2', 'ring-(--color-primary)');
+      target.classList.remove('bg-transparent', 'text-(--color-text-muted)');
       
       updateCommand();
     });

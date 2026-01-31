@@ -14,17 +14,17 @@ import { Configurator } from "../components/Configurator";
   <BackgroundPattern />
   <Navbar />
   
-  <main class="min-h-screen bg-[var(--color-bg)] py-12">
+  <main class="min-h-screen bg-(--color-bg) py-12">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <!-- Header -->
       <div class="mb-12 text-center">
-        <div class="mb-4 inline-flex items-center gap-2 rounded-full border border-[var(--color-primary)]/20 bg-[var(--color-primary)]/10 px-4 py-2 text-sm font-medium text-[var(--color-primary)]">
+        <div class="mb-4 inline-flex items-center gap-2 rounded-full border border-(--color-primary)/20 bg-(--color-primary)/10 px-4 py-2 text-sm font-medium text-(--color-primary)">
           🎨 Interactive Tool
         </div>
-        <h1 class="mb-4 text-4xl font-bold text-[var(--color-text)] sm:text-5xl">
+        <h1 class="mb-4 text-4xl font-bold text-(--color-text) sm:text-5xl">
           Animation Configurator
         </h1>
-        <p class="text-lg text-[var(--color-text-muted)]">
+        <p class="text-lg text-(--color-text-muted)">
           Customize and preview animations in real-time
         </p>
       </div>
@@ -33,8 +33,8 @@ import { Configurator } from "../components/Configurator";
       <Configurator client:load />
       
       <!-- Usage Guide -->
-      <div class="mt-16 rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg)] p-8 shadow-xl">
-        <h2 class="mb-8 text-2xl font-bold text-[var(--color-text)]">
+      <div class="mt-16 rounded-2xl border border-(--color-border) bg-(--color-bg) p-8 shadow-xl">
+        <h2 class="mb-8 text-2xl font-bold text-(--color-text)">
           Usage Guide
         </h2>
         
@@ -42,9 +42,9 @@ import { Configurator } from "../components/Configurator";
           <div>
             <div class="mb-3 flex items-center gap-2">
               <span class="text-2xl">🎬</span>
-              <h3 class="text-lg font-semibold text-[var(--color-text)]">Basic Animations</h3>
+              <h3 class="text-lg font-semibold text-(--color-text)">Basic Animations</h3>
             </div>
-            <div class="space-y-3 text-sm text-[var(--color-text-muted)]">
+            <div class="space-y-3 text-sm text-(--color-text-muted)">
               <p>1. Select an animation from the dropdown menu</p>
               <p>2. Adjust duration, delay and other properties</p>
               <p>3. Copy the generated code and use it in your project</p>
@@ -54,9 +54,9 @@ import { Configurator } from "../components/Configurator";
           <div>
             <div class="mb-3 flex items-center gap-2">
               <span class="text-2xl">📜</span>
-              <h3 class="text-lg font-semibold text-[var(--color-text)]">Scroll Animations</h3>
+              <h3 class="text-lg font-semibold text-(--color-text)">Scroll Animations</h3>
             </div>
-            <div class="space-y-3 text-sm text-[var(--color-text-muted)]">
+            <div class="space-y-3 text-sm text-(--color-text-muted)">
               <p>1. Enable "Use Scroll Timeline"</p>
               <p>2. Select the desired animation range</p>
               <p>3. The animation will trigger on scroll</p>
@@ -67,29 +67,29 @@ import { Configurator } from "../components/Configurator";
           </div>
         </div>
         
-        <div class="mt-8 rounded-xl bg-[var(--color-bg-alt)] p-6">
+        <div class="mt-8 rounded-xl bg-(--color-bg-alt) p-6">
           <div class="mb-3 flex items-center gap-2">
             <span class="text-2xl">🔧</span>
-            <h3 class="text-lg font-semibold text-[var(--color-text)]">Arbitrary Values</h3>
+            <h3 class="text-lg font-semibold text-(--color-text)">Arbitrary Values</h3>
           </div>
-          <p class="mb-4 text-sm text-[var(--color-text-muted)]">
+          <p class="mb-4 text-sm text-(--color-text-muted)">
             You can use custom values with bracket notation:
           </p>
           <div class="overflow-hidden rounded-lg">
-            <Code code="animate-duration-[2.5s] animate-delay-[300ms]" lang="html" theme="github-dark" />
+            <Code code="animate-duration-[2.5s] animate-delay-300" lang="html" theme="github-dark" />
           </div>
         </div>
       </div>
       
       <!-- Examples -->
       <div class="mt-16">
-        <h2 class="mb-8 text-center text-3xl font-bold text-[var(--color-text)]">
+        <h2 class="mb-8 text-center text-3xl font-bold text-(--color-text)">
           Usage Examples
         </h2>
         
         <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          <div class="rounded-xl border border-[var(--color-border)] bg-[var(--color-bg)] p-6 hover:border-[var(--color-primary)] transition-all hover:shadow-xl">
-            <h3 class="mb-4 font-semibold text-[var(--color-text)]">Button Hover</h3>
+          <div class="rounded-xl border border-(--color-border) bg-(--color-bg) p-6 hover:border-(--color-primary) transition-all hover:shadow-xl">
+            <h3 class="mb-4 font-semibold text-(--color-text)">Button Hover</h3>
             <button class="w-full rounded-lg bg-blue-500 px-4 py-3 font-semibold text-white hover:animate-pulse transition-all">
               Hover Me
             </button>
@@ -98,8 +98,8 @@ import { Configurator } from "../components/Configurator";
             </div>
           </div>
           
-          <div class="rounded-xl border border-[var(--color-border)] bg-[var(--color-bg)] p-6 hover:border-[var(--color-primary)] transition-all hover:shadow-xl">
-            <h3 class="mb-4 font-semibold text-[var(--color-text)]">Loading Spinner</h3>
+          <div class="rounded-xl border border-(--color-border) bg-(--color-bg) p-6 hover:border-(--color-primary) transition-all hover:shadow-xl">
+            <h3 class="mb-4 font-semibold text-(--color-text)">Loading Spinner</h3>
             <div class="flex justify-center">
               <div
                 class="h-12 w-12 rounded-full border-4 border-purple-500 border-t-transparent animate-spin"
@@ -111,8 +111,8 @@ import { Configurator } from "../components/Configurator";
             </div>
           </div>
           
-          <div class="rounded-xl border border-[var(--color-border)] bg-[var(--color-bg)] p-6 hover:border-[var(--color-primary)] transition-all hover:shadow-xl">
-            <h3 class="mb-4 font-semibold text-[var(--color-text)]">Alert Badge</h3>
+          <div class="rounded-xl border border-(--color-border) bg-(--color-bg) p-6 hover:border-(--color-primary) transition-all hover:shadow-xl">
+            <h3 class="mb-4 font-semibold text-(--color-text)">Alert Badge</h3>
             <div class="flex justify-center">
               <div class="rounded-full bg-red-500 px-6 py-2 font-semibold text-white animate-bounce">
                 New!

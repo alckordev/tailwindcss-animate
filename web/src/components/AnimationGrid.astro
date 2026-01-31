@@ -24,16 +24,16 @@ const delays = [
 
 <div data-animation-grid>
   <!-- Controls -->
-  <div class="mb-8 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg)] p-6">
+  <div class="mb-8 rounded-lg border border-(--color-border) bg-(--color-bg) p-6">
     <div class="flex flex-wrap items-center gap-6">
       <!-- Duration -->
       <div class="flex items-center gap-3">
-        <label class="text-sm font-medium text-[var(--color-text)]">
+        <label class="text-sm font-medium text-(--color-text)">
           Duration
         </label>
         <select
           id="duration-select"
-          class="rounded-md border border-[var(--color-border)] bg-[var(--color-bg-alt)] px-3 py-2 text-sm text-[var(--color-text)]"
+          class="rounded-md border border-(--color-border) bg-(--color-bg-alt) px-3 py-2 text-sm text-(--color-text)"
         >
           {durations.map(d => (
             <option value={d.value}>{d.label}</option>
@@ -43,12 +43,12 @@ const delays = [
 
       <!-- Delay -->
       <div class="flex items-center gap-3">
-        <label class="text-sm font-medium text-[var(--color-text)]">
+        <label class="text-sm font-medium text-(--color-text)">
           Delay
         </label>
         <select
           id="delay-select"
-          class="rounded-md border border-[var(--color-border)] bg-[var(--color-bg-alt)] px-3 py-2 text-sm text-[var(--color-text)]"
+          class="rounded-md border border-(--color-border) bg-(--color-bg-alt) px-3 py-2 text-sm text-(--color-text)"
         >
           {delays.map(d => (
             <option value={d.value}>{d.label}</option>
@@ -58,12 +58,12 @@ const delays = [
 
       <!-- Category Filter -->
       <div class="flex items-center gap-3">
-        <label class="text-sm font-medium text-[var(--color-text)]">
+        <label class="text-sm font-medium text-(--color-text)">
           Category
         </label>
         <select
           id="category-select"
-          class="rounded-md border border-[var(--color-border)] bg-[var(--color-bg-alt)] px-3 py-2 text-sm text-[var(--color-text)]"
+          class="rounded-md border border-(--color-border) bg-(--color-bg-alt) px-3 py-2 text-sm text-(--color-text)"
         >
           <option value="all">All ({animations.length})</option>
           {categories.map(cat => (
@@ -77,7 +77,7 @@ const delays = [
       <!-- Animate All Button -->
       <button
         id="animate-all-btn"
-        class="ml-auto rounded-lg bg-[var(--color-primary)] px-6 py-2 font-semibold text-white hover:bg-[var(--color-primary-hover)] transition-colors"
+        class="ml-auto rounded-lg bg-(--color-primary) px-6 py-2 font-semibold text-white hover:bg-(--color-primary-hover) transition-colors"
       >
         Animate all
       </button>
@@ -87,7 +87,7 @@ const delays = [
   <!-- Animation Grid -->
   <div id="animation-grid" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"></div>
 
-  <div id="no-animations" class="hidden py-12 text-center text-[var(--color-text-muted)]">
+  <div id="no-animations" class="hidden py-12 text-center text-(--color-text-muted)">
     No animations found in this category
   </div>
 </div>
@@ -127,31 +127,31 @@ const delays = [
       return `
         <div
           key="${anim.class}-${replayKey}"
-          class="group relative overflow-hidden rounded-lg border border-[var(--color-border)] bg-[var(--color-bg)] p-6 transition-all hover:border-[var(--color-primary)] hover:shadow-xl"
+          class="group relative overflow-hidden rounded-lg border border-(--color-border) bg-(--color-bg) p-6 transition-all hover:border-(--color-primary) hover:shadow-xl"
         >
           ${anim.description ? `
-            <span class="absolute right-2 top-2 rounded-md bg-gradient-to-r from-blue-500 to-purple-500 px-2 py-1 text-xs font-bold text-white">
+            <span class="absolute right-2 top-2 rounded-md bg-linear-to-r from-blue-500 to-purple-500 px-2 py-1 text-xs font-bold text-white">
               ${anim.description}
             </span>
           ` : ''}
 
           <div class="mb-4 flex h-32 items-center justify-center">
             <div
-              class="h-20 w-20 rounded-xl bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 ${classes}"
+              class="h-20 w-20 rounded-xl bg-linear-to-br from-blue-500 via-purple-500 to-pink-500 ${classes}"
             ></div>
           </div>
 
           <div class="space-y-2">
-            <h3 class="font-mono text-sm font-semibold text-[var(--color-text)]">
+            <h3 class="font-mono text-sm font-semibold text-(--color-text)">
               ${anim.name}
             </h3>
-            <code class="block rounded-md bg-[var(--color-bg-alt)] px-3 py-1.5 text-xs text-[var(--color-text-muted)] font-mono">
+            <code class="block rounded-md bg-(--color-bg-alt) px-3 py-1.5 text-xs text-(--color-text-muted) font-mono">
               ${anim.class}
             </code>
           </div>
 
           <button
-            class="copy-btn mt-4 w-full rounded-md bg-[var(--color-primary)] px-3 py-2 text-sm font-medium text-white opacity-0 transition-all group-hover:opacity-100 hover:bg-[var(--color-primary-hover)]"
+            class="copy-btn mt-4 w-full rounded-md bg-(--color-primary) px-3 py-2 text-sm font-medium text-white opacity-0 transition-all group-hover:opacity-100 hover:bg-(--color-primary-hover)"
             data-copy="${classes}"
           >
             Copy
