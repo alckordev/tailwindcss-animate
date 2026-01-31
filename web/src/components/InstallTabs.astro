@@ -1,0 +1,159 @@
+---
+interface TabProps {
+  version: 'v4' | 'v3';
+}
+
+const { version } = Astro.props as TabProps;
+
+const packageManagers = [
+  { id: 'npm', label: 'npm', command: 'npm install' },
+  { id: 'pnpm', label: 'pnpm', command: 'pnpm install' },
+  { id: 'yarn', label: 'yarn', command: 'yarn add' },
+  { id: 'bun', label: 'bun', command: 'bun add' },
+];
+---
+
+<div class="mx-auto max-w-3xl" data-install-tabs>
+  <!-- Tailwind Version Tabs -->
+  <div class="mb-6 flex justify-center gap-2">
+    <button
+      data-tab="v4"
+      class="tab-btn rounded-lg px-6 py-2 font-semibold transition-all bg-[var(--color-primary)] text-white shadow-lg"
+    >
+      Tailwind v4
+    </button>
+    <button
+      data-tab="v3"
+      class="tab-btn rounded-lg px-6 py-2 font-semibold transition-all bg-[var(--color-bg-alt)] text-[var(--color-text-muted)] hover:text-[var(--color-text)]"
+    >
+      Tailwind v3
+    </button>
+  </div>
+
+  <!-- Package Manager Tabs -->
+  <div class="mb-4 flex flex-wrap justify-center gap-2">
+    {packageManagers.map((pm, i) => (
+      <button
+        data-pm={pm.id}
+        class={`pm-btn rounded-md px-4 py-2 text-sm font-medium transition-all ${
+          i === 0
+            ? 'bg-[var(--color-bg-alt)] text-[var(--color-text)] ring-2 ring-[var(--color-primary)]'
+            : 'bg-transparent text-[var(--color-text-muted)] hover:text-[var(--color-text)]'
+        }`}
+      >
+        {pm.label}
+      </button>
+    ))}
+  </div>
+
+  <!-- Install Command -->
+  <div class="mb-6 overflow-hidden rounded-lg border border-[var(--color-border)]">
+    <div class="bg-[#0d1117] p-4">
+      <div class="flex items-center justify-between">
+        <code id="install-command" class="text-sm text-gray-100">npm install @iscodex/tailwindcss-animate</code>
+        <button
+          id="copy-install-btn"
+          class="ml-4 rounded-md bg-[var(--color-primary)] px-3 py-1 text-xs font-medium text-white hover:bg-[var(--color-primary-hover)]"
+        >
+          Copy
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Usage -->
+  <div class="rounded-lg border border-[var(--color-border)] bg-[var(--color-bg)] p-6">
+    <h3 class="mb-3 text-lg font-semibold text-[var(--color-text)]">
+      How to use
+    </h3>
+    <div class="overflow-hidden rounded-lg">
+      <pre class="bg-[#0d1117] p-4 text-sm text-gray-100 overflow-x-auto"><code id="usage-code">@import 'tailwindcss';
+@import '@iscodex/tailwindcss-animate';</code></pre>
+    </div>
+  </div>
+</div>
+
+<script>
+  const packageManagers = [
+    { id: 'npm', label: 'npm', command: 'npm install' },
+    { id: 'pnpm', label: 'pnpm', command: 'pnpm install' },
+    { id: 'yarn', label: 'yarn', command: 'yarn add' },
+    { id: 'bun', label: 'bun', command: 'bun add' },
+  ];
+
+  let activeTab = 'v4';
+  let activePM = 'npm';
+
+  const updateCommand = () => {
+    const packageName = activeTab === 'v4' 
+      ? '@iscodex/tailwindcss-animate'
+      : '@iscodex/tailwindcss-animate-plugin';
+    
+    const manager = packageManagers.find(m => m.id === activePM);
+    const command = `${manager.command} ${packageName}`;
+    
+    const commandEl = document.getElementById('install-command');
+    if (commandEl) commandEl.textContent = command;
+  };
+
+  const updateUsageCode = () => {
+    const usageCode = activeTab === 'v4' 
+      ? `@import 'tailwindcss';\n@import '@iscodex/tailwindcss-animate';`
+      : `// tailwind.config.js\nmodule.exports = {\n  plugins: [\n    require('@iscodex/tailwindcss-animate-plugin'),\n  ],\n}`;
+    
+    const codeEl = document.getElementById('usage-code');
+    if (codeEl) codeEl.textContent = usageCode;
+  };
+
+  // Tab buttons
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const target = e.currentTarget as HTMLButtonElement;
+      activeTab = target.dataset.tab || 'v4';
+      
+      // Update button styles
+      document.querySelectorAll('.tab-btn').forEach(b => {
+        b.classList.remove('bg-[var(--color-primary)]', 'text-white', 'shadow-lg');
+        b.classList.add('bg-[var(--color-bg-alt)]', 'text-[var(--color-text-muted)]');
+      });
+      target.classList.add('bg-[var(--color-primary)]', 'text-white', 'shadow-lg');
+      target.classList.remove('bg-[var(--color-bg-alt)]', 'text-[var(--color-text-muted)]');
+      
+      updateCommand();
+      updateUsageCode();
+    });
+  });
+
+  // PM buttons
+  document.querySelectorAll('.pm-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const target = e.currentTarget as HTMLButtonElement;
+      activePM = target.dataset.pm || 'npm';
+      
+      // Update button styles
+      document.querySelectorAll('.pm-btn').forEach(b => {
+        b.classList.remove('bg-[var(--color-bg-alt)]', 'text-[var(--color-text)]', 'ring-2', 'ring-[var(--color-primary)]');
+        b.classList.add('bg-transparent', 'text-[var(--color-text-muted)]');
+      });
+      target.classList.add('bg-[var(--color-bg-alt)]', 'text-[var(--color-text)]', 'ring-2', 'ring-[var(--color-primary)]');
+      target.classList.remove('bg-transparent', 'text-[var(--color-text-muted)]');
+      
+      updateCommand();
+    });
+  });
+
+  // Copy button
+  const copyBtn = document.getElementById('copy-install-btn');
+  if (copyBtn) {
+    copyBtn.addEventListener('click', () => {
+      const commandEl = document.getElementById('install-command');
+      if (commandEl) {
+        navigator.clipboard.writeText(commandEl.textContent || '');
+        copyBtn.textContent = 'Copied!';
+        setTimeout(() => {
+          copyBtn.textContent = 'Copy';
+        }, 2000);
+      }
+    });
+  }
+</script>

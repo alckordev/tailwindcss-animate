@@ -1,9 +1,0 @@
-@utility animate-duration-none {
-  animation-duration: 0s;
-}
-
-@utility animate-duration-* {
-  /* prettier-ignore */
-  animation-duration: --value(integer)ms;
-  animation-duration: --value([ *]);
-}

@@ -1,0 +1,208 @@
+---
+import { animations, categories } from '../data/animations';
+
+const durations = [
+  { value: '', label: 'default' },
+  { value: '200ms', label: '200ms' },
+  { value: '300ms', label: '300ms' },
+  { value: '500ms', label: '500ms' },
+  { value: '700ms', label: '700ms' },
+  { value: '1s', label: '1s' },
+  { value: '2s', label: '2s' },
+  { value: '3s', label: '3s' },
+];
+
+const delays = [
+  { value: '', label: 'none' },
+  { value: '100ms', label: '100ms' },
+  { value: '200ms', label: '200ms' },
+  { value: '300ms', label: '300ms' },
+  { value: '500ms', label: '500ms' },
+  { value: '1s', label: '1s' },
+];
+---
+
+<div data-animation-grid>
+  <!-- Controls -->
+  <div class="mb-8 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg)] p-6">
+    <div class="flex flex-wrap items-center gap-6">
+      <!-- Duration -->
+      <div class="flex items-center gap-3">
+        <label class="text-sm font-medium text-[var(--color-text)]">
+          Duration
+        </label>
+        <select
+          id="duration-select"
+          class="rounded-md border border-[var(--color-border)] bg-[var(--color-bg-alt)] px-3 py-2 text-sm text-[var(--color-text)]"
+        >
+          {durations.map(d => (
+            <option value={d.value}>{d.label}</option>
+          ))}
+        </select>
+      </div>
+
+      <!-- Delay -->
+      <div class="flex items-center gap-3">
+        <label class="text-sm font-medium text-[var(--color-text)]">
+          Delay
+        </label>
+        <select
+          id="delay-select"
+          class="rounded-md border border-[var(--color-border)] bg-[var(--color-bg-alt)] px-3 py-2 text-sm text-[var(--color-text)]"
+        >
+          {delays.map(d => (
+            <option value={d.value}>{d.label}</option>
+          ))}
+        </select>
+      </div>
+
+      <!-- Category Filter -->
+      <div class="flex items-center gap-3">
+        <label class="text-sm font-medium text-[var(--color-text)]">
+          Category
+        </label>
+        <select
+          id="category-select"
+          class="rounded-md border border-[var(--color-border)] bg-[var(--color-bg-alt)] px-3 py-2 text-sm text-[var(--color-text)]"
+        >
+          <option value="all">All ({animations.length})</option>
+          {categories.map(cat => (
+            <option value={cat}>
+              {cat} ({animations.filter(a => a.category === cat).length})
+            </option>
+          ))}
+        </select>
+      </div>
+
+      <!-- Animate All Button -->
+      <button
+        id="animate-all-btn"
+        class="ml-auto rounded-lg bg-[var(--color-primary)] px-6 py-2 font-semibold text-white hover:bg-[var(--color-primary-hover)] transition-colors"
+      >
+        Animate all
+      </button>
+    </div>
+  </div>
+
+  <!-- Animation Grid -->
+  <div id="animation-grid" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"></div>
+
+  <div id="no-animations" class="hidden py-12 text-center text-[var(--color-text-muted)]">
+    No animations found in this category
+  </div>
+</div>
+
+<script define:vars={{ animations, categories }}>
+  let duration = '';
+  let delay = '';
+  let selectedCategory = 'all';
+  let replayKey = 0;
+
+  const renderAnimations = () => {
+    const filteredAnimations = selectedCategory === 'all'
+      ? animations
+      : animations.filter(a => a.category === selectedCategory);
+
+    const grid = document.getElementById('animation-grid');
+    const noAnimsEl = document.getElementById('no-animations');
+    
+    if (!grid) return;
+
+    if (filteredAnimations.length === 0) {
+      grid.classList.add('hidden');
+      noAnimsEl?.classList.remove('hidden');
+      return;
+    }
+
+    grid.classList.remove('hidden');
+    noAnimsEl?.classList.add('hidden');
+    
+    grid.innerHTML = filteredAnimations.map((anim) => {
+      const classes = [
+        anim.class,
+        duration && `animate-duration-[${duration}]`,
+        delay && `animate-delay-[${delay}]`,
+      ].filter(Boolean).join(' ');
+
+      return `
+        <div
+          key="${anim.class}-${replayKey}"
+          class="group relative overflow-hidden rounded-lg border border-[var(--color-border)] bg-[var(--color-bg)] p-6 transition-all hover:border-[var(--color-primary)] hover:shadow-xl"
+        >
+          ${anim.description ? `
+            <span class="absolute right-2 top-2 rounded-md bg-gradient-to-r from-blue-500 to-purple-500 px-2 py-1 text-xs font-bold text-white">
+              ${anim.description}
+            </span>
+          ` : ''}
+
+          <div class="mb-4 flex h-32 items-center justify-center">
+            <div
+              class="h-20 w-20 rounded-xl bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 ${classes}"
+            ></div>
+          </div>
+
+          <div class="space-y-2">
+            <h3 class="font-mono text-sm font-semibold text-[var(--color-text)]">
+              ${anim.name}
+            </h3>
+            <code class="block rounded-md bg-[var(--color-bg-alt)] px-3 py-1.5 text-xs text-[var(--color-text-muted)] font-mono">
+              ${anim.class}
+            </code>
+          </div>
+
+          <button
+            class="copy-btn mt-4 w-full rounded-md bg-[var(--color-primary)] px-3 py-2 text-sm font-medium text-white opacity-0 transition-all group-hover:opacity-100 hover:bg-[var(--color-primary-hover)]"
+            data-copy="${classes}"
+          >
+            Copy
+          </button>
+        </div>
+      `;
+    }).join('');
+
+    // Add copy button listeners
+    document.querySelectorAll('.copy-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const target = e.currentTarget as HTMLButtonElement;
+        const text = target.dataset.copy || '';
+        navigator.clipboard.writeText(text);
+        const original = target.textContent;
+        target.textContent = 'Copied!';
+        setTimeout(() => {
+          target.textContent = original;
+        }, 2000);
+      });
+    });
+  };
+
+  // Duration change
+  const durationSelect = document.getElementById('duration-select');
+  durationSelect?.addEventListener('change', (e) => {
+    duration = (e.target as HTMLSelectElement).value;
+    renderAnimations();
+  });
+
+  // Delay change
+  const delaySelect = document.getElementById('delay-select');
+  delaySelect?.addEventListener('change', (e) => {
+    delay = (e.target as HTMLSelectElement).value;
+    renderAnimations();
+  });
+
+  // Category change
+  const categorySelect = document.getElementById('category-select');
+  categorySelect?.addEventListener('change', (e) => {
+    selectedCategory = (e.target as HTMLSelectElement).value;
+    renderAnimations();
+  });
+
+  // Animate all
+  const animateAllBtn = document.getElementById('animate-all-btn');
+  animateAllBtn?.addEventListener('click', () => {
+    replayKey++;
+    renderAnimations();
+  });
+
+  // Initial render
+  renderAnimations();
+</script>

@@ -12,16 +12,11 @@
   },
   "dependencies": {
     "@iscodex/tailwindcss-animate": "workspace:*",
-    "@astrojs/react": "^4.1.2",
     "astro": "^5.2.2",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
     "shiki": "^3.12.1"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.1.4",
-    "@types/react": "^19.1.2",
-    "@types/react-dom": "^19.1.2",
     "tailwindcss": "^4.1.4",
     "typescript": "^5.8.3"
   }

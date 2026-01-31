@@ -4,8 +4,8 @@ import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
 import BackgroundPattern from "../components/BackgroundPattern.astro";
-import { InstallTabs } from "../components/InstallTabs";
-import { AnimationGrid } from "../components/AnimationGrid";
+import InstallTabs from "../components/InstallTabs.astro";
+import AnimationGrid from "../components/AnimationGrid.astro";
 ---
 
 <Layout>
@@ -43,7 +43,7 @@ import { AnimationGrid } from "../components/AnimationGrid";
 
         <!-- Installation Tabs -->
         <div class="animate-fade-in-up animate-delay-[300ms]">
-          <InstallTabs version="v4" client:load />
+          <InstallTabs version="v4" />
         </div>
       </div>
     </div>
@@ -114,8 +114,8 @@ import { AnimationGrid } from "../components/AnimationGrid";
           Explore our comprehensive library of ready-to-use animations
         </p>
       </div>
-
-      <AnimationGrid client:load />
+      
+      <AnimationGrid />
     </div>
   </section>
 
