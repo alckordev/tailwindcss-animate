@@ -8,7 +8,7 @@ This is the documentation website for Tailwind CSS Animate, built with Astro.
 - **React** - For interactive components
 - **Tailwind CSS v4** - Styling
 - **TypeScript** - Type safety
-- **@iscodex/tailwindcss-animate** - The library itself
+- **tw-animations** - The library itself
 
 ## Development
 

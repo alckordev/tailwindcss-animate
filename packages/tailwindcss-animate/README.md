@@ -1,13 +1,13 @@
-# @iscodex/tailwindcss-animate
+# tw-animations
 
 Extended animation utilities for **Tailwind CSS v4**.
 
-> **Note:** This package is for Tailwind CSS v4. If you're using Tailwind CSS v3, use [`@iscodex/tailwindcss-animate-plugin`](../tailwindcss-animate-plugin) instead.
+> **Note:** This package is for Tailwind CSS v4. If you're using Tailwind CSS v3, use [`tw-animations-plugin`](../tailwindcss-animate-plugin) instead.
 
 ## Installation
 
 ```bash
-npm install @iscodex/tailwindcss-animate
+npm install tw-animations
 ```
 
 ## Usage
@@ -16,7 +16,7 @@ Add the import to your CSS file:
 
 ```css
 @import "tailwindcss";
-@import "@iscodex/tailwindcss-animate";
+@import "tw-animations";
 ```
 
 Start using animations:

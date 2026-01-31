@@ -1,5 +1,5 @@
 {
-  "name": "@iscodex/tailwindcss-animate-workspace",
+  "name": "tw-animations-workspace",
   "version": "2.0.0",
   "private": true,
   "description": "Monorepo for Tailwind CSS Animate packages",
@@ -9,8 +9,8 @@
     "build:web": "pnpm --filter web build",
     "build": "pnpm run build:web",
     "test": "pnpm --filter './packages/*' test",
-    "test:v4": "pnpm --filter @iscodex/tailwindcss-animate test",
-    "test:v3": "pnpm --filter @iscodex/tailwindcss-animate-plugin test",
+    "test:v4": "pnpm --filter tw-animations test",
+    "test:v3": "pnpm --filter tw-animations-plugin test",
     "publish:packages": "pnpm --filter './packages/*' publish --access public"
   },
   "devDependencies": {

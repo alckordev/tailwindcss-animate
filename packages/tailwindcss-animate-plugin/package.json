@@ -1,5 +1,5 @@
 {
-  "name": "@iscodex/tailwindcss-animate-plugin",
+  "name": "tw-animations-plugin",
   "version": "2.0.0",
   "description": "Extended animation utilities for Tailwind CSS v3",
   "main": "src/index.js",

@@ -1,9 +1,9 @@
-# @iscodex/tailwindcss-animate
+# tw-animations
 
-[![NPM version](https://img.shields.io/npm/v/@iscodex/tailwindcss-animate?color=32A9C3&labelColor=1B3C4A&label=npm%20v4)](https://www.npmjs.com/package/@iscodex/tailwindcss-animate)
-[![NPM version](https://img.shields.io/npm/v/@iscodex/tailwindcss-animate-plugin?color=32A9C3&labelColor=1B3C4A&label=npm%20v3)](https://www.npmjs.com/package/@iscodex/tailwindcss-animate-plugin)
-[![NPM downloads](https://img.shields.io/npm/dm/@iscodex/tailwindcss-animate?color=32A9C3&labelColor=1B3C4A&label=downloads)](https://www.npmjs.com/package/@iscodex/tailwindcss-animate)
-[![License](https://img.shields.io/npm/l/@iscodex/tailwindcss-animate?color=32A9C3&labelColor=1B3C4A&label=license)](https://www.npmjs.com/package/@iscodex/tailwindcss-animate)
+[![NPM version](https://img.shields.io/npm/v/tw-animations?color=32A9C3&labelColor=1B3C4A&label=npm%20v4)](https://www.npmjs.com/package/tw-animations)
+[![NPM version](https://img.shields.io/npm/v/tw-animations-plugin?color=32A9C3&labelColor=1B3C4A&label=npm%20v3)](https://www.npmjs.com/package/tw-animations-plugin)
+[![NPM downloads](https://img.shields.io/npm/dm/tw-animations?color=32A9C3&labelColor=1B3C4A&label=downloads)](https://www.npmjs.com/package/tw-animations)
+[![License](https://img.shields.io/npm/l/tw-animations?color=32A9C3&labelColor=1B3C4A&label=license)](https://www.npmjs.com/package/tw-animations)
 
 Extended animation utilities for **Tailwind CSS v4 and v3**. 85+ animations, scroll timelines, and view animations with zero configuration.
 
@@ -26,30 +26,30 @@ Extended animation utilities for **Tailwind CSS v4 and v3**. 85+ animations, scr
 
 This monorepo contains two packages:
 
-| Package                                                                        | Version                                                                  | Description                        |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ---------------------------------- |
-| [`@iscodex/tailwindcss-animate`](./packages/tailwindcss-animate)               | ![npm](https://img.shields.io/npm/v/@iscodex/tailwindcss-animate)        | For **Tailwind CSS v4** (CSS-only) |
-| [`@iscodex/tailwindcss-animate-plugin`](./packages/tailwindcss-animate-plugin) | ![npm](https://img.shields.io/npm/v/@iscodex/tailwindcss-animate-plugin) | For **Tailwind CSS v3** (Plugin)   |
+| Package                                                         | Version                                                   | Description                        |
+| --------------------------------------------------------------- | --------------------------------------------------------- | ---------------------------------- |
+| [`tw-animations`](./packages/tailwindcss-animate)               | ![npm](https://img.shields.io/npm/v/tw-animations)        | For **Tailwind CSS v4** (CSS-only) |
+| [`tw-animations-plugin`](./packages/tailwindcss-animate-plugin) | ![npm](https://img.shields.io/npm/v/tw-animations-plugin) | For **Tailwind CSS v3** (Plugin)   |
 
 ## 🚀 Installation
 
 ### For Tailwind CSS v4
 
 ```bash
-npm install @iscodex/tailwindcss-animate
+npm install tw-animations
 ```
 
 Add the import to your CSS file:
 
 ```css
 @import "tailwindcss";
-@import "@iscodex/tailwindcss-animate";
+@import "tw-animations";
 ```
 
 ### For Tailwind CSS v3
 
 ```bash
-npm install @iscodex/tailwindcss-animate-plugin
+npm install tw-animations-plugin
 ```
 
 Add the plugin to your Tailwind configuration:
@@ -57,7 +57,7 @@ Add the plugin to your Tailwind configuration:
 ```javascript
 // tailwind.config.js
 module.exports = {
-  plugins: [require("@iscodex/tailwindcss-animate-plugin")],
+  plugins: [require("tw-animations-plugin")],
 };
 ```
 
@@ -288,8 +288,8 @@ Customize animations globally:
 - [Website & Interactive Demos](https://tailwindcss-animate.vercel.app)
 - [Animation Configurator](https://tailwindcss-animate.vercel.app/configurator)
 - [GitHub Repository](https://github.com/iscodex/tailwindcss-animate)
-- [npm Package (v4)](https://www.npmjs.com/package/@iscodex/tailwindcss-animate)
-- [npm Package (v3)](https://www.npmjs.com/package/@iscodex/tailwindcss-animate-plugin)
+- [npm Package (v4)](https://www.npmjs.com/package/tw-animations)
+- [npm Package (v3)](https://www.npmjs.com/package/tw-animations-plugin)
 
 ## 🤝 Contributing
 

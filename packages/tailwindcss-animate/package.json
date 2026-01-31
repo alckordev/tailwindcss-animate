@@ -1,5 +1,5 @@
 {
-  "name": "@iscodex/tailwindcss-animate",
+  "name": "tw-animations",
   "version": "2.0.0",
   "description": "Extended animation utilities for Tailwind CSS v4",
   "main": "src/index.css",

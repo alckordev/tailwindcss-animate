@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@import "@iscodex/tailwindcss-animate";
+@import "tw-animations";
 
 :root {
   /* Theme variables - Ultra Dark Mode */

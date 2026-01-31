@@ -11,7 +11,7 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@iscodex/tailwindcss-animate": "workspace:*",
+    "tw-animations": "workspace:*",
     "astro": "^5.2.2",
     "clsx": "^2.1.1",
     "shiki": "^3.12.1",
