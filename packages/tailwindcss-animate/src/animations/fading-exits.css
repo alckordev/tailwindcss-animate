@@ -3,19 +3,20 @@
     var(--default-animation-timing-function, ease-out)
     var(--default-animation-delay, 0s) both;
 
-  --animate-fade-out-down: fade-out-down var(--default-animation-duration, 1s)
+  --animate-fade-out-down: fade-out-down var(--default-animation-duration, 0.6s)
     var(--default-animation-timing-function, ease-out)
     var(--default-animation-delay, 0s) both;
 
-  --animate-fade-out-start: fade-out-start var(--default-animation-duration, 1s)
+  --animate-fade-out-start: fade-out-start
+    var(--default-animation-duration, 0.6s)
     var(--default-animation-timing-function, ease-out)
     var(--default-animation-delay, 0s) both;
 
-  --animate-fade-out-end: fade-out-end var(--default-animation-duration, 1s)
+  --animate-fade-out-end: fade-out-end var(--default-animation-duration, 0.6s)
     var(--default-animation-timing-function, ease-out)
     var(--default-animation-delay, 0s) both;
 
-  --animate-fade-out-up: fade-out-up var(--default-animation-duration, 1s)
+  --animate-fade-out-up: fade-out-up var(--default-animation-duration, 0.6s)
     var(--default-animation-timing-function, ease-out)
     var(--default-animation-delay, 0s) both;
 
@@ -34,7 +35,7 @@
     }
     to {
       opacity: 0;
-      transform: translate3d(0, 100%, 0);
+      transform: translate3d(0, 20px, 0);
     }
   }
 
@@ -44,7 +45,7 @@
     }
     to {
       opacity: 0;
-      transform: translate3d(-100%, 0, 0);
+      transform: translate3d(-20px, 0, 0);
     }
   }
 
@@ -54,7 +55,7 @@
     }
     to {
       opacity: 0;
-      transform: translate3d(100%, 0, 0);
+      transform: translate3d(20px, 0, 0);
     }
   }
 
@@ -64,7 +65,7 @@
     }
     to {
       opacity: 0;
-      transform: translate3d(0, -100%, 0);
+      transform: translate3d(0, -20px, 0);
     }
   }
 }
