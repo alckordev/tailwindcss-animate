@@ -13,7 +13,9 @@
   "dependencies": {
     "@iscodex/tailwindcss-animate": "workspace:*",
     "astro": "^5.2.2",
-    "shiki": "^3.12.1"
+    "clsx": "^2.1.1",
+    "shiki": "^3.12.1",
+    "tailwind-merge": "^3.4.0"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.1.4",

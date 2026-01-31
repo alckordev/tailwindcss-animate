@@ -1,15 +1,42 @@
 ---
+import { Code } from "astro/components";
+import { cn } from "../utils";
+
 interface TabProps {
-  version: 'v4' | 'v3';
+  version: "v4" | "v3";
 }
 
 const { version } = Astro.props as TabProps;
 
 const packageManagers = [
-  { id: 'npm', label: 'npm', command: 'npm install' },
-  { id: 'pnpm', label: 'pnpm', command: 'pnpm install' },
-  { id: 'yarn', label: 'yarn', command: 'yarn add' },
-  { id: 'bun', label: 'bun', command: 'bun add' },
+  {
+    id: "npm",
+    name: "npm",
+    icon: `<svg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' viewBox='0 0 32 32'><path fill='#c12127' d='M2 2h28v28H2'/><path fill='#fff' d='M7.25 7.25h17.5v17.5h-3.5v-14H16v14H7.25'/></svg>`,
+    v4Command: "npm install @iscodex/tailwindcss-animate",
+    v3Command: "npm install @iscodex/tailwindcss-animate-plugin",
+  },
+  {
+    id: "pnpm",
+    name: "pnpm",
+    icon: `<svg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' viewBox='0 0 32 32'><path fill='#f9ad00' d='M30 10.75h-8.749V2H30Zm-9.626 0h-8.75V2h8.75Zm-9.625 0H2V2h8.749ZM30 20.375h-8.749v-8.75H30Z'/><path fill='#4e4e4e' d='M20.374 20.375h-8.75v-8.75h8.75Zm0 9.625h-8.75v-8.75h8.75ZM30 30h-8.749v-8.75H30Zm-19.251 0H2v-8.75h8.749Z'/></svg>`,
+    v4Command: "pnpm add @iscodex/tailwindcss-animate",
+    v3Command: "pnpm add @iscodex/tailwindcss-animate-plugin",
+  },
+  {
+    id: "yarn",
+    name: "yarn",
+    icon: `<svg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' viewBox='0 0 32 32'><path fill='#2188b6' d='M28.208 24.409a10.5 10.5 0 0 0-3.959 1.822a23.7 23.7 0 0 1-5.835 2.642a1.63 1.63 0 0 1-.983.55a62 62 0 0 1-6.447.577c-1.163.009-1.876-.3-2.074-.776a1.573 1.573 0 0 1 .866-2.074a4 4 0 0 1-.514-.379c-.171-.171-.352-.514-.406-.388c-.225.55-.343 1.894-.947 2.5c-.83.839-2.4.559-3.328.072c-1.019-.541.072-1.813.072-1.813a.73.73 0 0 1-.992-.343a4.85 4.85 0 0 1-.667-2.949a5.37 5.37 0 0 1 1.749-2.895a9.3 9.3 0 0 1 .658-4.4a10.45 10.45 0 0 1 3.165-3.661S6.628 10.747 7.35 8.817c.469-1.262.658-1.253.812-1.308a3.6 3.6 0 0 0 1.452-.857a5.27 5.27 0 0 1 4.41-1.7S15.2 1.4 16.277 2.09a18.4 18.4 0 0 1 1.533 2.886s1.281-.748 1.425-.469a11.33 11.33 0 0 1 .523 6.132a14 14 0 0 1-2.6 5.411c-.135.225 1.551.938 2.615 3.887c.983 2.7.108 4.96.262 5.212c.027.045.036.063.036.063s1.127.09 3.391-1.308a8.5 8.5 0 0 1 4.277-1.604a1.081 1.081 0 0 1 .469 2.11Z'/></svg>`,
+    v4Command: "yarn add @iscodex/tailwindcss-animate",
+    v3Command: "yarn add @iscodex/tailwindcss-animate-plugin",
+  },
+  {
+    id: "bun",
+    name: "bun",
+    icon: `<svg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' viewBox='0 0 32 32'><path fill='#fbf0df' d='M27.938 19.624c-.563-2.438-1.563-4.688-3.313-6.438c-.125-.125-.25-.25-.375-.313c.063-.188.063-.375.063-.563c0-2.438-1.188-4.688-3.188-6.063c.063-.188.063-.438.063-.625c0-1.438-1.188-2.625-2.625-2.625c-.5 0-.938.125-1.313.438a7.6 7.6 0 0 0-6.188 0a2.56 2.56 0 0 0-1.313-.438c-1.438 0-2.625 1.188-2.625 2.625c0 .188 0 .438.063.625c-2 1.375-3.188 3.625-3.188 6.063c0 .188 0 .375.063.563c-.125.063-.25.188-.375.313c-1.75 1.75-2.75 4-3.313 6.438c-.438 1.875.875 3.75 2.75 4.125c.188 0 .438.063.625.063c.688 0 1.313-.188 1.875-.438c1.688-.813 3.5-1.313 5.375-1.563c.25 0 .5-.063.75-.063c.875-.063 1.813-.063 2.688 0c.25 0 .5 0 .75.063c1.875.25 3.688.75 5.375 1.563c.563.25 1.188.438 1.875.438c.188 0 .438 0 .625-.063c1.875-.375 3.188-2.25 2.75-4.125m-8.063-7.313c.75 0 1.375.625 1.375 1.438s-.625 1.438-1.375 1.438s-1.375-.625-1.375-1.438s.625-1.438 1.375-1.438m-7.813 0c.75 0 1.375.625 1.375 1.438s-.625 1.438-1.375 1.438s-1.375-.625-1.375-1.438s.625-1.438 1.375-1.438'/><path fill='#f6dece' d='M19.563 16.624c-.063 0-.063 0 0 0c-.188 0-.313-.125-.313-.313c0-.188.125-.313.313-.313c.063 0 .063 0 0 0c.063 0 .125.063.188.063c.063 0 .188.063.25.125c.125.125.313.313.563.563c.313.313.75.688 1.25 1.063c-.188.125-.375.188-.563.25c-.5-.438-.938-.813-1.25-1.125c-.188-.188-.375-.313-.438-.313m-7.188 0s-.063 0 0 0c-.063 0-.125-.063-.188-.063c-.063 0-.188-.063-.25-.125c-.125-.125-.313-.313-.563-.563c-.313-.313-.75-.688-1.25-1.063c.188-.125.375-.188.563-.25c.5.438.938.813 1.25 1.125c.188.188.375.313.438.313c.188 0 .313.125.313.313c0 .188-.125.313-.313.313'/><ellipse cx='16' cy='22.436' fill='#fbf0df' rx='4.063' ry='2.188'/></svg>`,
+    v4Command: "bun add @iscodex/tailwindcss-animate",
+    v3Command: "bun add @iscodex/tailwindcss-animate-plugin",
+  },
 ];
 ---
 
@@ -18,13 +45,13 @@ const packageManagers = [
   <div class="mb-6 flex justify-center gap-2">
     <button
       data-tab="v4"
-      class="tab-btn rounded-lg px-6 py-2 font-semibold transition-all bg-(--color-primary) text-white shadow-lg"
+      class="tab-btn rounded-lg px-6 py-2 font-semibold transition-all bg-(--color-primary) text-white shadow-lg hover:cursor-pointer"
     >
       Tailwind v4
     </button>
     <button
       data-tab="v3"
-      class="tab-btn rounded-lg px-6 py-2 font-semibold transition-all bg-(--color-bg-alt) text-(--color-text-muted) hover:text-(--color-text)"
+      class="tab-btn rounded-lg px-6 py-2 font-semibold transition-all bg-(--color-bg-alt) text-(--color-text-muted) hover:text-(--color-text) hover:cursor-pointer"
     >
       Tailwind v3
     </button>
@@ -32,28 +59,49 @@ const packageManagers = [
 
   <!-- Package Manager Tabs -->
   <div class="mb-4 flex flex-wrap justify-center gap-2">
-    {packageManagers.map((pm, i) => (
-      <button
-        data-pm={pm.id}
-        class={`pm-btn rounded-md px-4 py-2 text-sm font-medium transition-all ${
-          i === 0
-            ? 'bg-(--color-bg-alt) text-(--color-text) ring-2 ring-(--color-primary)'
-            : 'bg-transparent text-(--color-text-muted) hover:text-(--color-text)'
-        }`}
-      >
-        {pm.label}
-      </button>
-    ))}
+    {
+      packageManagers.map((pm, i) => (
+        <button
+          class={cn(
+            "pm-btn flex items-center gap-2 rounded-md px-4 py-2 text-sm font-medium transition-all",
+            i === 0
+              ? "bg-(--color-bg-alt) text-(--color-text) ring-2 ring-(--color-primary)"
+              : "bg-transparent text-(--color-text-muted) hover:text-(--color-text)"
+          )}
+          data-pm={pm.id}
+        >
+          <span class="flex size-4 items-center justify-center" set:html={pm.icon} />
+          <span>{pm.name}</span>
+        </button>
+      ))
+    }
   </div>
 
   <!-- Install Command -->
   <div class="mb-6 overflow-hidden rounded-lg border border-(--color-border)">
     <div class="bg-[#0d1117] p-4">
-      <div class="flex items-center justify-between">
-        <code id="install-command" class="text-sm text-gray-100">npm install @iscodex/tailwindcss-animate</code>
+      <div class="flex items-center justify-between gap-4">
+        <div class="flex-1 overflow-hidden">
+          {
+            packageManagers.map((pm, pmIdx) =>
+              ["v4", "v3"].map((version) => (
+                <div
+                  data-command-block={`${pm.id}-${version}`}
+                  class={pmIdx === 0 && version === "v4" ? "" : "hidden"}
+                >
+                  <Code
+                    code={version === "v4" ? pm.v4Command : pm.v3Command}
+                    lang="bash"
+                    class="text-sm! border-0! text-start"
+                  />
+                </div>
+              ))
+            )
+          }
+        </div>
         <button
           id="copy-install-btn"
-          class="ml-4 rounded-md bg-(--color-primary) px-3 py-1 text-xs font-medium text-white hover:bg-(--color-primary-hover)"
+          class="ml-4 shrink-0 rounded-md bg-(--color-primary) px-3 py-1 text-xs font-medium text-white hover:bg-(--color-primary-hover)"
         >
           Copy
         </button>
@@ -63,95 +111,100 @@ const packageManagers = [
 
   <!-- Usage -->
   <div class="rounded-lg border border-(--color-border) bg-(--color-bg) p-6">
-    <h3 class="mb-3 text-lg font-semibold text-(--color-text)">
-      How to use
-    </h3>
+    <h3 class="mb-3 text-lg font-semibold text-(--color-text)">How to use</h3>
     <div class="overflow-hidden rounded-lg">
-      <pre class="bg-[#0d1117] p-4 text-sm text-gray-100 overflow-x-auto"><code id="usage-code">@import 'tailwindcss';
+      <pre
+        class="bg-[#0d1117] p-4 text-sm text-gray-100 overflow-x-auto"><code id="usage-code">@import 'tailwindcss';
 @import '@iscodex/tailwindcss-animate';</code></pre>
     </div>
   </div>
 </div>
 
 <script>
-  const packageManagers = [
-    { id: 'npm', label: 'npm', command: 'npm install' },
-    { id: 'pnpm', label: 'pnpm', command: 'pnpm install' },
-    { id: 'yarn', label: 'yarn', command: 'yarn add' },
-    { id: 'bun', label: 'bun', command: 'bun add' },
-  ];
+  let activeTab = "v4";
+  let activePM = "npm";
 
-  let activeTab = 'v4';
-  let activePM = 'npm';
+  const updateCommandDisplay = () => {
+    // Hide all command blocks
+    document.querySelectorAll("[data-command-block]").forEach((block) => {
+      block.classList.add("hidden");
+    });
 
-  const updateCommand = () => {
-    const packageName = activeTab === 'v4' 
-      ? '@iscodex/tailwindcss-animate'
-      : '@iscodex/tailwindcss-animate-plugin';
-    
-    const manager = packageManagers.find(m => m.id === activePM);
-    const command = `${manager.command} ${packageName}`;
-    
-    const commandEl = document.getElementById('install-command');
-    if (commandEl) commandEl.textContent = command;
+    // Show the active command block
+    const activeBlock = document.querySelector(`[data-command-block="${activePM}-${activeTab}"]`);
+    if (activeBlock) {
+      activeBlock.classList.remove("hidden");
+    }
   };
 
   const updateUsageCode = () => {
-    const usageCode = activeTab === 'v4' 
-      ? `@import 'tailwindcss';\n@import '@iscodex/tailwindcss-animate';`
-      : `// tailwind.config.js\nmodule.exports = {\n  plugins: [\n    require('@iscodex/tailwindcss-animate-plugin'),\n  ],\n}`;
-    
-    const codeEl = document.getElementById('usage-code');
+    const usageCode =
+      activeTab === "v4"
+        ? `@import 'tailwindcss';\n@import '@iscodex/tailwindcss-animate';`
+        : `// tailwind.config.js\nmodule.exports = {\n  plugins: [\n    require('@iscodex/tailwindcss-animate-plugin'),\n  ],\n}`;
+
+    const codeEl = document.getElementById("usage-code");
     if (codeEl) codeEl.textContent = usageCode;
   };
 
   // Tab buttons
-  document.querySelectorAll('.tab-btn').forEach(btn => {
-    btn.addEventListener('click', (e) => {
+  document.querySelectorAll(".tab-btn").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
       const target = e.currentTarget as HTMLButtonElement;
-      activeTab = target.dataset.tab || 'v4';
-      
+      activeTab = target.dataset.tab || "v4";
+
       // Update button styles
-      document.querySelectorAll('.tab-btn').forEach(b => {
-        b.classList.remove('bg-(--color-primary)', 'text-white', 'shadow-lg');
-        b.classList.add('bg-(--color-bg-alt)', 'text-(--color-text-muted)');
+      document.querySelectorAll(".tab-btn").forEach((b) => {
+        b.classList.remove("bg-(--color-primary)", "text-white", "shadow-lg");
+        b.classList.add("bg-(--color-bg-alt)", "text-(--color-text-muted)");
       });
-      target.classList.add('bg-(--color-primary)', 'text-white', 'shadow-lg');
-      target.classList.remove('bg-(--color-bg-alt)', 'text-(--color-text-muted)');
-      
-      updateCommand();
+      target.classList.add("bg-(--color-primary)", "text-white", "shadow-lg");
+      target.classList.remove("bg-(--color-bg-alt)", "text-(--color-text-muted)");
+
+      updateCommandDisplay();
       updateUsageCode();
     });
   });
 
   // PM buttons
-  document.querySelectorAll('.pm-btn').forEach(btn => {
-    btn.addEventListener('click', (e) => {
+  document.querySelectorAll(".pm-btn").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
       const target = e.currentTarget as HTMLButtonElement;
-      activePM = target.dataset.pm || 'npm';
-      
+      activePM = target.dataset.pm || "npm";
+
       // Update button styles
-      document.querySelectorAll('.pm-btn').forEach(b => {
-        b.classList.remove('bg-(--color-bg-alt)', 'text-(--color-text)', 'ring-2', 'ring-(--color-primary)');
-        b.classList.add('bg-transparent', 'text-(--color-text-muted)');
+      document.querySelectorAll(".pm-btn").forEach((b) => {
+        b.classList.remove(
+          "bg-(--color-bg-alt)",
+          "text-(--color-text)",
+          "ring-2",
+          "ring-(--color-primary)"
+        );
+        b.classList.add("bg-transparent", "text-(--color-text-muted)");
       });
-      target.classList.add('bg-(--color-bg-alt)', 'text-(--color-text)', 'ring-2', 'ring-(--color-primary)');
-      target.classList.remove('bg-transparent', 'text-(--color-text-muted)');
-      
-      updateCommand();
+      target.classList.add(
+        "bg-(--color-bg-alt)",
+        "text-(--color-text)",
+        "ring-2",
+        "ring-(--color-primary)"
+      );
+      target.classList.remove("bg-transparent", "text-(--color-text-muted)");
+
+      updateCommandDisplay();
     });
   });
 
   // Copy button
-  const copyBtn = document.getElementById('copy-install-btn');
+  const copyBtn = document.getElementById("copy-install-btn");
   if (copyBtn) {
-    copyBtn.addEventListener('click', () => {
-      const commandEl = document.getElementById('install-command');
-      if (commandEl) {
-        navigator.clipboard.writeText(commandEl.textContent || '');
-        copyBtn.textContent = 'Copied!';
+    copyBtn.addEventListener("click", () => {
+      const activeBlock = document.querySelector(`[data-command-block="${activePM}-${activeTab}"]`);
+      if (activeBlock) {
+        const codeText = activeBlock.textContent?.trim() || "";
+        navigator.clipboard.writeText(codeText);
+        copyBtn.textContent = "Copied!";
         setTimeout(() => {
-          copyBtn.textContent = 'Copy';
+          copyBtn.textContent = "Copy";
         }, 2000);
       }
     });
