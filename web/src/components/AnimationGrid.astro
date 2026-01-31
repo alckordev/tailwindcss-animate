@@ -29,8 +29,8 @@ const delays = [
     <div class="flex flex-wrap items-center gap-6">
       <!-- Duration -->
       <div class="animation-grid-field flex flex-col gap-1.5 sm:flex-row sm:items-center sm:gap-3">
-        <label for="duration-select" class="animation-grid-label">Duration</label>
-        <select id="duration-select" class="animation-grid-select">
+        <label for="duration-select" class="label-modern">Duration</label>
+        <select id="duration-select" class="select-modern select-modern-inline">
           {
             durations.map((d) => (
               <option value={d.value} selected={d.value === "1000"}>
@@ -43,8 +43,8 @@ const delays = [
 
       <!-- Delay -->
       <div class="animation-grid-field flex flex-col gap-1.5 sm:flex-row sm:items-center sm:gap-3">
-        <label for="delay-select" class="animation-grid-label">Delay</label>
-        <select id="delay-select" class="animation-grid-select">
+        <label for="delay-select" class="label-modern">Delay</label>
+        <select id="delay-select" class="select-modern select-modern-inline">
           {delays.map((d) => <option value={d.value}>{d.label}</option>)}
         </select>
       </div>
@@ -132,40 +132,6 @@ const delays = [
 </div>
 
 <style>
-  .animation-grid-label {
-    font-size: 0.6875rem;
-    font-weight: 500;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--color-text-muted, #9ca3af);
-  }
-  .animation-grid-select {
-    cursor: pointer;
-    padding: 0.5rem 2rem 0.5rem 0.75rem;
-    font-size: 0.875rem;
-    font-weight: 500;
-    color: var(--color-text, #f9fafb);
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid var(--color-border, #1a1a1a);
-    border-radius: 9999px;
-    outline: none;
-    appearance: none;
-    -webkit-appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%239ca3af' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 0.75rem center;
-    background-size: 0.875rem;
-    transition:
-      border-color 0.15s,
-      box-shadow 0.15s;
-  }
-  .animation-grid-select:hover {
-    border-color: rgba(255, 255, 255, 0.1);
-  }
-  .animation-grid-select:focus {
-    border-color: var(--color-primary, #2563eb);
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
-  }
   .animation-grid-infinite {
     margin-top: auto;
   }
