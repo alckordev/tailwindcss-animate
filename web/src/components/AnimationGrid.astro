@@ -101,9 +101,9 @@ const delays = [
               <div class="animate-box h-20 w-20 rounded-xl bg-linear-to-br from-blue-500 via-purple-500 to-pink-500" />
             </div>
 
-            <div class="space-y-2">
+            <div class="space-y-3 text-center">
               <h3 class="font-mono text-sm font-semibold text-(--color-text)">{anim.name}</h3>
-              <code class="block rounded-md bg-(--color-bg-alt) py-1.5 text-xs text-(--color-text-muted) font-mono">
+              <code class="animation-grid-code rounded-lg border border-(--color-border) bg-[#0c0c0f] px-3 py-2 text-left font-mono text-xs text-[#a5b4fc]">
                 {anim.class}
               </code>
             </div>
@@ -134,6 +134,10 @@ const delays = [
 <style>
   .animation-grid-infinite {
     margin-top: auto;
+  }
+  .animation-grid-code {
+    word-break: break-all;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
   }
 </style>
 
